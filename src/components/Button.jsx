@@ -1,8 +1,11 @@
 import React from 'react'
 
-const Button = () => {
+const Button = ({ icon, label, style }) => {
     return (
-        <div></div>
+        <button type='buttom' className={`${style} flex items-center justify-between rounded-md p-4`}>
+            {icon}
+            {label}
+        </button>
     )
 }
 
