@@ -5,11 +5,14 @@ import logo from "../assets/img/logo.jpg";
 import cartShop from "../assets/img/cartShop.png";
 import "../styles/welcome.css";
 import Button from './Button';
+import { useStateContext } from "../context/ContextProvider";
 
 const WelcomePage = () => {
+    const { handleChangeStart } = useStateContext();
+
     return (
         <div>
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center justify-between -mt-10'>
                 <div className='flex items-center'>
                     <img src={logo} alt='Logo' className='h-16 w-16' />
                     <p
@@ -24,7 +27,8 @@ const WelcomePage = () => {
                     <Button
                         icon={<CgLogIn className='text-2xl text-sky-500 mr-2' />}
                         label='Connectez-vous'
-                        style='text-sky-800 font-semibold hover:border'
+                        style='text-sky-800 font-semibold hover:border p-4'
+                        onClick={handleChangeStart}
                     />
                 </div>
             </div>

@@ -7,6 +7,14 @@ body {
   overflow-x: hidden;
 }
 
+html,
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
