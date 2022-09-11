@@ -4,7 +4,8 @@ import React, { createContext, useContext, useState } from "react";
 const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
-    const [start, setStart] = useState(false)
+    const [start, setStart] = useState(false);
+    const [showFormResetPwd, setShowFormResetPwd] = useState(false)
 
     const handleChangeStart = () => {
         setStart(prevState => (!prevState))
@@ -13,7 +14,8 @@ export const ContextProvider = ({ children }) => {
     return (
         <StateContext.Provider
             value={{
-                start, setStart, handleChangeStart
+                start, setStart, handleChangeStart,
+                showFormResetPwd, setShowFormResetPwd
             }}
         >
             {children}

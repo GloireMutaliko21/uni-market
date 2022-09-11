@@ -1,10 +1,14 @@
 import React from 'react'
 import { FcGoogle } from "react-icons/fc";
 
+import { useStateContext } from "../context/ContextProvider";
 import Button from './Button'
 import Input from './Input';
+import Dialogue from './Dialogue';
 
 const Login = () => {
+    const { showFormResetPwd, setShowFormResetPwd } = useStateContext();
+
     return (
         <div className='flex flex-col justify-center max-w-max shadow-xl shadow-gray-200 p-10 text-blue-gray-600 rounded-md'>
             <div className='flex flex-col items-center  mb-5'>
@@ -43,10 +47,32 @@ const Login = () => {
                 <div>
                     <span
                         className='text-blue-800 hover:underline hover:cursor-pointer'
-                        onClick={() => console.log("OK")}
+                        onClick={() => { setShowFormResetPwd(true) }}
                     >
                         Mot de passe oublié ?
                     </span>
+                    {showFormResetPwd &&
+                        <Dialogue
+                            label='Envoyer'
+                            handleConfirm={() => { }}
+                        >
+                            <div className='text-blue-gray-900 px-4'>
+                                <Input
+                                    label='E-mail '
+                                    type='email'
+                                    value=''
+                                    onChange={() => { }}
+                                />
+                                <Input
+                                    label='Nouveau mot de passe'
+                                    type='password'
+                                    value=''
+                                    onChange={() => { }}
+                                />
+
+                            </div>
+
+                        </Dialogue>}
                 </div>
             </div>
             <div className='mt-8'>
@@ -55,6 +81,7 @@ const Login = () => {
                     style='flex justify-center w-full bg-blue-gray-800 hover:bg-blue-gray-700 text-white font-semibold p-3'
                 />
             </div>
+
         </div>
     )
 }
