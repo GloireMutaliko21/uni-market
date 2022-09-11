@@ -5,7 +5,7 @@ const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
     const [start, setStart] = useState(false);
-    const [showFormResetPwd, setShowFormResetPwd] = useState(false)
+    const [showDialog, setShowDialog] = useState(false)
 
     const handleChangeStart = () => {
         setStart(prevState => (!prevState))
@@ -15,7 +15,7 @@ export const ContextProvider = ({ children }) => {
         <StateContext.Provider
             value={{
                 start, setStart, handleChangeStart,
-                showFormResetPwd, setShowFormResetPwd
+                showDialog, setShowDialog
             }}
         >
             {children}
