@@ -55,6 +55,7 @@ const Login = () => {
                         <Dialogue
                             label='Envoyer'
                             handleConfirm={() => { }}
+                            title='Réinitialiser mot de passe'
                         >
                             <div className='text-blue-gray-900 px-4'>
                                 <Input
@@ -69,9 +70,7 @@ const Login = () => {
                                     value=''
                                     onChange={() => { }}
                                 />
-
                             </div>
-
                         </Dialogue>}
                 </div>
             </div>

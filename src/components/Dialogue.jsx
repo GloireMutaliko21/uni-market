@@ -10,7 +10,7 @@ import {
 import { useStateContext } from "../context/ContextProvider";
 import Input from './Input';
 
-const Dialogue = ({ children, label, handleConfirm }) => {
+const Dialogue = ({ children, title, label, handleConfirm }) => {
     const { showFormResetPwd, setShowFormResetPwd } = useStateContext();
 
     return (
@@ -24,7 +24,7 @@ const Dialogue = ({ children, label, handleConfirm }) => {
                 }}
 
             >
-                <DialogHeader>Réinitialiser mot de passe</DialogHeader>
+                <DialogHeader>{title}</DialogHeader>
                 <DialogBody divider>
                     <div className='w-full'>
                         {children}
