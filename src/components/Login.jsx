@@ -64,12 +64,6 @@ const Login = () => {
                                     value=''
                                     onChange={() => { }}
                                 />
-                                <Input
-                                    label='Nouveau mot de passe'
-                                    type='password'
-                                    value=''
-                                    onChange={() => { }}
-                                />
                             </div>
                         </Dialogue>}
                 </div>
