@@ -1,10 +1,11 @@
 import './App.css'
+import WelcomePage from './components/WelcomePage'
 
 function App() {
 
   return (
-    <div className='flex justify-center items-center h-screen text-9xl font-black text-sky-800'>
-      Hello world !
+    <div className='mx-10 my-1'>
+      <WelcomePage />
     </div>
   )
 }
