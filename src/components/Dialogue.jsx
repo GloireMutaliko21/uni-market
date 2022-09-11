@@ -10,21 +10,21 @@ import {
 import { useStateContext } from "../context/ContextProvider";
 import Input from './Input';
 
-const Dialogue = ({ children, label, handleConfirm }) => {
-    const { showFormResetPwd, setShowFormResetPwd } = useStateContext();
+const Dialogue = ({ children, title, label, handleConfirm }) => {
+    const { showDialog, setShowDialog } = useStateContext();
 
     return (
         <div className="fixed z-50">
             <Dialog
-                open={showFormResetPwd}
-                handler={() => setShowFormResetPwd(false)}
+                open={showDialog}
+                handler={() => setShowDialog(false)}
                 animate={{
                     mount: { scale: 1, y: 0 },
                     unmount: { scale: 0.9, y: -100 },
                 }}
 
             >
-                <DialogHeader>Réinitialiser mot de passe</DialogHeader>
+                <DialogHeader>{title}</DialogHeader>
                 <DialogBody divider>
                     <div className='w-full'>
                         {children}
@@ -34,7 +34,7 @@ const Dialogue = ({ children, label, handleConfirm }) => {
                     <Button
                         variant="text"
                         color="red"
-                        onClick={() => setShowFormResetPwd(false)}
+                        onClick={() => setShowDialog(false)}
                         className="mr-1"
                     >
                         <span>Annuler</span>

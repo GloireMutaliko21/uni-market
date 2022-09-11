@@ -7,7 +7,7 @@ import Input from './Input';
 import Dialogue from './Dialogue';
 
 const Login = () => {
-    const { showFormResetPwd, setShowFormResetPwd } = useStateContext();
+    const { showDialog, setShowDialog } = useStateContext();
 
     return (
         <div className='flex flex-col justify-center max-w-max shadow-xl shadow-gray-200 p-10 text-blue-gray-600 rounded-md'>
@@ -47,14 +47,15 @@ const Login = () => {
                 <div>
                     <span
                         className='text-blue-800 hover:underline hover:cursor-pointer'
-                        onClick={() => { setShowFormResetPwd(true) }}
+                        onClick={() => { setShowDialog(true) }}
                     >
                         Mot de passe oublié ?
                     </span>
-                    {showFormResetPwd &&
+                    {showDialog &&
                         <Dialogue
                             label='Envoyer'
                             handleConfirm={() => { }}
+                            title='Réinitialiser mot de passe'
                         >
                             <div className='text-blue-gray-900 px-4'>
                                 <Input
@@ -63,15 +64,7 @@ const Login = () => {
                                     value=''
                                     onChange={() => { }}
                                 />
-                                <Input
-                                    label='Nouveau mot de passe'
-                                    type='password'
-                                    value=''
-                                    onChange={() => { }}
-                                />
-
                             </div>
-
                         </Dialogue>}
                 </div>
             </div>
