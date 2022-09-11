@@ -16,7 +16,7 @@ const WelcomePage = () => {
                 <div className='flex items-center'>
                     <img src={logo} alt='Logo' className='h-16 w-16' />
                     <p
-                        className='text-xl font-bold bg-clip-text bg-gradient-to-l from-yellow-400 via-red-500 to-sky-400 text-transparent'
+                        className='text-xl font-bold bg-clip-text bg-gradient-to-l from-yellow-400 via-red-500 to-light-blue-700 text-transparent'
                     >
                         MY COMPANY
                     </p>
@@ -27,14 +27,14 @@ const WelcomePage = () => {
                     <Button
                         icon={<CgLogIn className='text-2xl text-sky-500 mr-2' />}
                         label='Connectez-vous'
-                        style='text-sky-800 font-semibold hover:border p-4'
+                        style='text-light-blue-900 font-semibold hover:border p-4'
                         onClick={handleChangeStart}
                     />
                 </div>
             </div>
             <div className='flex justify-between items-center'>
                 <div>
-                    <p className='text-5xl font-bold  mb-8 text-sky-800'>
+                    <p className='text-5xl font-bold  mb-8 text-light-blue-800'>
                         Vendez vos produits en toute sécurité
                     </p>
                     <p className='text-lg text-gray-600'>
