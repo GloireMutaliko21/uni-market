@@ -1,19 +1,23 @@
 import React from 'react'
 import { FcGoogle } from "react-icons/fc";
 
+import { useStateContext } from "../context/ContextProvider";
 import Button from './Button'
 import Input from './Input';
+import Dialogue from './Dialogue';
 
 const Login = () => {
+    const { showFormResetPwd, setShowFormResetPwd } = useStateContext();
+
     return (
-        <div className='flex flex-col justify-center max-w-max shadow-xl shadow-gray-200 p-10 text-gray-600 rounded-md'>
+        <div className='flex flex-col justify-center max-w-max shadow-xl shadow-gray-200 p-10 text-blue-gray-600 rounded-md'>
             <div className='flex flex-col items-center  mb-5'>
                 <h1 className='text-2xl font-bold'>Uni-Market</h1>
                 <p className='mb-5'>Bienvenue</p>
                 <Button
                     icon={<FcGoogle className='text-xl mr-2' />}
                     label='Se connecter avec google'
-                    style='text-gray-800 hover:bg-slate-50 text-sm font-medium shadow-md border p-2'
+                    style='text-blue-gray-800 hover:bg-slate-50 text-sm font-medium shadow-md border p-2'
                 />
             </div>
             <div className='flex justify-between items-center w-full mb-5'>
@@ -42,19 +46,42 @@ const Login = () => {
                 </div>
                 <div>
                     <span
-                        className='text-blue-600 hover:underline hover:cursor-pointer'
-                        onClick={() => console.log("OK")}
+                        className='text-blue-800 hover:underline hover:cursor-pointer'
+                        onClick={() => { setShowFormResetPwd(true) }}
                     >
                         Mot de passe oublié ?
                     </span>
+                    {showFormResetPwd &&
+                        <Dialogue
+                            label='Envoyer'
+                            handleConfirm={() => { }}
+                        >
+                            <div className='text-blue-gray-900 px-4'>
+                                <Input
+                                    label='E-mail '
+                                    type='email'
+                                    value=''
+                                    onChange={() => { }}
+                                />
+                                <Input
+                                    label='Nouveau mot de passe'
+                                    type='password'
+                                    value=''
+                                    onChange={() => { }}
+                                />
+
+                            </div>
+
+                        </Dialogue>}
                 </div>
             </div>
             <div className='mt-8'>
                 <Button
                     label='Se connecter'
-                    style='flex justify-center w-full bg-gray-800 hover:bg-gray-700 text-white font-semibold p-3'
+                    style='flex justify-center w-full bg-blue-gray-800 hover:bg-blue-gray-700 text-white font-semibold p-3'
                 />
             </div>
+
         </div>
     )
 }
