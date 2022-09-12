@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { CgLogIn } from 'react-icons/cg'
 
 import logo from "../assets/img/logo.jpg";
@@ -6,7 +6,6 @@ import cartShop from "../assets/img/cartShop.png";
 import "../styles/welcome.css";
 import Button from './Button';
 import { useStateContext } from "../context/ContextProvider";
-import CardLoader from './CardLoader';
 
 const WelcomePage = () => {
     const { handleChangeStart } = useStateContext();
@@ -44,9 +43,7 @@ const WelcomePage = () => {
                     </p>
                 </div>
                 <div className='h-full w-full md:w-1/2 md:basis-1/2'>
-                    <Suspense fallback='loading'>
-                        <img src={cartShop} alt="Cart" className='-scale-x-100' />
-                    </Suspense>
+                    <img src={cartShop} alt="Cart" className='-scale-x-100' />
                 </div>
             </div>
         </div>
