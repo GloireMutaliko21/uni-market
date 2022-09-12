@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react'
 import ReactDOM from 'react-dom'
+import PageLoader from './components/PageLoader';
 
 const App = lazy(() => import('./App'));
 import { ContextProvider } from "./context/ContextProvider";
@@ -9,7 +10,7 @@ ReactDOM.render
   (
     <React.StrictMode>
       <ContextProvider>
-        <Suspense fallback='Loading'>
+        <Suspense fallback={<PageLoader />}>
           <App />
         </Suspense>
       </ContextProvider>
