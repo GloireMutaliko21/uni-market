@@ -12,7 +12,7 @@ const WelcomePage = () => {
 
     return (
         <div>
-            <div className='flex items-center justify-between -mt-10'>
+            <div className='flex flex-wrap md:flex-nowrap items-center justify-between -mt-10'>
                 <div className='flex items-center'>
                     <img src={logo} alt='Logo' className='h-16 w-16' />
                     <p
@@ -32,8 +32,8 @@ const WelcomePage = () => {
                     />
                 </div>
             </div>
-            <div className='flex justify-between items-center'>
-                <div>
+            <div className='flex justify-between items-center min-h-[500px]'>
+                <div className='h-full w-full md:w-1/2 md:basis-1/2'>
                     <p className='text-5xl font-bold  mb-8 text-light-blue-800'>
                         Vendez vos produits en toute sécurité
                     </p>
@@ -42,7 +42,7 @@ const WelcomePage = () => {
                         Paramétrez <br />l'application selon votre goût et suivant <br /> vos préférences.
                     </p>
                 </div>
-                <div >
+                <div className='h-full w-full md:w-1/2 md:basis-1/2'>
                     <img src={cartShop} alt="Cart" className='-scale-x-100' />
                 </div>
             </div>
