@@ -5,7 +5,7 @@ const PageLoader = () => {
     return (
         <div className="grid place-items-center bg-white h-screen w-screen">
             <div className="w-full h-full bg-white rounded-md shadow-xl m-3">
-                <div className="h-44 bg-gray-400 rounded-t-md animate-pulse m-5"></div>
+                <div className="h-44 bg-gray-300 rounded-t-md animate-pulse m-5"></div>
                 <div className="p-5">
                     <div className="h-32 flex flex-col justify-center p-5 rounded-sm bg-gray-300 duration-75 animate-pulse mb-4">
                         <div className="h-3 mt-2 w-1/2 rounded-sm bg-gray-400"></div>
