@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import { FcGoogle } from "react-icons/fc";
 
 import { useStateContext } from "../context/ContextProvider";
@@ -7,7 +7,31 @@ import Input from './Input';
 import Dialogue from './Dialogue';
 
 const Login = () => {
-    const { showDialog, setShowDialog } = useStateContext();
+    const {
+        showDialog,
+        setShowDialog,
+        loginStatus,
+        setLoginStatus,
+        userData,
+        setUserData,
+    } = useStateContext();
+
+    const [userName, setUserName] = useState();
+    const [passWord, setPassWord] = useState();
+
+    const handleChange = useMemo(() =>
+        (e) => {
+            if (e.target.name === "userName") {
+                setUserName(e.target.value);
+                console.log(e.target.value);
+            }
+            if (e.target.name === "password") {
+                setPassWord(e.target.value);
+                console.log(e.target.value);
+            }
+        }
+
+        , [userName, passWord]);
 
     return (
         <div className='flex flex-col justify-center max-w-max shadow-xl shadow-gray-200 p-10 text-blue-gray-600 rounded-md'>
@@ -29,14 +53,14 @@ const Login = () => {
                 <Input
                     label='E-mail ou Username'
                     type='email'
-                    value=''
-                    onChange={() => { }}
+                    onChange={handleChange}
+                    name="userName"
                 />
                 <Input
                     label='Mot de passe'
                     type='password'
-                    value=''
-                    onChange={() => { }}
+                    onChange={handleChange}
+                    name="password"
                 />
             </div>
             <div className='flex justify-between items-center text-xs'>
