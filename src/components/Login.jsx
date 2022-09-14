@@ -5,6 +5,7 @@ import { useStateContext } from "../context/ContextProvider";
 import Button from './Button'
 import Input from './Input';
 import Dialogue from './Dialogue';
+import { endPoint } from "../constants/api";
 
 const Login = () => {
     const {
@@ -46,8 +47,7 @@ const Login = () => {
         }
         try {
             if (!localStorage.getItem('isLogged')) {
-                console.log('Non connecte');
-                const response = await fetch('http://78.138.45.224:3002/api/v1/user/auth', params);
+                const response = await fetch(`${endPoint}/user/auth`, params);
                 const responseData = await response.json()
                 if (response.status === 200) {
                     localStorage.setItem('isLogged', true);

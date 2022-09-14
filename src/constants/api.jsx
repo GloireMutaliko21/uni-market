@@ -1,0 +1,1 @@
+export const endPoint = 'http://78.138.45.224:3002/api/v1';
