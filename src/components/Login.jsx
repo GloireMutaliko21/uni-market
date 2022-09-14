@@ -13,7 +13,7 @@ const Login = () => {
         setShowDialog,
         loginStatus,
         setLoginStatus,
-        userData,
+        rememberMe,
         setUserData,
     } = useStateContext();
 
@@ -50,7 +50,9 @@ const Login = () => {
                 const response = await fetch(`${endPoint}/user/auth`, params);
                 const responseData = await response.json()
                 if (response.status === 200) {
-                    localStorage.setItem('isLogged', true);
+                    if (rememberMe.current.checked) {
+                        localStorage.setItem('isLogged', true);
+                    }
                     setUserData(responseData);
                     setLoginStatus(true);
                 }
@@ -93,7 +95,7 @@ const Login = () => {
             </div>
             <div className='flex justify-between items-center text-xs'>
                 <div className='flex justify-around items-center'>
-                    <input name='remember' id='remember' type="checkbox" />
+                    <input ref={rememberMe} name='remember' id='remember' type="checkbox" />
                     <label htmlFor='remember' className='ml-3 cursor-pointer'>Se souvenir de moi</label>
                 </div>
                 <div>

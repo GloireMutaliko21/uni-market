@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useRef } from "react";
 
 const StateContext = createContext();
 
@@ -8,6 +8,8 @@ export const ContextProvider = ({ children }) => {
     const [showDialog, setShowDialog] = useState(false);
     const [userData, setUserData] = useState({});
     const [loginStatus, setLoginStatus] = useState(false);
+
+    const rememberMe = useRef();
 
     const handleChangeStart = () => {
         setStart(prevState => (!prevState))
@@ -20,6 +22,7 @@ export const ContextProvider = ({ children }) => {
                 showDialog, setShowDialog,
                 userData, setUserData,
                 loginStatus, setLoginStatus,
+                rememberMe,
             }}
         >
             {children}

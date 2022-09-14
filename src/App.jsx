@@ -24,7 +24,7 @@ function App() {
         start &&
         <Suspense fallback={<PageLoader />}>
           {
-            !localStorage.getItem("isLogged")
+            !localStorage.getItem("isLogged") && !loginStatus
               ? <Login />
               : <Dashboard />
           }
