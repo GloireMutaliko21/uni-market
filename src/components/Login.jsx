@@ -29,9 +29,29 @@ const Login = () => {
                 setPassWord(e.target.value);
                 console.log(e.target.value);
             }
+        }, [userName, passWord]);
+
+    async function handleLogin() {
+        const params = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `username=${userName}&password=${passWord}`
+        }
+        try {
+            const response = await fetch('http://78.138.45.224:3002/api/v1/user/auth', params);
+            const responseData = await response.json()
+            if (response.status === 200) {
+                console.log(responseData);
+            } else {
+                console.log("Non authentifie")
+            }
+        } catch (error) {
+            console.log(error.message);
         }
 
-        , [userName, passWord]);
+    }
 
     return (
         <div className='flex flex-col justify-center max-w-max shadow-xl shadow-gray-200 p-10 text-blue-gray-600 rounded-md'>
@@ -96,6 +116,7 @@ const Login = () => {
                 <Button
                     label='Se connecter'
                     style='flex justify-center w-full bg-blue-gray-800 hover:bg-blue-gray-700 text-white font-semibold p-3'
+                    onClick={handleLogin}
                 />
             </div>
 
