@@ -6,10 +6,7 @@ const StateContext = createContext();
 export const ContextProvider = ({ children }) => {
     const [start, setStart] = useState(false);
     const [showDialog, setShowDialog] = useState(false);
-    const [userData, setUserData] = useState({
-        userName: '',
-        passWord: ''
-    });
+    const [userData, setUserData] = useState({});
     const [loginStatus, setLoginStatus] = useState(false);
 
     const handleChangeStart = () => {

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import { FcGoogle } from "react-icons/fc";
 
 import { useStateContext } from "../context/ContextProvider";
@@ -19,15 +19,20 @@ const Login = () => {
     const [userName, setUserName] = useState();
     const [passWord, setPassWord] = useState();
 
+    useEffect(() => {
+        localStorage.getItem('isLogged')
+            ? console.log("Already connected")
+            : console.log("Not connected")
+    }, [loginStatus])
+
+
     const handleChange = useMemo(() =>
         (e) => {
             if (e.target.name === "userName") {
                 setUserName(e.target.value);
-                console.log(e.target.value);
             }
             if (e.target.name === "password") {
                 setPassWord(e.target.value);
-                console.log(e.target.value);
             }
         }, [userName, passWord]);
 
@@ -40,12 +45,15 @@ const Login = () => {
             body: `username=${userName}&password=${passWord}`
         }
         try {
-            const response = await fetch('http://78.138.45.224:3002/api/v1/user/auth', params);
-            const responseData = await response.json()
-            if (response.status === 200) {
-                console.log(responseData);
-            } else {
-                console.log("Non authentifie")
+            if (!localStorage.getItem('isLogged')) {
+                console.log('Non connecte');
+                const response = await fetch('http://78.138.45.224:3002/api/v1/user/auth', params);
+                const responseData = await response.json()
+                if (response.status === 200) {
+                    localStorage.setItem('isLogged', true);
+                    setUserData(responseData);
+                    setLoginStatus(true);
+                }
             }
         } catch (error) {
             console.log(error.message);
