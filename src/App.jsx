@@ -14,14 +14,14 @@ function App() {
   return (
     <div className='mx-24 my-1 flex items-center justify-center content-center'>
       {
-        !start &&
+        !start && !localStorage.getItem("isLogged") &&
         <Suspense fallback={<PageLoader />}>
           <WelcomePage />
         </Suspense>
 
       }
       {
-        start &&
+        start || localStorage.getItem("isLogged") &&
         <Suspense fallback={<PageLoader />}>
           {
             !localStorage.getItem("isLogged") && !loginStatus
