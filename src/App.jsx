@@ -6,9 +6,10 @@ const WelcomePage = lazy(() => import('./components/WelcomePage'));
 import { useStateContext } from "./context/ContextProvider";
 import Login from './components/Login';
 import PageLoader from "./components/PageLoader";
+import Dashboard from "./components/Dashboard";
 
 function App() {
-  const { start } = useStateContext();
+  const { start, loginStatus } = useStateContext();
 
   return (
     <div className='mx-24 my-1 flex items-center justify-center content-center'>
@@ -22,7 +23,12 @@ function App() {
       {
         start &&
         <Suspense fallback={<PageLoader />}>
-          <Login />
+          {
+            !localStorage.getItem("isLogged") && !loginStatus
+              ? <Login />
+              : <Dashboard />
+          }
+
         </Suspense>
       }
 

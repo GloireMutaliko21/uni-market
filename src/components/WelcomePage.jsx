@@ -34,7 +34,7 @@ const WelcomePage = () => {
             </div>
             <div className='flex justify-between items-center min-h-[500px]'>
                 <div className='h-full w-full md:w-1/2 md:basis-1/2'>
-                    <p className='text-5xl font-bold  mb-8 text-light-blue-800'>
+                    <p className='text-5xl font-bold  mb-8 text-light-blue-900'>
                         Vendez vos produits en toute sécurité
                     </p>
                     <p className='text-lg text-gray-600'>
