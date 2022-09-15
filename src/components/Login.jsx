@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react'
 import { FcGoogle } from "react-icons/fc";
+import { BsEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 
 import { useStateContext } from "../context/ContextProvider";
 import Button from './Button'
@@ -15,6 +16,7 @@ const Login = () => {
         setLoginStatus,
         rememberMe,
         setUserData,
+        showPassword
     } = useStateContext();
 
     const [userName, setUserName] = useState();
@@ -88,9 +90,11 @@ const Login = () => {
                 />
                 <Input
                     label='Mot de passe'
-                    type='password'
+                    type={showPassword ? 'text' : 'password'}
                     onChange={handleChange}
                     name="password"
+                    icon={<BsEyeFill />}
+                    iconMask={<BsFillEyeSlashFill />}
                 />
             </div>
             <div className='flex justify-between items-center text-xs'>

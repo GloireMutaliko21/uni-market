@@ -14,24 +14,19 @@ function App() {
   return (
     <div className='mx-24 my-1 flex items-center justify-center content-center'>
       {
-        !start &&
-        <Suspense fallback={<PageLoader />}>
-          <WelcomePage />
-        </Suspense>
+        !start && !localStorage.getItem("isLogged") ?
+          <Suspense fallback={<PageLoader />}>
+            <WelcomePage />
+          </Suspense> :
+          <Suspense fallback={<PageLoader />}>
+            {
+              !localStorage.getItem("isLogged") && !loginStatus
+                ? <Login />
+                : <Dashboard />
+            }
 
+          </Suspense>
       }
-      {
-        start &&
-        <Suspense fallback={<PageLoader />}>
-          {
-            !localStorage.getItem("isLogged") && !loginStatus
-              ? <Login />
-              : <Dashboard />
-          }
-
-        </Suspense>
-      }
-
     </div>
   )
 }
