@@ -5,6 +5,7 @@ const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
     const [start, setStart] = useState(false);
+    const [showPassword, setShowPassword] = useState(false)
     const [showDialog, setShowDialog] = useState(false);
     const [userData, setUserData] = useState({});
     const [loginStatus, setLoginStatus] = useState(false);
@@ -19,6 +20,7 @@ export const ContextProvider = ({ children }) => {
         <StateContext.Provider
             value={{
                 start, setStart, handleChangeStart,
+                showPassword, setShowPassword,
                 showDialog, setShowDialog,
                 userData, setUserData,
                 loginStatus, setLoginStatus,

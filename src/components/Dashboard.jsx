@@ -4,11 +4,12 @@ import Button from './Button';
 import { useStateContext } from "../context/ContextProvider";
 
 const Dashboard = () => {
-    const { setUserData, setLoginStatus } = useStateContext();
+    const { setUserData, setLoginStatus, setShowPassword } = useStateContext();
     const handleLogout = () => {
         localStorage.removeItem('isLogged');
         setUserData({});
         setLoginStatus(false);
+        setShowPassword(false)
     }
 
     return (
