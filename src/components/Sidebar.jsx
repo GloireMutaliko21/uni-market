@@ -22,7 +22,7 @@ const Sidebar = () => {
     };
 
     return (
-        <div className='bock absolute left-0 top-5 mx-5 text-red-800'>
+        <div className='bock fixed left-0 top-5 mx-5 text-red-800'>
             {mainMenus.map((menu, index) =>
                 <Accordion
                     open={open === index + 1}
@@ -30,13 +30,13 @@ const Sidebar = () => {
                     icon={<MdOutlineKeyboardArrowDown className={`${open === index + 1 ? "rotate-180" : ""}`} />}
                     animate={customAnimation}
                 >
-                    <AccordionHeader onClick={() => handleOpen(index + 1)} className='text-xs uppercase '>
+                    <AccordionHeader onClick={() => handleOpen(index + 1)} className='text-xs text-teal-900 uppercase'>
                         {menu}
                     </AccordionHeader>
                     <AccordionBody className='grid ml-5'>
                         {routesData.map((route, idx) =>
                             route.parent === menu &&
-                            <NavLink to={route.path} key={idx}>{route.title}</NavLink>
+                            <NavLink to={route.path} key={idx} className='flex justify-between items-center'>{route.icon}{route.title}</NavLink>
                         )}
                     </AccordionBody>
                 </Accordion>
