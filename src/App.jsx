@@ -15,7 +15,7 @@ function App() {
   const { start, loginStatus } = useStateContext();
 
   return (
-    <div className='mx-24 my-1 flex items-center justify-center content-center'>
+    <div className='mx-24 flex items-center justify-center content-center'>
       {
         !start && !localStorage.getItem("isLogged") ?
           <Suspense fallback={<PageLoader />}>

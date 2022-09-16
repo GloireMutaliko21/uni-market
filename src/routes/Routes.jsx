@@ -130,7 +130,7 @@ export const routesData = [
     },
     {
         title: 'Utilisateurs',
-        path: '/clients',
+        path: '/users',
         element: <Users />,
         parent: mainMenus[5],
         icon: <FaUserTie />
