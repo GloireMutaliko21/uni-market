@@ -21,6 +21,9 @@ const Sidebar = () => {
         unmount: { scale: 0.9 },
     };
 
+    const activeLink = 'flex items-center m-2 py-1 pr-3 rounded-md text-white bg-teal-900';
+    const normalLink = 'flex items-center m-1 py-1 pr-3 text-teal-900 hover:bg-teal-900 hover:text-white rounded-md';
+
     return (
         <div className='bock fixed left-0 top-5 p-5 shadow-md'>
             {mainMenus.map((menu, index) =>
@@ -40,7 +43,7 @@ const Sidebar = () => {
                             <NavLink
                                 to={route.path}
                                 key={idx}
-                                className='flex items-center m-1 py-1 pr-3 text-gray-900 hover:bg-teal-900 hover:text-white rounded-md'
+                                className={({ isActive }) => isActive ? activeLink : normalLink}
                             >
                                 <span className='mr-3 text-teal-700 bg-white p-2 rounded-lg shadow-lg shadow-teal-50'>
                                     {route.icon}
