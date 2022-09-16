@@ -33,10 +33,10 @@ const Sidebar = () => {
                     <AccordionHeader onClick={() => handleOpen(index + 1)} className='text-xs text-teal-900 uppercase'>
                         {menu}
                     </AccordionHeader>
-                    <AccordionBody className='grid ml-5'>
+                    <AccordionBody className='grid'>
                         {routesData.map((route, idx) =>
                             route.parent === menu &&
-                            <NavLink to={route.path} key={idx} className='flex justify-between items-center'>{route.icon}{route.title}</NavLink>
+                            <NavLink to={route.path} key={idx} className='flex items-center'><span className='mr-3'>{route.icon}</span><span>{route.title}</span></NavLink>
                         )}
                     </AccordionBody>
                 </Accordion>
