@@ -40,12 +40,12 @@ const Sidebar = () => {
                             <NavLink
                                 to={route.path}
                                 key={idx}
-                                className='flex items-center m-1 py-1 pr-3 text-teal-900 hover:bg-teal-900 hover:text-white rounded-md'
+                                className='flex items-center m-1 py-1 pr-3 text-gray-900 hover:bg-teal-900 hover:text-white rounded-md'
                             >
                                 <span className='mr-3 text-teal-700 bg-white p-2 rounded-lg shadow-lg shadow-teal-50'>
                                     {route.icon}
                                 </span>
-                                <span className=''>
+                                <span className='font-light'>
                                     {route.title}
                                 </span>
                             </NavLink>

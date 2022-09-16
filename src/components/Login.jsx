@@ -43,9 +43,12 @@ const Login = () => {
         const params = {
             method: "POST",
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json',
             },
-            body: `username=${userName}&password=${passWord}`
+            body: JSON.stringify({
+                username: userName,
+                password: passWord
+            })
         }
         try {
             if (!localStorage.getItem('isLogged')) {
