@@ -29,16 +29,14 @@ const Sidebar = () => {
                     key={index}
                     icon={<MdOutlineKeyboardArrowDown className={`${open === index + 1 ? "rotate-180" : ""}`} />}
                     animate={customAnimation}
-                    className=''
                 >
-                    <AccordionHeader onClick={() => handleOpen(index + 1)} className='text-xs uppercase'>
+                    <AccordionHeader onClick={() => handleOpen(index + 1)} className='text-xs uppercase '>
                         {menu}
                     </AccordionHeader>
                     <AccordionBody className='grid ml-5'>
                         {routesData.map((route, idx) =>
                             route.parent === menu &&
                             <NavLink to={route.path} key={idx}>{route.title}</NavLink>
-
                         )}
                     </AccordionBody>
                 </Accordion>

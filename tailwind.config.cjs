@@ -13,7 +13,10 @@ module.exports = withMT({
         // 'subComponent': '#515F6A',
         // 'default': '#515F6A',
         // 'blue': '#1CB2F6'
-      }
+      },
+      fontFamily: {
+        'sans': ['Poppins'],
+      },
     },
   },
   plugins: [],
