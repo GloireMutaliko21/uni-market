@@ -6,13 +6,13 @@ module.exports = withMT({
   theme: {
     extend: {
       colors: {
-        'titleColor': '#0A1E2E',
-        'text': '#00020B',
-        'body': '#BEEBFC',
-        'button': '#BEEBFC',
-        'subComponent': '#515F6A',
-        'default': '#515F6A',
-        'blue': '#1CB2F6'
+        'titleColor': '#0f2c29',
+        // 'text': '#00020B',
+        // 'body': '#BEEBFC',
+        // 'button': '#061A2A',
+        // 'subComponent': '#515F6A',
+        // 'default': '#515F6A',
+        // 'blue': '#1CB2F6'
       }
     },
   },
