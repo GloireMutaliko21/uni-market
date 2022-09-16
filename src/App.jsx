@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import './App.css'
 const WelcomePage = lazy(() => import('./components/WelcomePage'));
@@ -7,6 +8,8 @@ import { useStateContext } from "./context/ContextProvider";
 import Login from './components/Login';
 import PageLoader from "./components/PageLoader";
 import Dashboard from "./components/Dashboard";
+import Sidebar from "./components/Sidebar";
+import { routesData } from "./routes/Routes";
 
 function App() {
   const { start, loginStatus } = useStateContext();
@@ -22,7 +25,18 @@ function App() {
             {
               !localStorage.getItem("isLogged") && !loginStatus
                 ? <Login />
-                : <Dashboard />
+                :
+                <BrowserRouter>
+                  <Sidebar />
+                  <Routes>
+                    {routesData.map((route, index) =>
+                      <Route key={index} path={route.path} element={
+                        <Suspense>
+                          {route.element}
+                        </Suspense>} />
+                    )}
+                  </Routes>
+                </BrowserRouter>
             }
 
           </Suspense>
