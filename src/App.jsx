@@ -28,16 +28,22 @@ function App() {
                 ? <Login />
                 :
                 <BrowserRouter>
-                  <Sidebar />
                   <Navbar />
-                  <Routes>
-                    {routesData.map((route, index) =>
-                      <Route key={index} path={route.path} element={
-                        <Suspense>
-                          {route.element}
-                        </Suspense>} />
-                    )}
-                  </Routes>
+                  {/* <div className="flex justify-between w-screen"> */}
+                  <Sidebar />
+                  <div className="ml-72">
+                    <Routes>
+                      {routesData.map((route, index) =>
+                        <Route key={index} path={route.path} element={
+                          <Suspense>
+                            {route.element}
+                          </Suspense>} />
+                      )}
+                    </Routes>
+                  </div>
+
+                  {/* </div> */}
+
                 </BrowserRouter>
             }
 
