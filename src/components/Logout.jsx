@@ -2,7 +2,7 @@ import React from 'react'
 
 import Button from './Button';
 import { useStateContext } from "../context/ContextProvider";
-import Sidebar from './Sidebar';
+import gloire from "../assets/img/Gloire.jpg";
 import AlertHeader from './AlertHeader';
 
 const Logout = () => {
@@ -18,11 +18,21 @@ const Logout = () => {
         <div>
             <AlertHeader
                 title='Mon profil'
-                info='Gloire Mutaliko'
+                info={
+                    <button>Edit</button>
+                }
             />
+            <div className='flex items-center border-b mb-3 pb-3 border-gray-400'>
+                <img src={gloire} alt="profile image" className='rounded-full h-24 w-24' />
+                <div className='ml-3'>
+                    <p className='text-blue-gray-900 text-lg font-semibold'>Gloire Mutaliko</p>
+                    <p className='text-blue-gray-50'>Vendeur</p>
+                    <p className='text-gray-900 font-extralight'>gloire@gmail.com</p>
+                </div>
+            </div>
             <Button
                 label='Deconnexion'
-                style='flex justify-center w-full bg-blue-gray-800 hover:bg-blue-gray-700 text-white font-semibold p-3'
+                style='bg-teal-900 hover:bg-teal-800 text-white font-semibold p-3'
                 onClick={handleLogout}
             />
         </div>
