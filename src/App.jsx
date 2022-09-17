@@ -31,7 +31,7 @@ function App() {
                   <Navbar />
                   {/* <div className="flex justify-between w-screen"> */}
                   <Sidebar />
-                  <div className="ml-72">
+                  <div className="ml-64">
                     <Routes>
                       {routesData.map((route, index) =>
                         <Route key={index} path={route.path} element={

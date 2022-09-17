@@ -15,7 +15,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className='flex justify-between items-center fixed left-0 right-0 top-0 mx-5 my-2'>
+        <div className='flex justify-between items-center fixed left-0 right-0 top-0 px-5 my-2 shadow-md z-10'>
             <div>
                 <button className='text-teal-900'>
                     <AiOutlineMenuUnfold />

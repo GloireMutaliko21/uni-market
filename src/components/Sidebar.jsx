@@ -21,7 +21,7 @@ const Sidebar = () => {
     const normalLink = 'flex items-center m-1 py-1 pr-3 text-teal-900 hover:bg-teal-900 hover:text-white rounded-md';
 
     return (
-        <div className='bock fixed left-0 top-5 p-5 shadow-md'>
+        <div className='bock fixed left-0 top-5 p-5 shadow-md w-64'>
             {mainMenus.map((menu, index) =>
                 <Accordion
                     open={open === index + 1}
