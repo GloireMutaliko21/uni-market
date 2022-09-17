@@ -24,7 +24,7 @@ const Dialogue = ({ children, title, label, handleConfirm }) => {
                 }}
 
             >
-                <DialogHeader>{title}</DialogHeader>
+                <DialogHeader className='text-teal-800'>{title}</DialogHeader>
                 <DialogBody divider>
                     <div className='w-full'>
                         {children}
@@ -39,7 +39,7 @@ const Dialogue = ({ children, title, label, handleConfirm }) => {
                     >
                         <span>Annuler</span>
                     </Button>
-                    <Button className='bg-blue-gray-900' onClick={handleConfirm}>
+                    <Button className='bg-teal-900' onClick={handleConfirm}>
                         <span>{label}</span>
                     </Button>
                 </DialogFooter>

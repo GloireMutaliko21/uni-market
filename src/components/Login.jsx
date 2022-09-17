@@ -43,9 +43,12 @@ const Login = () => {
         const params = {
             method: "POST",
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json',
             },
-            body: `username=${userName}&password=${passWord}`
+            body: JSON.stringify({
+                username: userName,
+                password: passWord
+            })
         }
         try {
             if (!localStorage.getItem('isLogged')) {
@@ -66,7 +69,7 @@ const Login = () => {
     }
 
     return (
-        <div className='flex flex-col justify-center max-w-max shadow-xl shadow-gray-200 p-10 text-blue-gray-600 rounded-md'>
+        <div className='flex flex-col justify-center max-w-max shadow-xl shadow-gray-200 p-10 text-teal-800 rounded-md'>
             <div className='flex flex-col items-center  mb-5'>
                 <h1 className='text-2xl font-bold'>Uni-Market</h1>
                 <p className='mb-5'>Bienvenue</p>
@@ -129,7 +132,7 @@ const Login = () => {
             <div className='mt-8'>
                 <Button
                     label='Se connecter'
-                    style='flex justify-center w-full bg-blue-gray-800 hover:bg-blue-gray-700 text-white font-semibold p-3'
+                    style='flex justify-center w-full bg-teal-800 hover:bg-teal-700 text-white font-semibold p-3'
                     onClick={handleLogin}
                 />
             </div>
