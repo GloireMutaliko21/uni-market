@@ -19,10 +19,18 @@ const Navbar = () => {
                     <div className='h-2 w-2 bg-yellow-800 rounded-full absolute right-0 top-2'></div>
                 </button>
                 <Alerte>
+                    <div className='flex items-center mb-5 border-b'>
+                        <h2 className='text-xl font-semibold'>Notifications</h2>
+                        <span className='bg-yellow-800 text-teal-900 text-sm m-5 px-2 py-1 rounded-xl'>5 New</span>
+                    </div>
+
                     {notificationData.map((notification, idx) =>
-                        <div key={idx}>
-                            <p>{notification.expediteur}</p>
-                            <p>{notification.content}</p>
+                        <div
+                            key={idx}
+                            className='text-gray-300 m-4 border-b border-gray-500 pb-2'
+                        >
+                            <p className='font-bold text-gray-900'>{notification.expediteur}</p>
+                            <p className='text-base'>{notification.content}</p>
                         </div>
                     )}
                 </Alerte>
