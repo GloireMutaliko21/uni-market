@@ -16,7 +16,7 @@ const Alerte = ({ children }) => {
                 dismissible={{
                     onClose: (prevState) => setShowAlert(!prevState),
                 }}
-                className='bg-teal-600 top-12 right-5 absolute w-96 max-w-max'
+                className='bg-teal-500 top-12 right-5 absolute w-96 max-w-max'
             >
                 {children}
             </Alert>
