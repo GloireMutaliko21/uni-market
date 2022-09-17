@@ -10,6 +10,7 @@ import PageLoader from "./components/PageLoader";
 import Dashboard from "./components/Dashboard";
 import Sidebar from "./components/Sidebar";
 import { routesData } from "./routes/Routes";
+import Navbar from "./components/Navbar";
 
 function App() {
   const { start, loginStatus } = useStateContext();
@@ -27,15 +28,22 @@ function App() {
                 ? <Login />
                 :
                 <BrowserRouter>
+                  <Navbar />
+                  {/* <div className="flex justify-between w-screen"> */}
                   <Sidebar />
-                  <Routes>
-                    {routesData.map((route, index) =>
-                      <Route key={index} path={route.path} element={
-                        <Suspense>
-                          {route.element}
-                        </Suspense>} />
-                    )}
-                  </Routes>
+                  <div className="ml-72">
+                    <Routes>
+                      {routesData.map((route, index) =>
+                        <Route key={index} path={route.path} element={
+                          <Suspense>
+                            {route.element}
+                          </Suspense>} />
+                      )}
+                    </Routes>
+                  </div>
+
+                  {/* </div> */}
+
                 </BrowserRouter>
             }
 

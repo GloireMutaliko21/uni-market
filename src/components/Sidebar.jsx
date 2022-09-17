@@ -6,7 +6,7 @@ import { Accordion, AccordionHeader, AccordionBody, } from "@material-tailwind/r
 import { mainMenus, routesData } from "../routes/Routes";
 
 const Sidebar = () => {
-    const [open, setOpen] = useState(0);
+    const [open, setOpen] = useState(null);
 
     const handleOpen = (value) => {
         setOpen(open === value ? 0 : value);
