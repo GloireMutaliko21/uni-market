@@ -10,6 +10,7 @@ import PageLoader from "./components/PageLoader";
 import Dashboard from "./components/Dashboard";
 import Sidebar from "./components/Sidebar";
 import { routesData } from "./routes/Routes";
+import Navbar from "./components/Navbar";
 
 function App() {
   const { start, loginStatus } = useStateContext();
@@ -28,6 +29,7 @@ function App() {
                 :
                 <BrowserRouter>
                   <Sidebar />
+                  <Navbar />
                   <Routes>
                     {routesData.map((route, index) =>
                       <Route key={index} path={route.path} element={
