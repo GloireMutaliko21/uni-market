@@ -2,6 +2,7 @@ import React from 'react'
 import { MdNotifications, MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 import { useStateContext } from "../context/ContextProvider";
+import { notificationData } from "../data/notificationData";
 import gloire from "../assets/img/Gloire.jpg"
 import Alerte from './Alerte';
 const Navbar = () => {
@@ -17,7 +18,14 @@ const Navbar = () => {
                     <MdNotifications className='text-xl' />
                     <div className='h-2 w-2 bg-yellow-800 rounded-full absolute right-0 top-2'></div>
                 </button>
-                <Alerte>Bonjour</Alerte>
+                <Alerte>
+                    {notificationData.map((notification, idx) =>
+                        <div key={idx}>
+                            <p>{notification.expediteur}</p>
+                            <p>{notification.content}</p>
+                        </div>
+                    )}
+                </Alerte>
                 <button className='flex justify-between items-center'>
                     <img src={gloire} alt="" className='h-10 w-10 rounded-full' />
                     <span className='text-teal-900 ml-3'>Gloire Mutaliko</span>
