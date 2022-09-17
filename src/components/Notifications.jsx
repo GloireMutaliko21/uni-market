@@ -3,15 +3,16 @@ import React from 'react'
 
 import { notificationData } from "../data/notificationData";
 import Button from './Button';
+import AlertHeader from './AlertHeader';
 
 const Notifications = () => {
     return (
         <div>
             <>
-                <div className='flex items-center mb-5 border-b'>
-                    <h2 className='text-xl font-semibold'>Notifications</h2>
-                    <span className='bg-yellow-800 text-teal-900 text-sm m-5 px-2 py-1 rounded-xl'>5 New</span>
-                </div>
+                <AlertHeader
+                    title='Notifications'
+                    info='5 New'
+                />
                 {
                     notificationData.map(
                         (notification, idx) =>
