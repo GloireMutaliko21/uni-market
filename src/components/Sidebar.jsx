@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink } from "react-router-dom";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import {
-    Accordion,
-    AccordionHeader,
-    AccordionBody,
-} from "@material-tailwind/react";
+import { Accordion, AccordionHeader, AccordionBody, } from "@material-tailwind/react";
 
 import { mainMenus, routesData } from "../routes/Routes";
 
@@ -34,12 +30,16 @@ const Sidebar = () => {
                     animate={customAnimation}
                     className=''
                 >
-                    <AccordionHeader onClick={() => handleOpen(index + 1)} className='text-xs text-teal-800 uppercase'>
-                        {menu}
+                    <AccordionHeader
+                        onClick={() => handleOpen(index + 1)}
+                        className='text-xs text-teal-800 uppercase flex items-center'>
+                        {/*  */}
+                        <span>{menu.name}</span>
+                        {/* <span className='text-base text-blue-gray-900'>{menu.icon}</span> */}
                     </AccordionHeader>
                     <AccordionBody className='grid bg-white p-5 min-h-max shadow-md shadow-gray-400'>
                         {routesData.map((route, idx) =>
-                            route.parent === menu &&
+                            route.parent === menu.name &&
                             <NavLink
                                 to={route.path}
                                 key={idx}
