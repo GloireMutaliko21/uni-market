@@ -5,6 +5,7 @@ import { useStateContext } from "../context/ContextProvider";
 import { notificationData } from "../data/notificationData";
 import gloire from "../assets/img/Gloire.jpg"
 import Alerte from './Alerte';
+import Button from './Button';
 const Navbar = () => {
     const { showAlert, setShowAlert } = useStateContext();
 
@@ -33,6 +34,11 @@ const Navbar = () => {
                             <p className='text-base'>{notification.content}</p>
                         </div>
                     )}
+                    <Button
+                        label={`Voir toutes (${10})`}
+                        style='flex justify-center w-full bg-teal-900 hover:bg-teal-800 text-white font-semibold p-3'
+                        onClick={() => { }}
+                    />
                 </Alerte>
                 <button className='flex justify-between items-center'>
                     <img src={gloire} alt="" className='h-10 w-10 rounded-full' />
