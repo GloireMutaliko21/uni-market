@@ -1,5 +1,4 @@
 import React from 'react'
-import { BiDollarCircle } from "react-icons/bi";
 
 import CardLineChart from '../charts/CardLineChart'
 
