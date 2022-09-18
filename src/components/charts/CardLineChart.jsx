@@ -3,7 +3,7 @@ import { LineChart, Line, Tooltip, ResponsiveContainer } from "recharts";
 
 import { cardLineChartData } from "../../data/chartsData";
 
-const CardLineChart = () => {
+const CardLineChart = ({ chartColor }) => {
     return (
         <div className='w-20 h-14'>
             <ResponsiveContainer>
@@ -16,7 +16,7 @@ const CardLineChart = () => {
                     <Line
                         type="monotone"
                         dataKey="ca"
-                        stroke='rgb(0 150 136)'
+                        stroke={chartColor}
                         strokeWidth={1}
                     />
                 </LineChart>
