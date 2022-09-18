@@ -15,7 +15,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className='flex justify-between items-center fixed left-0 right-0 top-0 px-5 my-2 shadow-md z-10'>
+        <div className='bg-white flex justify-between items-center fixed left-0 right-0 top-0 px-5 shadow-md z-50'>
             <div>
                 <button className='text-teal-900'>
                     <AiOutlineMenuUnfold />
@@ -28,7 +28,7 @@ const Navbar = () => {
                     onClick={() => handleAlert('notif')}
                 >
                     <MdNotifications className='text-xl' />
-                    <div className='h-2 w-2 bg-yellow-800 rounded-full absolute right-0 top-2'></div>
+                    <div className='h-2 w-2 bg-yellow-800 rounded-full absolute right-0 top-2 bg'></div>
                 </button>
                 <Alerte
                     openState={showAlert}

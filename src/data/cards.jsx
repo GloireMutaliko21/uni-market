@@ -18,6 +18,6 @@ export const cardsCharts = [
         title: 'Gains bruts',
         amount: '146.25',
         icon: <GiMoneyStack />,
-        chartColor: 'rgb(0 172 193)'
+        chartColor: 'orange'
     },
 ]

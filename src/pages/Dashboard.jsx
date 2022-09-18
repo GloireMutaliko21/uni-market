@@ -1,11 +1,10 @@
 import React from 'react'
-import CardChart from '../components/Cards/CardChart'
+import CardsCharts from '../components/Dashboard/CardsCharts';
 
 const Dashboard = () => {
     return (
         <div className=''>
-            salut
-            <CardChart />
+            <CardsCharts />
         </div>
     )
 }

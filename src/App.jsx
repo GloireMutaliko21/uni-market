@@ -7,7 +7,6 @@ const WelcomePage = lazy(() => import('./components/WelcomePage'));
 import { useStateContext } from "./context/ContextProvider";
 import Login from './components/Login';
 import PageLoader from "./components/PageLoader";
-import Dashboard from "./components/Dashboard";
 import Sidebar from "./components/Sidebar";
 import { routesData } from "./routes/Routes";
 import Navbar from "./components/Navbar";
@@ -29,24 +28,19 @@ function App() {
                 :
                 <BrowserRouter>
                   <Navbar />
-                  {/* <div className="flex justify-between w-screen"> */}
                   <Sidebar />
-                  <div className="ml-64">
+                  <div className="ml-64 mt-32 h-screen">
                     <Routes>
                       {routesData.map((route, index) =>
                         <Route key={index} path={route.path} element={
-                          <Suspense>
+                          <Suspense fallback={<PageLoader />}>
                             {route.element}
                           </Suspense>} />
                       )}
                     </Routes>
                   </div>
-
-                  {/* </div> */}
-
                 </BrowserRouter>
             }
-
           </Suspense>
       }
     </div>
