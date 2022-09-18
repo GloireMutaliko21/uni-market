@@ -61,20 +61,16 @@ const MainChart = () => {
                     }}
                 >
                     <defs>
-                        <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#82ca9d" stopOpacity={0} />
-                            <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
-                        </linearGradient>
                         <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#3a466a" stopOpacity={0.4} />
-                            <stop offset="95%" stopColor="#3a466a" stopOpacity={0} />
+                            <stop offset="5%" stopColor="#235549" stopOpacity={0.4} />
+                            <stop offset="95%" stopColor="#235549" stopOpacity={0} />
                         </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
-                    <YAxis />
+                    {/* <YAxis /> */}
                     <Tooltip />
-                    <Area type="monotone" dataKey="pv" stackId="1" stroke="#3a466a" fillOpacity={1} fill="url(#colorPv)" />
+                    <Area type="monotone" dataKey="pv" stackId="1" stroke="#235549" fillOpacity={1} fill="url(#colorPv)" />
                     <Line type="monotone" dataKey="uv" stroke="#6CBAB1" />
                 </ComposedChart>
             </ResponsiveContainer>
