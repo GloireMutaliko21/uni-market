@@ -2,18 +2,18 @@ import React from 'react'
 
 const DescriptionDaily = ({ title, amount, lastOperation, hour, icon }) => {
     return (
-        <div className='flex justify-between items-center ml-3'>
+        <div className='flex justify-between items-center ml-3 mt-4 border-b'>
             <div className='flex justify-between items-center gap-2'>
-                <div className='rounded-full border p-2 text-2xl'>
+                <div className='rounded-full border border-blue-gray-300 p-2 text-xl text-green-700'>
                     {icon}
                 </div>
                 <div>
-                    <p className='font-bold'>{title}</p>
-                    <p className='text-blue-gray-500 text-base'>${amount}</p>
+                    <p className='font-semibold text-sm text-blue-gray-500'>{title}</p>
+                    <p className='text-blue-gray-500 text-sm'>${amount}</p>
                 </div>
             </div>
             <div className='text-end'>
-                <p className='font-bold'>${lastOperation}</p>
+                <p className='font-bold text-xs'>${lastOperation}</p>
                 <p className='text-blue-gray-500 text-xs'>{hour}</p>
             </div>
         </div>

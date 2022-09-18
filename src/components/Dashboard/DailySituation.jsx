@@ -1,8 +1,9 @@
 import React from 'react'
 import { AiOutlineEllipsis } from "react-icons/ai";
-import { FcCurrencyExchange } from "react-icons/fc";
 
+import { dailySituationData } from "../../data/dailySituation";
 import Tchange from "../../assets/img/Tchange.jpg";
+import DescriptionDaily from './DescriptionDaily';
 
 const DailySituation = () => {
     return (
@@ -26,7 +27,15 @@ const DailySituation = () => {
             <div className='w-full border-b border-blue-gray-200'></div>
             <div className='mt-5'>
                 <h2 className='font-semibold text-blue-gray-900 mb-6'>Activités</h2>
-
+                {dailySituationData.map(({ title, amount, lastOperation, hour, icon }) =>
+                    <DescriptionDaily
+                        title={title}
+                        amount={amount}
+                        lastOperation={lastOperation}
+                        hour={hour}
+                        icon={icon}
+                    />
+                )}
             </div>
         </div>
     )
