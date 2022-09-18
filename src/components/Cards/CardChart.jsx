@@ -3,7 +3,7 @@ import { BiDollarCircle } from "react-icons/bi";
 
 import CardLineChart from '../charts/CardLineChart'
 
-const CardChart = ({ icon, chartColor }) => {
+const CardChart = ({ title, amount, icon, chartColor }) => {
     return (
         <div className='px-5 py-2 border rounded-2xl '>
             <div className=' flex justify-between items-center'>
@@ -11,8 +11,8 @@ const CardChart = ({ icon, chartColor }) => {
                 <CardLineChart chartColor={chartColor} />
             </div>
             <div className='mt-5'>
-                <p className='font-bold text-blue-gray-400'>Chiffre d'Affaires</p>
-                <p className='text-2xl font-bold'>$1,000.25</p>
+                <p className='font-bold text-blue-gray-400'>{title}</p>
+                <p className='text-2xl font-bold'>${amount}</p>
             </div>
         </div>
     )
