@@ -15,7 +15,7 @@ const WelcomePage = () => {
     const { handleChangeStart } = useStateContext();
 
     return (
-        <div>
+        <div className='mx-24'>
             <div className='flex flex-wrap md:flex-nowrap items-center justify-between -mt-10'>
                 <div className='flex items-center'>
                     <img src={logo} alt='Logo' className='h-16 w-16' />
