@@ -1,6 +1,5 @@
-import { FcCurrencyExchange, FcMoneyTransfer } from "react-icons/fc";
 import { RiCurrencyFill } from "react-icons/ri";
-import { GiTakeMyMoney } from "react-icons/gi";
+import { GiTakeMyMoney, GiPayMoney, GiMoneyStack } from "react-icons/gi";
 
 export const dailySituationData = [
     {
@@ -8,7 +7,7 @@ export const dailySituationData = [
         amount: "358",
         lastOperation: "45",
         hour: "14:09 PM",
-        icon: <FcCurrencyExchange />
+        icon: <GiMoneyStack />
     },
     {
         title: "Autres recettes",
@@ -22,7 +21,7 @@ export const dailySituationData = [
         amount: "187",
         lastOperation: "45",
         hour: "15:37 PM",
-        icon: <FcMoneyTransfer />
+        icon: <GiPayMoney />
     },
     {
         title: "Solde",

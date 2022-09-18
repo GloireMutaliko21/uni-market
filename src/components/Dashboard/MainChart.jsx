@@ -74,11 +74,8 @@ const MainChart = () => {
                     <XAxis dataKey="name" />
                     <YAxis />
                     <Tooltip />
-                    {/* <Line type="monotone" dataKey="pv" stroke="#ff7300" /> */}
                     <Area type="monotone" dataKey="pv" stackId="1" stroke="#3a466a" fillOpacity={1} fill="url(#colorPv)" />
                     <Line type="monotone" dataKey="uv" stroke="#6CBAB1" />
-                    {/* <Area type="monotone" dataKey="uv" stackId="1" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" /> */}
-
                 </ComposedChart>
             </ResponsiveContainer>
         </div>

@@ -4,7 +4,7 @@ const DescriptionDaily = ({ title, amount, lastOperation, hour, icon }) => {
     return (
         <div className='flex justify-between items-center ml-3 mt-4 border-b'>
             <div className='flex justify-between items-center gap-2'>
-                <div className='rounded-full border border-blue-gray-300 p-2 text-xl text-green-700'>
+                <div className='rounded-xl border border-blue-gray-300 p-1 text-xl text-cyan-600'>
                     {icon}
                 </div>
                 <div>
