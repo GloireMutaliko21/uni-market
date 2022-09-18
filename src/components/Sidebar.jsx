@@ -17,7 +17,7 @@ const Sidebar = () => {
         unmount: { scale: 0.9 },
     };
 
-    const activeLink = 'flex items-center m-2 py-1 pr-3 rounded-md text-white bg-teal-900';
+    const activeLink = 'flex items-center m-1 py-1 pr-3 rounded-md text-white bg-teal-900 border-r-4 border-teal-600';
     const normalLink = 'flex items-center m-1 py-1 pr-3 text-teal-900 hover:bg-teal-900 hover:text-white rounded-md';
 
     return (
@@ -45,10 +45,10 @@ const Sidebar = () => {
                                 key={idx}
                                 className={({ isActive }) => isActive ? activeLink : normalLink}
                             >
-                                <span className='mr-3 text-teal-700 bg-white p-2 rounded-lg shadow-lg shadow-teal-50'>
+                                <span className='mr-3 text-light-green-900 bg-white p-2 rounded-lg shadow-lg shadow-teal-50'>
                                     {route.icon}
                                 </span>
-                                <span className='font-light'>
+                                <span className='font-normal'>
                                     {route.title}
                                 </span>
                             </NavLink>
