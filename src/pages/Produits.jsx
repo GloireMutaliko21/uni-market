@@ -7,13 +7,15 @@ const Produits = () => {
     const [data] = getData(
         products,
         setProducts,
-        localStorage.getItem('token'),
         '/produit/find/2'
     )
-
+    console.log();
     return (
         <div className=''>
             <h2 className='text-3xl font-black'>Produits</h2>
+            {data.map((product) =>
+                <div key={product.code}>{product.designation}</div>
+            )}
         </div>
     )
 }

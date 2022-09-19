@@ -13,7 +13,7 @@ export const ContextProvider = ({ children }) => {
     const [token, setToken] = useState('');
     const [loginStatus, setLoginStatus] = useState(false);
 
-    const [products, setProducts] = useState();
+    const [products, setProducts] = useState([]);
 
     const rememberMe = useRef();
     const sidebar = useRef();
