@@ -21,6 +21,7 @@ const Produits = () => {
                     <div>{product.qtealert}</div>
                 </div>
             )}
+
         </div>
     )
 }
