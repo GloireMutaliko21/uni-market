@@ -14,7 +14,12 @@ const Produits = () => {
         <div className=''>
             <h2 className='text-3xl font-black'>Produits</h2>
             {data.map((product) =>
-                <div key={product.code}>{product.designation}</div>
+                <div key={product.code}>
+                    {product.code}////
+                    {product.designation}
+                    <div>{product.pu}</div>
+                    <div>{product.qtealert}</div>
+                </div>
             )}
         </div>
     )

@@ -3,7 +3,7 @@ import { endPoint } from "../constants/api";
 import { useStateContext } from "../context/ContextProvider";
 
 export function getData(data, setData, url) {
-    const { token } = useStateContext();
+    const { setLoginStatus } = useStateContext();
     useEffect(() => {
         const controller = new AbortController();
         const signal = controller.signal;
@@ -21,9 +21,13 @@ export function getData(data, setData, url) {
                 if (response.status === 200) {
                     console.log(responseData.response);
                     setData(responseData.response);
+                } if (response.status === 403) {
+                    setLoginStatus(false);
+                    localStorage.removeItem('isLogged');
                 }
             } catch (error) {
-                console.log(error);
+                setLoginStatus(false);
+                localStorage.removeItem('isLogged');
             }
         })();
         return () => {
