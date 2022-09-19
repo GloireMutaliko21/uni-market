@@ -13,6 +13,7 @@ export const ContextProvider = ({ children }) => {
     const [loginStatus, setLoginStatus] = useState(false);
 
     const rememberMe = useRef();
+    const sidebar = useRef();
 
     const handleChangeStart = () => {
         setStart(prevState => (!prevState))
@@ -29,6 +30,7 @@ export const ContextProvider = ({ children }) => {
                 userData, setUserData,
                 loginStatus, setLoginStatus,
                 rememberMe,
+                sidebar
             }}
         >
             {children}
