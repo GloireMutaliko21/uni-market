@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { MdArrowRight } from 'react-icons/md'
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Legend, Label } from 'recharts'
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Legend, Label, Tooltip } from 'recharts'
 
 const data = [
-    { name: 'Group A', value: 400 },
-    { name: 'Group B', value: 300 },
-    { name: 'Group C', value: 300 },
-    { name: 'Group D', value: 200 },
+    { name: "Ch d'Af", value: 400 },
+    { name: 'Benefice', value: 300 },
+    { name: 'Revenus', value: 300 },
+    { name: 'Depenses', value: 200 },
 ];
 const COLORS = ['#324478', '#396A60', '#f48b73', '#956efa'];
 const Statistics = () => {
@@ -27,15 +27,13 @@ const Statistics = () => {
                 </button>
             </div>
             <div className='bg-gray-50 mt-10 flex justify-between'>
-                <div className='-mt-24 text-xs'>
-                    <PieChart width={250} height={320} onMouseEnter={onPieEnter}>
-                        <Legend />
+                <div className='text-xs -mt-14'>
+                    <PieChart width={180} height={320} onMouseEnter={onPieEnter}>
+                        <Tooltip />
                         <Pie
                             data={data}
-                            cx={120}
-                            cy={200}
-                            innerRadius={60}
-                            outerRadius={80}
+                            innerRadius={30}
+                            outerRadius={50}
                             fill="#8884d8"
                             dataKey="value"
                             label
