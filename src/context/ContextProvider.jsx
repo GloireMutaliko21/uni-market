@@ -15,6 +15,7 @@ export const ContextProvider = ({ children }) => {
     const [loginStatus, setLoginStatus] = useState(false);
 
     const [products, setProducts] = useState([]);
+    const [categProducts, setCategProducts] = useState([]);
 
     const rememberMe = useRef();
     const sidebar = useRef();
@@ -37,6 +38,7 @@ export const ContextProvider = ({ children }) => {
                 sidebar,
                 token, setToken,
                 products, setProducts,
+                categProducts, setCategProducts,
                 showDialogProduct, setShowDialogProduct
             }}
         >
