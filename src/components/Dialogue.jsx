@@ -8,16 +8,14 @@ import {
 } from "@material-tailwind/react";
 
 import { useStateContext } from "../context/ContextProvider";
-import Input from './Input';
 
-const Dialogue = ({ children, title, label, handleConfirm }) => {
-    const { showDialog, setShowDialog } = useStateContext();
+const Dialogue = ({ children, title, label, handleConfirm, showDialog, setShowDialog, value }) => {
 
     return (
         <div className="fixed z-50">
             <Dialog
                 open={showDialog}
-                handler={() => setShowDialog(false)}
+                handler={() => setShowDialog(value)}
                 animate={{
                     mount: { scale: 1, y: 0 },
                     unmount: { scale: 0.9, y: -100 },
