@@ -36,3 +36,26 @@ export function getData(data, setData, url) {
     }, []);
     return [data];
 }
+
+export async function postData(body, url) {
+    const dataParams = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(body)
+    };
+
+    try {
+        const response = await fetch(`${endPoint}${url}`, dataParams);
+        const responseData = await response.json();
+        if (response.status === 200) {
+            console.log(responseData);
+            console.log('Created');
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+}

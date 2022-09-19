@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react'
 import { MdAdd } from "react-icons/md";
 
 import { useStateContext } from "../context/ContextProvider";
-import { getData } from "../hooks/useFetch";
+import { getData, postData } from "../hooks/useFetch";
 import { productsColumns } from "../data/tablesData";
 import TableData from '../components/TableData';
 import Button from '../components/Button';
@@ -54,7 +54,7 @@ const Produits = () => {
                         setShowDialog={setShowDialogProduct}
                         value={true}
                         label='Envoyer'
-                        handleConfirm={() => { }}
+                        handleConfirm={() => postData(addProduct, '/produit/add')}
                         title='Ajouter Produit'
                     >
                         <Input
