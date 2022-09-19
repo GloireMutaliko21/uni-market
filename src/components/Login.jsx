@@ -16,7 +16,8 @@ const Login = () => {
         setLoginStatus,
         rememberMe,
         setUserData,
-        showPassword
+        showPassword,
+        token, setToken,
     } = useStateContext();
 
     const [userName, setUserName] = useState();
@@ -53,12 +54,15 @@ const Login = () => {
         try {
             if (!localStorage.getItem('isLogged')) {
                 const response = await fetch(`${endPoint}/user/auth`, params);
-                const responseData = await response.json()
+                const responseData = await response.json();
                 if (response.status === 200) {
+                    localStorage.setItem('token', responseData.token)
                     if (rememberMe.current.checked) {
                         localStorage.setItem('isLogged', true);
                     }
                     setUserData(responseData);
+                    setToken(responseData.token);
+                    console.log(responseData.token);
                     setLoginStatus(true);
                 }
             }
