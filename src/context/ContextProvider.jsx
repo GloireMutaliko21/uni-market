@@ -7,6 +7,7 @@ export const ContextProvider = ({ children }) => {
     const [start, setStart] = useState(false);
     const [showPassword, setShowPassword] = useState(false)
     const [showDialog, setShowDialog] = useState(false);
+    const [showDialogProduct, setShowDialogProduct] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const [typeAlert, setTypeAlert] = useState();
     const [userData, setUserData] = useState({});
@@ -35,7 +36,8 @@ export const ContextProvider = ({ children }) => {
                 rememberMe,
                 sidebar,
                 token, setToken,
-                products, setProducts
+                products, setProducts,
+                showDialogProduct, setShowDialogProduct
             }}
         >
             {children}

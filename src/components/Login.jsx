@@ -118,6 +118,9 @@ const Login = () => {
                     </span>
                     {showDialog &&
                         <Dialogue
+                            showDialog={showDialog}
+                            setShowDialog={setShowDialog}
+                            value={false}
                             label='Envoyer'
                             handleConfirm={() => { }}
                             title='Réinitialiser mot de passe'
