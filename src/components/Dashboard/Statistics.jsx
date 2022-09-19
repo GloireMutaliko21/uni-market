@@ -22,13 +22,13 @@ const Statistics = () => {
                 <button
                     className='bg-blue-gray-50 rounded-lg flex items-center p-2'
                 >
-                    Voir tout
-                    <MdArrowRight className='ml-6' />
+                    Tout
+                    <MdArrowRight className='ml-2' />
                 </button>
             </div>
-            <div className='bg-gray-50 mt-10 flex justify-between'>
-                <div className='text-xs -mt-14'>
-                    <PieChart width={180} height={320} onMouseEnter={onPieEnter}>
+            <div className='bg-gray-50 mt-10 flex justify-between rounded-xl p-5'>
+                <div className='text-xs -mt-14 -mb-14'>
+                    <PieChart width={180} height={320}>
                         <Tooltip />
                         <Pie
                             data={data}
@@ -37,7 +37,6 @@ const Statistics = () => {
                             fill="#8884d8"
                             dataKey="value"
                             label
-
                         >
                             {data.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
