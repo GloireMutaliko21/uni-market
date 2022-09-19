@@ -12,15 +12,16 @@ import Input from '../components/Input';
 const Produits = () => {
     const [addProduct, setAddProduct] = useState({
         designation: "",
-        prixUnit: "",
-        stockAlert: ""
+        pu: "",
+        qtealert: "",
+        refAgence: 1
     });
 
     const { products, setProducts, showDialogProduct, setShowDialogProduct } = useStateContext();
     const [data] = getData(
         products,
         setProducts,
-        '/produit/find/2'
+        '/produit/find/1'
     );
 
     const handleChange = useMemo(() =>
@@ -29,10 +30,10 @@ const Produits = () => {
                 setAddProduct({ ...addProduct, designation: e.target.value })
             }
             if (e.target.name === "prixUnit") {
-                setAddProduct({ ...addProduct, prixUnit: e.target.value })
+                setAddProduct({ ...addProduct, pu: e.target.value })
             }
             if (e.target.name === "stockAlert") {
-                setAddProduct({ ...addProduct, stockAlert: e.target.value })
+                setAddProduct({ ...addProduct, qtealert: e.target.value })
             }
             console.log(addProduct)
         }, [{ ...addProduct }]
@@ -81,7 +82,6 @@ const Produits = () => {
                 data={data}
                 colomnsData={productsColumns}
             />
-
         </div>
     )
 }
