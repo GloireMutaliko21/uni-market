@@ -17,11 +17,21 @@ const Produits = () => {
         refAgence: 1
     });
 
-    const { products, setProducts, showDialogProduct, setShowDialogProduct } = useStateContext();
+    const {
+        products, setProducts,
+        showDialogProduct, setShowDialogProduct,
+        categProducts, setCategProducts
+    } = useStateContext();
+
     const [data] = getData(
         products,
         setProducts,
         '/produit/find/1'
+    );
+    const [categProduits] = getData(
+        products,
+        setProducts,
+        '/categorie/find/:refAgence'
     );
 
     const handleChange = useMemo(() =>
@@ -76,6 +86,17 @@ const Produits = () => {
                             name='stockAlert'
                             onChange={handleChange}
                         />
+                        <select name="" id="">
+                            {categProducts.map((option) =>
+                                <option
+                                    key={option.code}
+                                    value={option.designation}
+                                    className='capitalize'
+                                >
+                                    {option.designation}
+                                </option>
+                            )}
+                        </select>
                     </Dialogue>}
             </div>
             <TableData
