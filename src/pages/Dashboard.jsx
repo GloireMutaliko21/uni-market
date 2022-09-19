@@ -5,15 +5,12 @@ import MainChart from '../components/Dashboard/MainChart';
 
 const Dashboard = () => {
     return (
-        <div className=''>
-            <div className='flex justify-evenly items-start gap-10'>
-                <div>
-                    <CardsCharts />
-                    <MainChart />
-                </div>
-                <DailySituation />
+        <div className='grid xl:flex flex-wrap xl:gap-10'>
+            <div className=''>
+                <CardsCharts />
+                <MainChart />
             </div>
-
+            <DailySituation />
         </div>
     )
 }

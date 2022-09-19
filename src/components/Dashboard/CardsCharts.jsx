@@ -4,7 +4,7 @@ import { cardsCharts } from "../../data/cards";
 import CardChart from '../Cards/CardChart';
 const CardsCharts = () => {
     return (
-        <div className='flex flex-wrap gap-10'>
+        <div className='grid sm:grid-cols-2 gap-5 md:grid-cols-3 justify-around'>
             {
                 cardsCharts.map(
                     ({ amount, chartColor, icon, title }) =>
