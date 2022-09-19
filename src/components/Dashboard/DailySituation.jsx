@@ -29,6 +29,7 @@ const DailySituation = () => {
                 <h2 className='font-semibold text-blue-gray-900 mb-6'>Activités</h2>
                 {dailySituationData.map(({ title, amount, lastOperation, hour, icon }) =>
                     <DescriptionDaily
+                        key={title}
                         title={title}
                         amount={amount}
                         lastOperation={lastOperation}

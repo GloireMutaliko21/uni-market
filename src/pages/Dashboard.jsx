@@ -2,6 +2,7 @@ import React from 'react'
 import CardsCharts from '../components/Dashboard/CardsCharts';
 import DailySituation from '../components/Dashboard/DailySituation';
 import MainChart from '../components/Dashboard/MainChart';
+import Statistics from '../components/Dashboard/Statistics';
 
 const Dashboard = () => {
     return (
@@ -9,6 +10,9 @@ const Dashboard = () => {
             <div className=''>
                 <CardsCharts />
                 <MainChart />
+                <div className='w-full'>
+                    <Statistics />
+                </div>
             </div>
             <DailySituation />
         </div>
