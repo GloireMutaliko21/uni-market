@@ -1,8 +1,9 @@
+import { CalendarComponent } from '@syncfusion/ej2-react-calendars'
 import React from 'react'
 
 const Caisse = () => {
     return (
-        <div>Caisse</div>
+        <CalendarComponent />
     )
 }
 

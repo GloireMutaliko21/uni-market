@@ -1,9 +1,12 @@
+@import url('https://cdn.syncfusion.com/ej2/material.css');
+
+
 html {
   scroll-behavior: smooth;
 }
 
 .nav-item,
-.navbar {
+e .navbar {
   z-index: 10000;
 }
 

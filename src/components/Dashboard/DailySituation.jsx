@@ -1,5 +1,6 @@
 import React from 'react'
 import { AiOutlineEllipsis } from "react-icons/ai";
+import { CalendarComponent } from "@syncfusion/ej2-react-calendars";
 
 import { dailySituationData } from "../../data/dailySituation";
 import Tchange from "../../assets/img/Tchange.jpg";
@@ -29,6 +30,7 @@ const DailySituation = () => {
                 <h2 className='font-semibold text-blue-gray-900 mb-6'>Activités</h2>
                 {dailySituationData.map(({ title, amount, lastOperation, hour, icon }) =>
                     <DescriptionDaily
+                        key={title}
                         title={title}
                         amount={amount}
                         lastOperation={lastOperation}
@@ -36,6 +38,9 @@ const DailySituation = () => {
                         icon={icon}
                     />
                 )}
+            </div>
+            <div className=' flex justify-end my-5'>
+                <CalendarComponent id='calendar' />
             </div>
         </div>
     )

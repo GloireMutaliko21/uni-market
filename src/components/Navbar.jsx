@@ -8,7 +8,7 @@ import Alerte from './Alerte';
 import Logout from './Logout';
 import Notifications from './Notifications';
 const Navbar = () => {
-    const { showAlert, setShowAlert, typeAlert, setTypeAlert } = useStateContext();
+    const { showAlert, setShowAlert, typeAlert, setTypeAlert, sidebar } = useStateContext();
     const handleAlert = (type) => {
         setTypeAlert(type);
         setShowAlert(true);
@@ -17,7 +17,12 @@ const Navbar = () => {
     return (
         <div className='bg-white flex justify-between items-center fixed left-0 right-0 top-0 px-5 shadow-md z-50'>
             <div>
-                <button className='text-teal-900'>
+                <button
+                    className='text-teal-900'
+                    onClick={() => {
+                        sidebar.current.classList.remove('hidden');
+                    }}
+                >
                     <AiOutlineMenuUnfold />
                 </button>
 

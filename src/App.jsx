@@ -15,7 +15,7 @@ function App() {
   const { start, loginStatus } = useStateContext();
 
   return (
-    <div className='ml-12 flex items-center justify-center content-center'>
+    <div className='flex items-center justify-center content-center'>
       {
         !start && !localStorage.getItem("isLogged") ?
           <Suspense fallback={<PageLoader />}>
@@ -29,7 +29,7 @@ function App() {
                 <BrowserRouter>
                   <Navbar />
                   <Sidebar />
-                  <div className="ml-64 pt-16 h-screen">
+                  <div className="m-5 lg:ml-64 pt-16 h-screen">
                     <Routes>
                       {routesData.map((route, index) =>
                         <Route key={index} path={route.path} element={

@@ -1,5 +1,5 @@
 import React from 'react'
-import { AreaChart, ComposedChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Area, ResponsiveContainer, Legend } from "recharts";
+import { ComposedChart, Line, XAxis, CartesianGrid, Tooltip, Area, ResponsiveContainer, Legend } from "recharts";
 
 const MainChart = () => {
     const data = [
@@ -66,9 +66,9 @@ const MainChart = () => {
                             <stop offset="95%" stopColor="#235549" stopOpacity={0} />
                         </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" />
+                    <CartesianGrid strokeOpacity={0.2} />
+                    <Legend />
                     <XAxis dataKey="name" />
-                    {/* <YAxis /> */}
                     <Tooltip />
                     <Area type="monotone" dataKey="pv" stackId="1" stroke="#235549" fillOpacity={1} fill="url(#colorPv)" />
                     <Line type="monotone" dataKey="uv" stroke="#6CBAB1" />
