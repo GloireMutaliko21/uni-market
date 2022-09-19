@@ -1,5 +1,6 @@
 import React from 'react'
 import { AiOutlineEllipsis } from "react-icons/ai";
+import { CalendarComponent } from "@syncfusion/ej2-react-calendars";
 
 import { dailySituationData } from "../../data/dailySituation";
 import Tchange from "../../assets/img/Tchange.jpg";
@@ -37,6 +38,9 @@ const DailySituation = () => {
                         icon={icon}
                     />
                 )}
+            </div>
+            <div className=' flex justify-end my-5'>
+                <CalendarComponent id='calendar' />
             </div>
         </div>
     )
