@@ -1,6 +1,9 @@
 import React from 'react'
+import { ColumnDirective, GridComponent, Inject, Sort, Page, Selection, Edit, Filter, Toolbar, ColumnsDirective } from "@syncfusion/ej2-react-grids";
+
 import { useStateContext } from "../context/ContextProvider";
 import { getData } from "../hooks/useFetch";
+import { productsColumns } from "../data/tablesData";
 
 const Produits = () => {
     const { token, setToken, products, setProducts } = useStateContext();
@@ -21,7 +24,20 @@ const Produits = () => {
                     <div>{product.qtealert}</div>
                 </div>
             )}
-
+            <GridComponent
+                dataSource={data}
+                allowPaging
+                allowSorting
+                toolbar={['Search', 'Delete']}
+                editSettings={{ allowDeleting: true, allowEditing: true }}
+            >
+                <ColumnsDirective>
+                    {productsColumns.map((item, index) => (
+                        <ColumnDirective key={index} {...item} />
+                    ))}
+                </ColumnsDirective>
+                <Inject services={[Sort, Page, Selection, Edit, Filter, Toolbar]} />
+            </GridComponent>
         </div>
     )
 }

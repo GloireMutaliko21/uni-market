@@ -1,25 +1,25 @@
 export const productsColumns = [
     { type: 'checkbox', width: '50' },
     {
-        field: 'ID',
+        field: 'code',
         headerText: 'ID Produit',
         width: '100',
         textAlign: 'Center'
     },
     {
-        field: 'Designation',
+        field: 'designation',
         headerText: 'Designation',
-        width: '200',
-        textAlign: 'Center'
+        width: '100',
+        textAlign: 'Left'
     },
     {
-        field: 'Prix Unitaire',
-        headerText: 'Prix Unitqire',
+        field: 'pu',
+        headerText: 'Prix Unitaire',
         width: '100',
         textAlign: 'Center'
     },
     {
-        field: 'Stock Alerte',
+        field: 'qtealert',
         headerText: 'Stock Alerte',
         width: '100',
         textAlign: 'Center'

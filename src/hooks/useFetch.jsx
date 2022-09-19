@@ -19,7 +19,7 @@ export function getData(data, setData, url) {
                 const response = await fetch(`${endPoint}${url}`, dataParams, { signal });
                 const responseData = await response.json();
                 if (response.status === 200) {
-                    console.log(responseData.response);
+                    console.log(responseData);
                     setData(responseData.response);
                 } if (response.status === 403) {
                     setLoginStatus(false);
