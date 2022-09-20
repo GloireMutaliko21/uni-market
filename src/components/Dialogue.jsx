@@ -7,7 +7,7 @@ import {
     Button
 } from "@material-tailwind/react";
 
-const Dialogue = ({ children, title, label, handleConfirm, showDialog, setShowDialog, value, height }) => {
+const Dialogue = ({ children, title, label, handleConfirm, showDialog, setShowDialog, value, height, disabled }) => {
 
     return (
         <div className="">
@@ -35,7 +35,7 @@ const Dialogue = ({ children, title, label, handleConfirm, showDialog, setShowDi
                     >
                         <span>Annuler</span>
                     </Button>
-                    <Button className='bg-teal-900' onClick={handleConfirm}>
+                    <Button className='bg-teal-900' onClick={handleConfirm} disabled={disabled}>
                         <span>{label}</span>
                     </Button>
                 </DialogFooter>
