@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useRef } from 'react'
 import { MdAdd } from "react-icons/md";
 
 import { useStateContext } from "../context/ContextProvider";
@@ -8,7 +8,7 @@ import TableData from '../components/TableData';
 import Button from '../components/Button';
 import Dialogue from '../components/Dialogue';
 import Input from '../components/Input';
-import { Option, Select } from '@material-tailwind/react';
+import SuccessDialg from '../components/SuccessDialg';
 
 const Produits = () => {
     const [addProduct, setAddProduct] = useState({
@@ -16,15 +16,18 @@ const Produits = () => {
         pu: "",
         qtealert: "",
         unite: "",
-        codeCategorie: "",
+        codeCategorie: null,
         refAgence: 1
     });
+
+    const [validInfos, setValidInfos] = useState(true)
 
     const {
         products, setProducts,
         showDialogProduct, setShowDialogProduct,
         categProducts, setCategProducts,
-        setGetData
+        setGetData,
+        registerSuccess, setRegisterSuccess
     } = useStateContext();
 
     const [data] = getData(
@@ -52,13 +55,39 @@ const Produits = () => {
             if (e.target.name === "unite") {
                 setAddProduct({ ...addProduct, unite: e.target.value })
             }
+            e.target.value.length < 1 ?
+                e.target.classList.add('border-red-900') :
+                e.target.classList.remove('border-red-900')
+            validation();
         }, [{ ...addProduct }]
     )
 
     const postProduct = () => {
-        postData(addProduct, '/produit/add');
+        postData(addProduct, '/produit/add', setShowDialogProduct, setRegisterSuccess, setAddProduct({
+            designation: "",
+            pu: "",
+            qtealert: "",
+            unite: "",
+            codeCategorie: null,
+            refAgence: 1
+        }));
         setGetData(true);
     };
+
+    const designationRef = useRef();
+    const prixUnitRef = useRef();
+    const stockAlertRef = useRef();
+    const uniteRef = useRef();
+    const codeCategRef = useRef();
+
+    const validation = () => {
+        designationRef.current.value.length > 0 &&
+            prixUnitRef.current.value.length > 0 &&
+            stockAlertRef.current.value.length > 0 &&
+            uniteRef.current.value.length > 0 &&
+            codeCategRef.current.value.length > 0
+            ? setValidInfos(false) : setValidInfos(true)
+    }
 
     return (
         <div className=''>
@@ -78,51 +107,70 @@ const Produits = () => {
                         label='Envoyer'
                         handleConfirm={postProduct}
                         title='Ajouter Produit'
-                        height=''
+                        disabled={validInfos}
                     >
-                        <Input
-                            label='Designation'
-                            type='text'
-                            name='designation'
-                            onChange={handleChange}
-                        />
-                        <Input
-                            label='Prix unitaire'
-                            type='text'
-                            name='prixUnit'
-                            onChange={handleChange}
-                        />
-                        <Input
-                            label="Stock d'alerte"
-                            type='text'
-                            name='stockAlert'
-                            onChange={handleChange}
-                        />
-                        <Input
-                            label="Unité de mesure"
-                            type='text'
-                            name='unite'
-                            onChange={handleChange}
-                        />
-                        <div className='mt-10'>
-                            <Select
-                                label="Selectionner Catégorie"
-                                color="teal"
-                                value={addProduct.codeCategorie}
-                                onChange={(e) => setAddProduct({ ...addProduct, codeCategorie: e })}
-                            >
-                                {categProduits.map((option) =>
-                                    <Option
-                                        key={option.code}
-                                        value={`${option.code}`}
-                                        className='capitalize'
-                                    >
-                                        {option.designation}
-                                    </Option>
-                                )}
-                            </Select>
+                        <div className='grid md:grid-cols-2 gap-4'>
+                            <Input
+                                reference={designationRef}
+                                label='Designation'
+                                type='text'
+                                name='designation'
+                                value={addProduct.designation}
+                                onChange={handleChange}
+                            />
+                            <Input
+                                reference={prixUnitRef}
+                                label='Prix unitaire'
+                                type='number'
+                                name='prixUnit'
+                                value={addProduct.pu}
+                                onChange={handleChange}
+                            />
                         </div>
+                        <div className='grid md:grid-cols-2 gap-4'>
+                            <Input
+                                reference={stockAlertRef}
+                                label="Stock d'alerte"
+                                type='number'
+                                name='stockAlert'
+                                value={addProduct.qtealert}
+                                onChange={handleChange}
+                            />
+                            <Input
+                                reference={uniteRef}
+                                label="Unité de mesure"
+                                type='text'
+                                name='unite'
+                                value={addProduct.unite}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        {/* <div > */}
+                        <select
+                            ref={codeCategRef}
+                            value={`${addProduct.codeCategorie}`}
+                            onChange={(e) => {
+                                validation();
+                                setAddProduct({ ...addProduct, codeCategorie: e.target.value });
+                            }}
+                            className="w-full text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block"
+                        >
+                            <option value="">Selectionner Catégorie</option>
+                            {categProduits.map((option) =>
+                                <option
+                                    key={option.code}
+                                    value={`${option.code}`}
+                                    className='capitalize'
+                                >
+                                    {option.designation}
+                                </option>
+                            )}
+                        </select>
+                        {/* </div> */}
                     </Dialogue>}
+                {
+                    registerSuccess && <SuccessDialg />
+                }
             </div>
             <TableData
                 data={products}
