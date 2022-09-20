@@ -8,6 +8,7 @@ import TableData from '../components/TableData';
 import Button from '../components/Button';
 import Dialogue from '../components/Dialogue';
 import Input from '../components/Input';
+import { Option, Select } from '@material-tailwind/react';
 
 const Produits = () => {
     const [addProduct, setAddProduct] = useState({
@@ -91,24 +92,22 @@ const Produits = () => {
                             name='stockAlert'
                             onChange={handleChange}
                         />
-                        <div className='grid'>
-                            <label htmlFor='categories' className='font-bold text-sm'>Catégories</label>
-                            <select
-                                name="categories"
+                        <div className='mt-10'>
+                            <Select
+                                label="Selectionner Catégorie"
                                 id=""
-                                className='mt-3 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 appearance-none'
+                                color="teal"
                             >
-                                <option>--Selectionner une catégorie--</option>
                                 {categProduits.map((option) =>
-                                    <option
+                                    <Option
                                         key={option.code}
-                                        value={option.code}
+                                        value={`${option.code}`}
                                         className='capitalize'
                                     >
                                         {option.designation}
-                                    </option>
+                                    </Option>
                                 )}
-                            </select>
+                            </Select>
                         </div>
                     </Dialogue>}
             </div>
