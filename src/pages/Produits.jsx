@@ -78,6 +78,7 @@ const Produits = () => {
                         label='Envoyer'
                         handleConfirm={postProduct}
                         title='Ajouter Produit'
+                        height=''
                     >
                         <Input
                             label='Designation'
