@@ -145,28 +145,33 @@ const Produits = () => {
                                 onChange={handleChange}
                             />
                         </div>
-                        {/* <div > */}
-                        <select
-                            ref={codeCategRef}
-                            value={`${addProduct.codeCategorie}`}
-                            onChange={(e) => {
-                                validation();
-                                setAddProduct({ ...addProduct, codeCategorie: e.target.value });
-                            }}
-                            className="w-full text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block"
-                        >
-                            <option value="">Selectionner Catégorie</option>
-                            {categProduits.map((option) =>
-                                <option
-                                    key={option.code}
-                                    value={`${option.code}`}
-                                    className='capitalize'
-                                >
-                                    {option.designation}
-                                </option>
-                            )}
-                        </select>
-                        {/* </div> */}
+                        <div className='flex'>
+                            <select
+                                ref={codeCategRef}
+                                value={`${addProduct.codeCategorie}`}
+                                onChange={(e) => {
+                                    validation();
+                                    setAddProduct({ ...addProduct, codeCategorie: e.target.value });
+                                }}
+                                className="w-full text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block"
+                            >
+                                <option value="">Selectionner Catégorie</option>
+                                {categProduits.map((option) =>
+                                    <option
+                                        key={option.code}
+                                        value={`${option.code}`}
+                                        className='capitalize'
+                                    >
+                                        {option.designation}
+                                    </option>
+                                )}
+                            </select>
+                            <Button
+                                label=' '
+                                icon={<MdAdd />}
+                                style='bg-teal-900 text-white p-2 text-2xl font-bold ml-5'
+                            />
+                        </div>
                     </Dialogue>}
                 {
                     registerSuccess && <SuccessDialg />
