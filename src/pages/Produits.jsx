@@ -54,6 +54,9 @@ const Produits = () => {
             if (e.target.name === "unite") {
                 setAddProduct({ ...addProduct, unite: e.target.value })
             }
+            e.target.value.length < 1 ?
+                e.target.classList.add('border-red-900') :
+                e.target.classList.remove('border-red-900')
             validation();
         }, [{ ...addProduct }]
     )
