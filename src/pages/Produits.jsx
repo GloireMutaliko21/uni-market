@@ -20,7 +20,8 @@ const Produits = () => {
     const {
         products, setProducts,
         showDialogProduct, setShowDialogProduct,
-        categProducts, setCategProducts
+        categProducts, setCategProducts,
+        setGetData
     } = useStateContext();
 
     const [data] = getData(
@@ -45,9 +46,13 @@ const Produits = () => {
             if (e.target.name === "stockAlert") {
                 setAddProduct({ ...addProduct, qtealert: e.target.value })
             }
-            console.log(addProduct)
         }, [{ ...addProduct }]
     )
+
+    const postProduct = () => {
+        postData(addProduct, '/produit/add');
+        setGetData(true);
+    };
 
     return (
         <div className=''>
@@ -65,7 +70,7 @@ const Produits = () => {
                         setShowDialog={setShowDialogProduct}
                         value={true}
                         label='Envoyer'
-                        handleConfirm={() => postData(addProduct, '/produit/add')}
+                        handleConfirm={postProduct}
                         title='Ajouter Produit'
                     >
                         <Input

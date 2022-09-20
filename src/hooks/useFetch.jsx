@@ -3,7 +3,7 @@ import { endPoint } from "../constants/api";
 import { useStateContext } from "../context/ContextProvider";
 
 export function getData(data, setData, url) {
-    const { setLoginStatus } = useStateContext();
+    const { setLoginStatus, getData, setGetData } = useStateContext();
     useEffect(() => {
         const controller = new AbortController();
         const signal = controller.signal;
@@ -19,8 +19,9 @@ export function getData(data, setData, url) {
                 const response = await fetch(`${endPoint}${url}`, dataParams, { signal });
                 const responseData = await response.json();
                 if (response.status === 200) {
-                    // console.log(responseData);
+                    console.log(responseData);
                     setData(responseData.data);
+                    setGetData(false);
                 } if (response.status === 403) {
                     setLoginStatus(false);
                     localStorage.removeItem('isLogged');
@@ -32,8 +33,9 @@ export function getData(data, setData, url) {
         })();
         return () => {
             controller.abort();
+            setGetData(false);
         }
-    }, []);
+    }, [getData]);
     return [data];
 }
 
@@ -51,8 +53,7 @@ export async function postData(body, url) {
         const response = await fetch(`${endPoint}${url}`, dataParams);
         const responseData = await response.json();
         if (response.status === 200) {
-            // console.log(responseData);
-            console.log('Created');
+            console.log(responseData.data);
         }
 
     } catch (error) {
