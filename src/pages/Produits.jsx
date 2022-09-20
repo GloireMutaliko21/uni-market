@@ -63,7 +63,14 @@ const Produits = () => {
     )
 
     const postProduct = () => {
-        postData(addProduct, '/produit/add', setShowDialogProduct, setRegisterSuccess);
+        postData(addProduct, '/produit/add', setShowDialogProduct, setRegisterSuccess, setAddProduct({
+            designation: "",
+            pu: "",
+            qtealert: "",
+            unite: "",
+            codeCategorie: null,
+            refAgence: 1
+        }));
         setGetData(true);
     };
 
