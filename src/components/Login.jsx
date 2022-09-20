@@ -62,7 +62,7 @@ const Login = () => {
                     }
                     setUserData(responseData);
                     setToken(responseData.token);
-                    console.log(responseData.token);
+                    // console.log(responseData.token);
                     setLoginStatus(true);
                 }
             }

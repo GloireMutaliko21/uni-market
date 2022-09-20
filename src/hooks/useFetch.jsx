@@ -19,8 +19,8 @@ export function getData(data, setData, url) {
                 const response = await fetch(`${endPoint}${url}`, dataParams, { signal });
                 const responseData = await response.json();
                 if (response.status === 200) {
-                    console.log(responseData);
-                    setData(responseData.response);
+                    // console.log(responseData);
+                    setData(responseData.data);
                 } if (response.status === 403) {
                     setLoginStatus(false);
                     localStorage.removeItem('isLogged');
@@ -51,7 +51,7 @@ export async function postData(body, url) {
         const response = await fetch(`${endPoint}${url}`, dataParams);
         const responseData = await response.json();
         if (response.status === 200) {
-            console.log(responseData);
+            // console.log(responseData);
             console.log('Created');
         }
 

@@ -29,9 +29,9 @@ const Produits = () => {
         '/produit/find/1'
     );
     const [categProduits] = getData(
-        products,
-        setProducts,
-        '/categorie/find/:refAgence'
+        categProducts,
+        setCategProducts,
+        '/categorie/find/1'
     );
 
     const handleChange = useMemo(() =>
@@ -86,21 +86,29 @@ const Produits = () => {
                             name='stockAlert'
                             onChange={handleChange}
                         />
-                        <select name="" id="">
-                            {categProducts.map((option) =>
-                                <option
-                                    key={option.code}
-                                    value={option.designation}
-                                    className='capitalize'
-                                >
-                                    {option.designation}
-                                </option>
-                            )}
-                        </select>
+                        <div className='grid'>
+                            <label htmlFor='categories' className='font-bold text-sm'>Catégories</label>
+                            <select
+                                name="categories"
+                                id=""
+                                className='mt-3 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 appearance-none'
+                            >
+                                <option>--Selectionner une catégorie--</option>
+                                {categProduits.map((option) =>
+                                    <option
+                                        key={option.code}
+                                        value={option.code}
+                                        className='capitalize'
+                                    >
+                                        {option.designation}
+                                    </option>
+                                )}
+                            </select>
+                        </div>
                     </Dialogue>}
             </div>
             <TableData
-                data={data}
+                data={products}
                 colomnsData={productsColumns}
             />
         </div>
