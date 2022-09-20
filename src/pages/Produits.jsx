@@ -15,6 +15,8 @@ const Produits = () => {
         designation: "",
         pu: "",
         qtealert: "",
+        unite: "",
+        codeCategorie: "",
         refAgence: 1
     });
 
@@ -46,6 +48,9 @@ const Produits = () => {
             }
             if (e.target.name === "stockAlert") {
                 setAddProduct({ ...addProduct, qtealert: e.target.value })
+            }
+            if (e.target.name === "unite") {
+                setAddProduct({ ...addProduct, unite: e.target.value })
             }
         }, [{ ...addProduct }]
     )
@@ -92,11 +97,18 @@ const Produits = () => {
                             name='stockAlert'
                             onChange={handleChange}
                         />
+                        <Input
+                            label="Unité de mesure"
+                            type='text'
+                            name='unite'
+                            onChange={handleChange}
+                        />
                         <div className='mt-10'>
                             <Select
                                 label="Selectionner Catégorie"
-                                id=""
                                 color="teal"
+                                value={addProduct.codeCategorie}
+                                onChange={(e) => setAddProduct({ ...addProduct, codeCategorie: e })}
                             >
                                 {categProduits.map((option) =>
                                     <Option
