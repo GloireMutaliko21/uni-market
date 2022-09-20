@@ -113,7 +113,7 @@ const Produits = () => {
                             <Input
                                 reference={prixUnitRef}
                                 label='Prix unitaire'
-                                type='text'
+                                type='number'
                                 name='prixUnit'
                                 value={addProduct.pu}
                                 onChange={handleChange}
@@ -123,7 +123,7 @@ const Produits = () => {
                             <Input
                                 reference={stockAlertRef}
                                 label="Stock d'alerte"
-                                type='text'
+                                type='number'
                                 name='stockAlert'
                                 value={addProduct.qtealert}
                                 onChange={handleChange}
