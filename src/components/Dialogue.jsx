@@ -7,12 +7,10 @@ import {
     Button
 } from "@material-tailwind/react";
 
-import { useStateContext } from "../context/ContextProvider";
-
-const Dialogue = ({ children, title, label, handleConfirm, showDialog, setShowDialog, value }) => {
+const Dialogue = ({ children, title, label, handleConfirm, showDialog, setShowDialog, value, height }) => {
 
     return (
-        <div className="fixed z-50">
+        <div className="">
             <Dialog
                 open={showDialog}
                 handler={() => setShowDialog(value)}
@@ -20,7 +18,7 @@ const Dialogue = ({ children, title, label, handleConfirm, showDialog, setShowDi
                     mount: { scale: 1, y: 0 },
                     unmount: { scale: 0.9, y: -100 },
                 }}
-
+                className={`${height} overflow-scroll`}
             >
                 <DialogHeader className='text-teal-800'>{title}</DialogHeader>
                 <DialogBody divider>

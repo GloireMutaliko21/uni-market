@@ -14,6 +14,7 @@ export const ContextProvider = ({ children }) => {
     const [token, setToken] = useState('');
     const [loginStatus, setLoginStatus] = useState(false);
 
+    const [getData, setGetData] = useState(true);
     const [products, setProducts] = useState([]);
     const [categProducts, setCategProducts] = useState([]);
 
@@ -37,6 +38,7 @@ export const ContextProvider = ({ children }) => {
                 rememberMe,
                 sidebar,
                 token, setToken,
+                getData, setGetData,
                 products, setProducts,
                 categProducts, setCategProducts,
                 showDialogProduct, setShowDialogProduct

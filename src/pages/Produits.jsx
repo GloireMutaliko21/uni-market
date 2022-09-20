@@ -8,19 +8,23 @@ import TableData from '../components/TableData';
 import Button from '../components/Button';
 import Dialogue from '../components/Dialogue';
 import Input from '../components/Input';
+import { Option, Select } from '@material-tailwind/react';
 
 const Produits = () => {
     const [addProduct, setAddProduct] = useState({
         designation: "",
         pu: "",
         qtealert: "",
+        unite: "",
+        codeCategorie: "",
         refAgence: 1
     });
 
     const {
         products, setProducts,
         showDialogProduct, setShowDialogProduct,
-        categProducts, setCategProducts
+        categProducts, setCategProducts,
+        setGetData
     } = useStateContext();
 
     const [data] = getData(
@@ -29,9 +33,9 @@ const Produits = () => {
         '/produit/find/1'
     );
     const [categProduits] = getData(
-        products,
-        setProducts,
-        '/categorie/find/:refAgence'
+        categProducts,
+        setCategProducts,
+        '/categorie/find/1'
     );
 
     const handleChange = useMemo(() =>
@@ -45,9 +49,16 @@ const Produits = () => {
             if (e.target.name === "stockAlert") {
                 setAddProduct({ ...addProduct, qtealert: e.target.value })
             }
-            console.log(addProduct)
+            if (e.target.name === "unite") {
+                setAddProduct({ ...addProduct, unite: e.target.value })
+            }
         }, [{ ...addProduct }]
     )
+
+    const postProduct = () => {
+        postData(addProduct, '/produit/add');
+        setGetData(true);
+    };
 
     return (
         <div className=''>
@@ -65,8 +76,9 @@ const Produits = () => {
                         setShowDialog={setShowDialogProduct}
                         value={true}
                         label='Envoyer'
-                        handleConfirm={() => postData(addProduct, '/produit/add')}
+                        handleConfirm={postProduct}
                         title='Ajouter Produit'
+                        height=''
                     >
                         <Input
                             label='Designation'
@@ -86,21 +98,34 @@ const Produits = () => {
                             name='stockAlert'
                             onChange={handleChange}
                         />
-                        <select name="" id="">
-                            {categProducts.map((option) =>
-                                <option
-                                    key={option.code}
-                                    value={option.designation}
-                                    className='capitalize'
-                                >
-                                    {option.designation}
-                                </option>
-                            )}
-                        </select>
+                        <Input
+                            label="Unité de mesure"
+                            type='text'
+                            name='unite'
+                            onChange={handleChange}
+                        />
+                        <div className='mt-10'>
+                            <Select
+                                label="Selectionner Catégorie"
+                                color="teal"
+                                value={addProduct.codeCategorie}
+                                onChange={(e) => setAddProduct({ ...addProduct, codeCategorie: e })}
+                            >
+                                {categProduits.map((option) =>
+                                    <Option
+                                        key={option.code}
+                                        value={`${option.code}`}
+                                        className='capitalize'
+                                    >
+                                        {option.designation}
+                                    </Option>
+                                )}
+                            </Select>
+                        </div>
                     </Dialogue>}
             </div>
             <TableData
-                data={data}
+                data={products}
                 colomnsData={productsColumns}
             />
         </div>
