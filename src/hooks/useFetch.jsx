@@ -39,7 +39,7 @@ export function getData(data, setData, url) {
     return [data];
 }
 
-export async function postData(body, url, setShowDialog) {
+export async function postData(body, url, setShowDialog, succesStatus) {
     const dataParams = {
         method: "POST",
         headers: {
@@ -54,6 +54,7 @@ export async function postData(body, url, setShowDialog) {
         const responseData = await response.json();
         if (response.status === 200) {
             setShowDialog(false);
+            succesStatus(true);
             console.log(responseData.data);
         }
 

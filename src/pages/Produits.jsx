@@ -8,7 +8,7 @@ import TableData from '../components/TableData';
 import Button from '../components/Button';
 import Dialogue from '../components/Dialogue';
 import Input from '../components/Input';
-import { Option, Select } from '@material-tailwind/react';
+import SuccessDialg from '../components/SuccessDialg';
 
 const Produits = () => {
     const [addProduct, setAddProduct] = useState({
@@ -26,7 +26,8 @@ const Produits = () => {
         products, setProducts,
         showDialogProduct, setShowDialogProduct,
         categProducts, setCategProducts,
-        setGetData
+        setGetData,
+        registerSuccess, setRegisterSuccess
     } = useStateContext();
 
     const [data] = getData(
@@ -62,7 +63,7 @@ const Produits = () => {
     )
 
     const postProduct = () => {
-        postData(addProduct, '/produit/add', setShowDialogProduct);
+        postData(addProduct, '/produit/add', setShowDialogProduct, setRegisterSuccess);
         setGetData(true);
     };
 
@@ -160,6 +161,9 @@ const Produits = () => {
                         </select>
                         {/* </div> */}
                     </Dialogue>}
+                {
+                    registerSuccess && <SuccessDialg />
+                }
             </div>
             <TableData
                 data={products}
