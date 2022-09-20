@@ -62,7 +62,7 @@ const Produits = () => {
     )
 
     const postProduct = () => {
-        postData(addProduct, '/produit/add');
+        postData(addProduct, '/produit/add', setShowDialogProduct);
         setGetData(true);
     };
 
