@@ -9,13 +9,12 @@ import { BsCurrencyExchange, } from "react-icons/bs";
 import { FcCustomerSupport, } from "react-icons/fc";
 import {
     FaShopify, FaShoppingCart, FaMoneyBillAlt, FaBox,
-    FaLayerGroup, FaFileInvoiceDollar, FaPersonBooth,
+    FaFileInvoiceDollar, FaPersonBooth,
     FaUserTie, FaUserSecret
 } from "react-icons/fa";
 
 import Approv from '../pages/Approv';
 import Caisse from '../pages/Caisse';
-import CategProd from '../pages/CategProd';
 import Comptes from '../pages/Comptes';
 import Dashboard from '../pages/Dashboard';
 import Paiement from '../pages/Paiement';
@@ -81,13 +80,6 @@ export const routesData = [
         element: <Produits />,
         parent: mainMenus[2].name,
         icon: <MdProductionQuantityLimits />
-    },
-    {
-        title: 'Catégories',
-        path: '/categ',
-        element: <CategProd />,
-        parent: mainMenus[2].name,
-        icon: <FaLayerGroup />
     },
     {
         title: 'Comptes',
