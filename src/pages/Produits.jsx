@@ -172,11 +172,33 @@ const Produits = () => {
                             <Button
                                 icon={<MdAdd />}
                                 style='bg-teal-900 hover:bg-teal-800 text-white p-2 text-2xl font-bold ml-5'
+                                onClick={() => setBoolingState({ ...boolingState, formCategProduct: true })}
                             />
                         </div>
                     </Dialogue>}
                 {
                     boolingState.registerSuccess && <SuccessDialg />
+                }
+                {boolingState.formCategProduct &&
+                    <Dialogue
+                        boolingState={boolingState.formCategProduct}
+                        setBoolingState={setBoolingState}
+                        value={{ ...boolingState, formCategProduct: false }}
+                        label='Envoyer'
+                        handleConfirm={postProduct}
+                        title='Ajouter Catégorie'
+                        // disabled={validInfos}
+                        cancel={{ ...boolingState, formCategProduct: false }}
+                    >
+                        <Input
+                            // reference={designationRef}
+                            label='Designation'
+                            type='text'
+                            name='designation'
+                            // value={addProduct.designation}
+                            onChange={handleChange}
+                        />
+                    </Dialogue>
                 }
             </div>
             <TableData
