@@ -3,10 +3,12 @@ import React from 'react'
 import { useStateContext } from "../context/ContextProvider";
 
 const Input = ({ label, value, onChange, type, name, icon, iconMask, reference }) => {
-    const { showPassword, setShowPassword } = useStateContext();
+    const { boolingState, setBoolingState } = useStateContext();
 
     const handleChangeIcon = () => {
-        setShowPassword(prevState => !prevState);
+        setBoolingState(prevState => {
+            return { ...prevState, showPassword: !prevState.showPassword }
+        });
     };
 
     return (
@@ -26,7 +28,7 @@ const Input = ({ label, value, onChange, type, name, icon, iconMask, reference }
                     className='absolute right-3 hover:cursor-pointer text-lg text-teal-900'
                     onClick={handleChangeIcon}
                 >
-                    {!showPassword ? icon : iconMask}
+                    {!boolingState.showPassword ? icon : iconMask}
                 </span>
             </div>
         </div>

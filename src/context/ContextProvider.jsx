@@ -5,8 +5,8 @@ const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
     const [start, setStart] = useState(false);
-    const [showPassword, setShowPassword] = useState(false)
     const [boolingState, setBoolingState] = useState({
+        showPassword: false,
         changePassWord: false,
         formProduct: false,
         formCategProduct: false,
@@ -33,7 +33,6 @@ export const ContextProvider = ({ children }) => {
         <StateContext.Provider
             value={{
                 start, setStart, handleChangeStart,
-                showPassword, setShowPassword,
                 boolingState, setBoolingState,
                 showAlert, setShowAlert,
                 typeAlert, setTypeAlert,

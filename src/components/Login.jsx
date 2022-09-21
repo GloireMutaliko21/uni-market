@@ -16,7 +16,6 @@ const Login = () => {
         setLoginStatus,
         rememberMe,
         setUserData,
-        showPassword,
         token, setToken,
     } = useStateContext();
 
@@ -97,7 +96,7 @@ const Login = () => {
                 />
                 <Input
                     label='Mot de passe'
-                    type={showPassword ? 'text' : 'password'}
+                    type={boolingState.showPassword ? 'text' : 'password'}
                     onChange={handleChange}
                     name="password"
                     icon={<BsEyeFill />}
