@@ -39,7 +39,7 @@ export function getData(data, setData, url) {
     return [data];
 }
 
-export async function postData(body, url, setShowDialog, succesStatus, resetData) {
+export async function postData(body, url, setBoolingState, resetData) {
     const dataParams = {
         method: "POST",
         headers: {
@@ -53,8 +53,7 @@ export async function postData(body, url, setShowDialog, succesStatus, resetData
         const response = await fetch(`${endPoint}${url}`, dataParams);
         const responseData = await response.json();
         if (response.status === 200) {
-            setShowDialog(false);
-            succesStatus(true);
+            setBoolingState({});
             resetData({});
             console.log(responseData.data);
         }

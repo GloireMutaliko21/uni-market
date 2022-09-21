@@ -10,8 +10,8 @@ import { endPoint } from "../constants/api";
 
 const Login = () => {
     const {
-        showDialog,
-        setShowDialog,
+        boolingState,
+        setBoolingState,
         loginStatus,
         setLoginStatus,
         rememberMe,
@@ -112,15 +112,15 @@ const Login = () => {
                 <div>
                     <span
                         className='text-blue-800 hover:underline hover:cursor-pointer'
-                        onClick={() => { setShowDialog(true) }}
+                        onClick={() => { setBoolingState({ ...boolingState, changePassWord: true }) }}
                     >
                         Mot de passe oublié ?
                     </span>
-                    {showDialog &&
+                    {boolingState.changePassWord &&
                         <Dialogue
-                            showDialog={showDialog}
-                            setShowDialog={setShowDialog}
-                            value={false}
+                            boolingState={boolingState.changePassWord}
+                            setBoolingState={setBoolingState}
+                            value={{ ...boolingState, changePassWord: false }}
                             label='Envoyer'
                             handleConfirm={() => { }}
                             title='Réinitialiser mot de passe'

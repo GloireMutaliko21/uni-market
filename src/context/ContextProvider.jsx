@@ -6,9 +6,12 @@ const StateContext = createContext();
 export const ContextProvider = ({ children }) => {
     const [start, setStart] = useState(false);
     const [showPassword, setShowPassword] = useState(false)
-    const [showDialog, setShowDialog] = useState(false);
-    const [showDialogProduct, setShowDialogProduct] = useState(false);
-    const [registerSuccess, setRegisterSuccess] = useState(false);
+    const [boolingState, setBoolingState] = useState({
+        changePassWord: false,
+        formProduct: false,
+        formCategProduct: false,
+        registerSuccess: false,
+    });
     const [showAlert, setShowAlert] = useState(false);
     const [typeAlert, setTypeAlert] = useState();
     const [userData, setUserData] = useState({});
@@ -31,7 +34,7 @@ export const ContextProvider = ({ children }) => {
             value={{
                 start, setStart, handleChangeStart,
                 showPassword, setShowPassword,
-                showDialog, setShowDialog,
+                boolingState, setBoolingState,
                 showAlert, setShowAlert,
                 typeAlert, setTypeAlert,
                 userData, setUserData,
@@ -42,8 +45,6 @@ export const ContextProvider = ({ children }) => {
                 getData, setGetData,
                 products, setProducts,
                 categProducts, setCategProducts,
-                showDialogProduct, setShowDialogProduct,
-                registerSuccess, setRegisterSuccess
             }}
         >
             {children}

@@ -24,10 +24,9 @@ const Produits = () => {
 
     const {
         products, setProducts,
-        showDialogProduct, setShowDialogProduct,
+        boolingState, setBoolingState,
         categProducts, setCategProducts,
         setGetData,
-        registerSuccess, setRegisterSuccess
     } = useStateContext();
 
     const [data] = getData(
@@ -63,14 +62,17 @@ const Produits = () => {
     )
 
     const postProduct = () => {
-        postData(addProduct, '/produit/add', setShowDialogProduct, setRegisterSuccess, setAddProduct({
-            designation: "",
-            pu: "",
-            qtealert: "",
-            unite: "",
-            codeCategorie: null,
-            refAgence: 1
-        }));
+        postData(addProduct, '/produit/add', setBoolingState({
+            ...boolingState, formProduct: false, registerSuccess: true
+        }),
+            setAddProduct({
+                designation: "",
+                pu: "",
+                qtealert: "",
+                unite: "",
+                codeCategorie: null,
+                refAgence: 1
+            }));
         setGetData(true);
     };
 
@@ -96,14 +98,14 @@ const Produits = () => {
                 <Button
                     label='Nouveau'
                     icon={<MdAdd className='mr-5' />}
-                    onClick={() => { setShowDialogProduct(true); console.log(showDialogProduct) }}
+                    onClick={() => setBoolingState({ ...boolingState, formProduct: true })}
                     style='flex justify-center bg-teal-800 hover:bg-teal-700 text-white font-semibold px-3 py-2'
                 />
-                {showDialogProduct &&
+                {boolingState.formProduct &&
                     <Dialogue
-                        showDialog={showDialogProduct}
-                        setShowDialog={setShowDialogProduct}
-                        value={true}
+                        boolingState={boolingState.formProduct}
+                        setBoolingState={setBoolingState}
+                        value={{ ...boolingState, formProduct: true }}
                         label='Envoyer'
                         handleConfirm={postProduct}
                         title='Ajouter Produit'
@@ -167,14 +169,13 @@ const Produits = () => {
                                 )}
                             </select>
                             <Button
-                                label=' '
                                 icon={<MdAdd />}
-                                style='bg-teal-900 text-white p-2 text-2xl font-bold ml-5'
+                                style='bg-teal-900 hover:bg-teal-800 text-white p-2 text-2xl font-bold ml-5'
                             />
                         </div>
                     </Dialogue>}
                 {
-                    registerSuccess && <SuccessDialg />
+                    boolingState.registerSuccess && <SuccessDialg />
                 }
             </div>
             <TableData
