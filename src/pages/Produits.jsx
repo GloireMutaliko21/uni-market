@@ -24,7 +24,8 @@ const Produits = () => {
         designation: "",
         refAgence: 1
     })
-    const [validInfos, setValidInfos] = useState(true)
+    const [validInfos, setValidInfos] = useState(true);
+    const [validCategName, setValidCategName] = useState(true);
 
     const {
         products, setProducts,
@@ -59,7 +60,8 @@ const Produits = () => {
                 setAddProduct({ ...addProduct, unite: e.target.value })
             }
             if (e.target.name === "designationCateg") {
-                setAddCategorie({ ...addCategorie, designation: e.target.value })
+                setAddCategorie({ ...addCategorie, designation: e.target.value });
+                validationCateg();
             }
             e.target.value.length < 1 ?
                 e.target.classList.add('border-red-900') :
@@ -98,6 +100,7 @@ const Produits = () => {
     const stockAlertRef = useRef();
     const uniteRef = useRef();
     const codeCategRef = useRef();
+    const designationCategRef = useRef();
 
     const validation = () => {
         designationRef.current.value.length > 0 &&
@@ -107,6 +110,10 @@ const Produits = () => {
             codeCategRef.current.value.length > 0
             ? setValidInfos(false) : setValidInfos(true)
     }
+
+    const validationCateg = () => {
+        designationCategRef.current.value.length > 2 ? setValidCategName(false) : setValidCategName(true);
+    };
 
     return (
         <div className=''>
@@ -204,15 +211,15 @@ const Produits = () => {
                         label='Envoyer'
                         handleConfirm={postCategorie}
                         title='Ajouter Catégorie'
-                        // disabled={validInfos}
+                        disabled={validCategName}
                         cancel={{ ...boolingState, formCategProduct: false }}
                     >
                         <Input
-                            // reference={designationRef}
+                            reference={designationCategRef}
                             label='Designation'
                             type='text'
                             name='designationCateg'
-                            // value={addProduct.designation}
+                            value={addCategorie.designation}
                             onChange={handleChange}
                         />
                     </Dialogue>

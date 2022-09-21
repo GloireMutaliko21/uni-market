@@ -23,7 +23,7 @@ const Sidebar = () => {
     const normalLink = 'flex items-center m-1 py-1 pr-3 text-teal-900 hover:bg-teal-900 hover:text-white rounded-md';
 
     return (
-        <div ref={sidebar} className='hidden lg:block fixed left-0 top-5 bottom-0 p-5 shadow-md w-64 z-40'>
+        <div ref={sidebar} className='hidden lg:block fixed left-0 top-5 bottom-0 p-5 shadow-md w-64 z-40 bg-white h-screen overflow-scroll'>
             {mainMenus.map((menu, index) =>
                 <Accordion
                     open={open === index + 1}
