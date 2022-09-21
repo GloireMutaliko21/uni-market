@@ -16,7 +16,7 @@ const Login = () => {
         setLoginStatus,
         rememberMe,
         setUserData,
-        token, setToken,
+        setToken,
     } = useStateContext();
 
     const [userName, setUserName] = useState();

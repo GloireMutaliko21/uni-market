@@ -4,8 +4,8 @@ import React, { createContext, useContext, useState, useRef, } from "react";
 const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
-    const [start, setStart] = useState(false);
     const [boolingState, setBoolingState] = useState({
+        start: false,
         showPassword: false,
         changePassWord: false,
         formProduct: false,
@@ -25,14 +25,9 @@ export const ContextProvider = ({ children }) => {
     const rememberMe = useRef();
     const sidebar = useRef();
 
-    const handleChangeStart = () => {
-        setStart(prevState => (!prevState))
-    }
-
     return (
         <StateContext.Provider
             value={{
-                start, setStart, handleChangeStart,
                 boolingState, setBoolingState,
                 showAlert, setShowAlert,
                 typeAlert, setTypeAlert,

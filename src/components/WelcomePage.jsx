@@ -12,7 +12,7 @@ import Button from './Button';
 import { useStateContext } from "../context/ContextProvider";
 
 const WelcomePage = () => {
-    const { handleChangeStart } = useStateContext();
+    const { boolingState, setBoolingState } = useStateContext();
 
     return (
         <div className='mx-24'>
@@ -32,7 +32,7 @@ const WelcomePage = () => {
                         icon={<CgLogIn className='text-2xl text-sky-500 mr-2' />}
                         label='Connectez-vous'
                         style='text-light-green-900 font-semibold hover:border p-4'
-                        onClick={handleChangeStart}
+                        onClick={() => setBoolingState({ ...boolingState, start: true })}
                     />
                 </div>
             </div>

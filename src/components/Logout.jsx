@@ -6,12 +6,12 @@ import gloire from "../assets/img/Gloire.jpg";
 import AlertHeader from './AlertHeader';
 
 const Logout = () => {
-    const { setUserData, setLoginStatus, setShowPassword } = useStateContext();
+    const { setUserData, setLoginStatus, boolingState, setBoolingState } = useStateContext();
     const handleLogout = () => {
         localStorage.removeItem('isLogged');
         setUserData({});
         setLoginStatus(false);
-        setShowPassword(false)
+        setBoolingState({ ...boolingState, showPassword: false })
     }
 
     return (

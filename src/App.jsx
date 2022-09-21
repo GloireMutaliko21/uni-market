@@ -12,12 +12,12 @@ import { routesData } from "./routes/Routes";
 import Navbar from "./components/Navbar";
 
 function App() {
-  const { start, loginStatus } = useStateContext();
+  const { start, boolingState, loginStatus } = useStateContext();
 
   return (
     <div className='flex items-center justify-center content-center'>
       {
-        !start && !localStorage.getItem("isLogged") ?
+        !boolingState.start && !localStorage.getItem("isLogged") ?
           <Suspense fallback={<PageLoader />}>
             <WelcomePage />
           </Suspense> :
