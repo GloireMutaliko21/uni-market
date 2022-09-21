@@ -12,8 +12,6 @@ const Login = () => {
     const {
         boolingState,
         setBoolingState,
-        loginStatus,
-        setLoginStatus,
         rememberMe,
         setUserData,
         setToken,
@@ -21,14 +19,6 @@ const Login = () => {
 
     const [userName, setUserName] = useState();
     const [passWord, setPassWord] = useState();
-
-    useEffect(() => {
-        localStorage.getItem('isLogged')
-            ? console.log("Already connected")
-            : console.log("Not connected")
-    }, [loginStatus])
-
-
     const handleChange = useMemo(() =>
         (e) => {
             if (e.target.name === "userName") {
@@ -61,14 +51,12 @@ const Login = () => {
                     }
                     setUserData(responseData);
                     setToken(responseData.token);
-                    // console.log(responseData.token);
-                    setLoginStatus(true);
+                    setBoolingState({ ...boolingState, loginStatus: true });
                 }
             }
         } catch (error) {
             console.log(error.message);
         }
-
     }
 
     return (

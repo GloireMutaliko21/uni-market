@@ -5,6 +5,7 @@ const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
     const [boolingState, setBoolingState] = useState({
+        loginStatus: false,
         start: false,
         showPassword: false,
         changePassWord: false,
@@ -16,7 +17,6 @@ export const ContextProvider = ({ children }) => {
     const [typeAlert, setTypeAlert] = useState();
     const [userData, setUserData] = useState({});
     const [token, setToken] = useState('');
-    const [loginStatus, setLoginStatus] = useState(false);
 
     const [getData, setGetData] = useState(true);
     const [products, setProducts] = useState([]);
@@ -32,7 +32,6 @@ export const ContextProvider = ({ children }) => {
                 showAlert, setShowAlert,
                 typeAlert, setTypeAlert,
                 userData, setUserData,
-                loginStatus, setLoginStatus,
                 rememberMe,
                 sidebar,
                 token, setToken,
