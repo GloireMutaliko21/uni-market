@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React, { createContext, useContext, useState, useRef, } from "react";
+import React, { createContext, useContext, memo, useState, useRef, } from "react";
 
 const StateContext = createContext();
 
-export const ContextProvider = ({ children }) => {
+export const ContextProvider = memo(({ children }) => {
     const [boolingState, setBoolingState] = useState({
         loginStatus: false,
         start: false,
@@ -42,6 +42,6 @@ export const ContextProvider = ({ children }) => {
             {children}
         </StateContext.Provider>
     )
-}
+});
 
 export const useStateContext = () => useContext(StateContext)
