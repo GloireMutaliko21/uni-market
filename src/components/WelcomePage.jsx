@@ -2,7 +2,6 @@ import React from 'react'
 import { CgLogIn } from 'react-icons/cg'
 
 import logo from "../assets/img/logo.jpg";
-import cartShop from "../assets/img/cartShop.png";
 import image1 from "../assets/img/image1.jpg";
 import image2 from "../assets/img/image2.jpg";
 import image3 from "../assets/img/image3.jpg";

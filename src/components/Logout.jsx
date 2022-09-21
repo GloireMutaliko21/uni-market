@@ -10,8 +10,7 @@ const Logout = () => {
     const handleLogout = () => {
         localStorage.removeItem('isLogged');
         setUserData({});
-        setLoginStatus(false);
-        setBoolingState({ ...boolingState, showPassword: false })
+        setBoolingState({ ...boolingState, showPassword: false, loginStatus: false, showAlert: false })
     }
 
     return (

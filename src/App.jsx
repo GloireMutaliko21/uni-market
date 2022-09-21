@@ -12,7 +12,7 @@ import { routesData } from "./routes/Routes";
 import Navbar from "./components/Navbar";
 
 function App() {
-  const { start, boolingState, loginStatus } = useStateContext();
+  const { boolingState } = useStateContext();
 
   return (
     <div className='flex items-center justify-center content-center'>
@@ -23,7 +23,7 @@ function App() {
           </Suspense> :
           <Suspense fallback={<PageLoader />}>
             {
-              !localStorage.getItem("isLogged") && !loginStatus
+              !localStorage.getItem("isLogged") && !boolingState.loginStatus
                 ? <Login />
                 :
                 <BrowserRouter>

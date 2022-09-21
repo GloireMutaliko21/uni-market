@@ -7,7 +7,7 @@ import {
     Button
 } from "@material-tailwind/react";
 
-const Dialogue = ({ children, title, label, handleConfirm, boolingState, setBoolingState, value, height, disabled }) => {
+const Dialogue = ({ children, title, label, handleConfirm, boolingState, setBoolingState, value, cancel, height, disabled }) => {
 
     return (
         <div className="">
@@ -30,7 +30,7 @@ const Dialogue = ({ children, title, label, handleConfirm, boolingState, setBool
                     <Button
                         variant="text"
                         color="red"
-                        onClick={() => setBoolingState(false)}
+                        onClick={() => setBoolingState(cancel)}
                         className="mr-1"
                     >
                         <span>Annuler</span>

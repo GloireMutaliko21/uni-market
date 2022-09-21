@@ -1,22 +1,22 @@
 /* eslint-disable no-unused-vars */
-import React, { createContext, useContext, useState, useRef, } from "react";
+import React, { createContext, useContext, memo, useState, useRef, } from "react";
 
 const StateContext = createContext();
 
-export const ContextProvider = ({ children }) => {
+export const ContextProvider = memo(({ children }) => {
     const [boolingState, setBoolingState] = useState({
+        loginStatus: false,
         start: false,
         showPassword: false,
+        showAlert: false,
         changePassWord: false,
         formProduct: false,
         formCategProduct: false,
         registerSuccess: false,
     });
-    const [showAlert, setShowAlert] = useState(false);
     const [typeAlert, setTypeAlert] = useState();
     const [userData, setUserData] = useState({});
     const [token, setToken] = useState('');
-    const [loginStatus, setLoginStatus] = useState(false);
 
     const [getData, setGetData] = useState(true);
     const [products, setProducts] = useState([]);
@@ -29,10 +29,8 @@ export const ContextProvider = ({ children }) => {
         <StateContext.Provider
             value={{
                 boolingState, setBoolingState,
-                showAlert, setShowAlert,
                 typeAlert, setTypeAlert,
                 userData, setUserData,
-                loginStatus, setLoginStatus,
                 rememberMe,
                 sidebar,
                 token, setToken,
@@ -44,6 +42,6 @@ export const ContextProvider = ({ children }) => {
             {children}
         </StateContext.Provider>
     )
-}
+});
 
 export const useStateContext = () => useContext(StateContext)

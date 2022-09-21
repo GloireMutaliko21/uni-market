@@ -20,7 +20,12 @@ const Produits = () => {
         refAgence: 1
     });
 
-    const [validInfos, setValidInfos] = useState(true)
+    const [addCategorie, setAddCategorie] = useState({
+        designation: "",
+        refAgence: 1
+    })
+    const [validInfos, setValidInfos] = useState(true);
+    const [validCategName, setValidCategName] = useState(true);
 
     const {
         products, setProducts,
@@ -54,11 +59,15 @@ const Produits = () => {
             if (e.target.name === "unite") {
                 setAddProduct({ ...addProduct, unite: e.target.value })
             }
+            if (e.target.name === "designationCateg") {
+                setAddCategorie({ ...addCategorie, designation: e.target.value });
+                validationCateg();
+            }
             e.target.value.length < 1 ?
                 e.target.classList.add('border-red-900') :
                 e.target.classList.remove('border-red-900')
             validation();
-        }, [{ ...addProduct }]
+        }, [{ ...addProduct }, { ...addCategorie }]
     )
 
     const postProduct = () => {
@@ -75,12 +84,23 @@ const Produits = () => {
             }));
         setGetData(true);
     };
+    const postCategorie = () => {
+        postData(addCategorie, '/categorie/add', setBoolingState({
+            ...boolingState, formCategProduct: false, registerSuccess: true
+        }),
+            setAddCategorie({
+                designation: "",
+                refAgence: 1
+            }));
+        setGetData(true);
+    };
 
     const designationRef = useRef();
     const prixUnitRef = useRef();
     const stockAlertRef = useRef();
     const uniteRef = useRef();
     const codeCategRef = useRef();
+    const designationCategRef = useRef();
 
     const validation = () => {
         designationRef.current.value.length > 0 &&
@@ -90,6 +110,10 @@ const Produits = () => {
             codeCategRef.current.value.length > 0
             ? setValidInfos(false) : setValidInfos(true)
     }
+
+    const validationCateg = () => {
+        designationCategRef.current.value.length > 2 ? setValidCategName(false) : setValidCategName(true);
+    };
 
     return (
         <div className=''>
@@ -110,6 +134,7 @@ const Produits = () => {
                         handleConfirm={postProduct}
                         title='Ajouter Produit'
                         disabled={validInfos}
+                        cancel={{ ...boolingState, formProduct: false }}
                     >
                         <div className='grid md:grid-cols-2 gap-4'>
                             <Input
@@ -171,11 +196,33 @@ const Produits = () => {
                             <Button
                                 icon={<MdAdd />}
                                 style='bg-teal-900 hover:bg-teal-800 text-white p-2 text-2xl font-bold ml-5'
+                                onClick={() => setBoolingState({ ...boolingState, formCategProduct: true })}
                             />
                         </div>
                     </Dialogue>}
                 {
                     boolingState.registerSuccess && <SuccessDialg />
+                }
+                {boolingState.formCategProduct &&
+                    <Dialogue
+                        boolingState={boolingState.formCategProduct}
+                        setBoolingState={setBoolingState}
+                        value={{ ...boolingState, formCategProduct: false }}
+                        label='Envoyer'
+                        handleConfirm={postCategorie}
+                        title='Ajouter Catégorie'
+                        disabled={validCategName}
+                        cancel={{ ...boolingState, formCategProduct: false }}
+                    >
+                        <Input
+                            reference={designationCategRef}
+                            label='Designation'
+                            type='text'
+                            name='designationCateg'
+                            value={addCategorie.designation}
+                            onChange={handleChange}
+                        />
+                    </Dialogue>
                 }
             </div>
             <TableData

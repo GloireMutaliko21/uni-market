@@ -8,10 +8,10 @@ import Alerte from './Alerte';
 import Logout from './Logout';
 import Notifications from './Notifications';
 const Navbar = () => {
-    const { showAlert, setShowAlert, typeAlert, setTypeAlert, sidebar } = useStateContext();
+    const { boolingState, setBoolingState, setShowAlert, typeAlert, setTypeAlert, sidebar } = useStateContext();
     const handleAlert = (type) => {
         setTypeAlert(type);
-        setShowAlert(true);
+        setBoolingState({ ...boolingState, showAlert: true })
     }
 
     return (
@@ -35,9 +35,7 @@ const Navbar = () => {
                     <MdNotifications className='text-xl' />
                     <div className='h-2 w-2 bg-yellow-800 rounded-full absolute right-0 top-2 bg'></div>
                 </button>
-                <Alerte
-                    openState={showAlert}
-                >
+                <Alerte>
                     {
                         typeAlert === 'notif' ?
                             <Notifications /> :
