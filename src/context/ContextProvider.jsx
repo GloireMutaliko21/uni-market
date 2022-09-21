@@ -8,12 +8,12 @@ export const ContextProvider = ({ children }) => {
         loginStatus: false,
         start: false,
         showPassword: false,
+        showAlert: false,
         changePassWord: false,
         formProduct: false,
         formCategProduct: false,
         registerSuccess: false,
     });
-    const [showAlert, setShowAlert] = useState(false);
     const [typeAlert, setTypeAlert] = useState();
     const [userData, setUserData] = useState({});
     const [token, setToken] = useState('');
@@ -29,7 +29,6 @@ export const ContextProvider = ({ children }) => {
         <StateContext.Provider
             value={{
                 boolingState, setBoolingState,
-                showAlert, setShowAlert,
                 typeAlert, setTypeAlert,
                 userData, setUserData,
                 rememberMe,

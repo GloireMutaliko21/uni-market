@@ -111,6 +111,7 @@ const Login = () => {
                             label='Envoyer'
                             handleConfirm={() => { }}
                             title='Réinitialiser mot de passe'
+                            cancel={{ ...boolingState, changePassWord: false }}
                         >
                             <div className='text-blue-gray-900 px-4'>
                                 <Input

@@ -110,6 +110,7 @@ const Produits = () => {
                         handleConfirm={postProduct}
                         title='Ajouter Produit'
                         disabled={validInfos}
+                        cancel={{ ...boolingState, formProduct: false }}
                     >
                         <div className='grid md:grid-cols-2 gap-4'>
                             <Input
