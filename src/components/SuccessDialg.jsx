@@ -5,15 +5,15 @@ import { FcApproval } from "react-icons/fc";
 import { useStateContext } from "../context/ContextProvider";
 
 const SuccessDialg = () => {
-    const { registerSuccess, setRegisterSuccess } = useStateContext();
+    const { boolingState, setBoolingState } = useStateContext();
 
     const handleOpen = () => {
-        setRegisterSuccess(prevState => !prevState);
+        setBoolingState({ ...boolingState, registerSuccess: false });
     };
 
     return (
         <Dialog
-            open={registerSuccess}
+            open={boolingState.registerSuccess}
             handler={handleOpen}
         >
             <DialogBody className='flex items-center'>

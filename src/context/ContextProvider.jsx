@@ -4,11 +4,14 @@ import React, { createContext, useContext, useState, useRef, } from "react";
 const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
-    const [start, setStart] = useState(false);
-    const [showPassword, setShowPassword] = useState(false)
-    const [showDialog, setShowDialog] = useState(false);
-    const [showDialogProduct, setShowDialogProduct] = useState(false);
-    const [registerSuccess, setRegisterSuccess] = useState(false);
+    const [boolingState, setBoolingState] = useState({
+        start: false,
+        showPassword: false,
+        changePassWord: false,
+        formProduct: false,
+        formCategProduct: false,
+        registerSuccess: false,
+    });
     const [showAlert, setShowAlert] = useState(false);
     const [typeAlert, setTypeAlert] = useState();
     const [userData, setUserData] = useState({});
@@ -22,16 +25,10 @@ export const ContextProvider = ({ children }) => {
     const rememberMe = useRef();
     const sidebar = useRef();
 
-    const handleChangeStart = () => {
-        setStart(prevState => (!prevState))
-    }
-
     return (
         <StateContext.Provider
             value={{
-                start, setStart, handleChangeStart,
-                showPassword, setShowPassword,
-                showDialog, setShowDialog,
+                boolingState, setBoolingState,
                 showAlert, setShowAlert,
                 typeAlert, setTypeAlert,
                 userData, setUserData,
@@ -42,8 +39,6 @@ export const ContextProvider = ({ children }) => {
                 getData, setGetData,
                 products, setProducts,
                 categProducts, setCategProducts,
-                showDialogProduct, setShowDialogProduct,
-                registerSuccess, setRegisterSuccess
             }}
         >
             {children}
