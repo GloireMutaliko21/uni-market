@@ -45,27 +45,33 @@ const Produits = () => {
         '/categorie/find/1'
     );
 
+    const handleBorderError = (e, value) => {
+        e.target.value.trim().length < value ?
+            e.target.classList.add('border-red-900') :
+            e.target.classList.remove('border-red-900');
+    };
+
     const handleChange = useMemo(() =>
         (e) => {
             if (e.target.name === "designation") {
-                setAddProduct({ ...addProduct, designation: e.target.value })
+                setAddProduct({ ...addProduct, designation: e.target.value.trim() });
+                handleBorderError(e, 3);
             }
             if (e.target.name === "prixUnit") {
-                setAddProduct({ ...addProduct, pu: e.target.value })
+                setAddProduct({ ...addProduct, pu: e.target.value });
             }
             if (e.target.name === "stockAlert") {
-                setAddProduct({ ...addProduct, qtealert: e.target.value })
+                setAddProduct({ ...addProduct, qtealert: e.target.value });
             }
             if (e.target.name === "unite") {
-                setAddProduct({ ...addProduct, unite: e.target.value })
+                setAddProduct({ ...addProduct, unite: e.target.value.trim() });
+                handleBorderError(e, 3);
             }
             if (e.target.name === "designationCateg") {
-                setAddCategorie({ ...addCategorie, designation: e.target.value });
+                setAddCategorie({ ...addCategorie, designation: e.target.value.trim() });
+                handleBorderError(e, 3);
                 validationCateg();
             }
-            e.target.value.length < 1 ?
-                e.target.classList.add('border-red-900') :
-                e.target.classList.remove('border-red-900')
             validation();
         }, [{ ...addProduct }, { ...addCategorie }]
     )
@@ -103,16 +109,18 @@ const Produits = () => {
     const designationCategRef = useRef();
 
     const validation = () => {
-        designationRef.current.value.length > 0 &&
-            prixUnitRef.current.value.length > 0 &&
+        designationRef.current.value.trim().length > 2 &&
+            prixUnitRef.current.value > 0 &&
             stockAlertRef.current.value.length > 0 &&
-            uniteRef.current.value.length > 0 &&
+            uniteRef.current.value.trim().length > 2 &&
             codeCategRef.current.value.length > 0
             ? setValidInfos(false) : setValidInfos(true)
     }
 
     const validationCateg = () => {
-        designationCategRef.current.value.length > 2 ? setValidCategName(false) : setValidCategName(true);
+        designationCategRef.current.value.trim().length > 2 ?
+            setValidCategName(false) :
+            setValidCategName(true);
     };
 
     return (
