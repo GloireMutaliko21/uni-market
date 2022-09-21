@@ -20,6 +20,10 @@ const Produits = () => {
         refAgence: 1
     });
 
+    const [addCategorie, setAddCategorie] = useState({
+        designation: "",
+        refAgence: 1
+    })
     const [validInfos, setValidInfos] = useState(true)
 
     const {
@@ -54,11 +58,14 @@ const Produits = () => {
             if (e.target.name === "unite") {
                 setAddProduct({ ...addProduct, unite: e.target.value })
             }
+            if (e.target.name === "designationCateg") {
+                setAddCategorie({ ...addCategorie, designation: e.target.value })
+            }
             e.target.value.length < 1 ?
                 e.target.classList.add('border-red-900') :
                 e.target.classList.remove('border-red-900')
             validation();
-        }, [{ ...addProduct }]
+        }, [{ ...addProduct }, { ...addCategorie }]
     )
 
     const postProduct = () => {
@@ -71,6 +78,16 @@ const Produits = () => {
                 qtealert: "",
                 unite: "",
                 codeCategorie: null,
+                refAgence: 1
+            }));
+        setGetData(true);
+    };
+    const postCategorie = () => {
+        postData(addCategorie, '/categorie/add', setBoolingState({
+            ...boolingState, formCategProduct: false, registerSuccess: true
+        }),
+            setAddCategorie({
+                designation: "",
                 refAgence: 1
             }));
         setGetData(true);
@@ -185,7 +202,7 @@ const Produits = () => {
                         setBoolingState={setBoolingState}
                         value={{ ...boolingState, formCategProduct: false }}
                         label='Envoyer'
-                        handleConfirm={postProduct}
+                        handleConfirm={postCategorie}
                         title='Ajouter Catégorie'
                         // disabled={validInfos}
                         cancel={{ ...boolingState, formCategProduct: false }}
@@ -194,7 +211,7 @@ const Produits = () => {
                             // reference={designationRef}
                             label='Designation'
                             type='text'
-                            name='designation'
+                            name='designationCateg'
                             // value={addProduct.designation}
                             onChange={handleChange}
                         />
