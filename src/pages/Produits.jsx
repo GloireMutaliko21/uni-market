@@ -10,6 +10,7 @@ import Dialogue from '../components/Dialogue';
 import Input from '../components/Input';
 import SuccessDialg from '../components/SuccessDialg';
 import Select from '../components/Select';
+import FormAddProduct from '../components/Products/FormAddProduct';
 
 const Produits = () => {
     const [validInfos, setValidInfos] = useState(true);
@@ -69,7 +70,7 @@ const Produits = () => {
             }
             validation();
         }, [{ ...addData }]
-    )
+    );
 
     const postProduct = () => {
         postData(addData.addProduct, '/produit/add', setBoolingState({
@@ -144,78 +145,8 @@ const Produits = () => {
                     style='flex justify-center bg-teal-800 hover:bg-teal-700 text-white font-semibold px-3 py-2'
                 />
                 {boolingState.formProduct &&
-                    <Dialogue
-                        boolingState={boolingState.formProduct}
-                        setBoolingState={setBoolingState}
-                        value={{ ...boolingState, formProduct: true }}
-                        label='Envoyer'
-                        handleConfirm={postProduct}
-                        title='Ajouter Produit'
-                        disabled={validInfos}
-                        cancel={{ ...boolingState, formProduct: false }}
-                    >
-                        <div className='grid md:grid-cols-2 gap-4'>
-                            <Input
-                                reference={designationRef}
-                                label='Designation'
-                                type='text'
-                                name='designation'
-                                value={addData.addProduct.designation}
-                                onChange={handleChange}
-                            />
-                            <Input
-                                reference={prixUnitRef}
-                                label='Prix unitaire'
-                                type='number'
-                                name='pu'
-                                value={addData.addProduct.pu}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className='grid md:grid-cols-2 gap-4'>
-                            <Input
-                                reference={stockAlertRef}
-                                label="Stock d'alerte"
-                                type='number'
-                                name='qtealert'
-                                value={addData.addProduct.qtealert}
-                                onChange={handleChange}
-                            />
-                            <Input
-                                reference={uniteRef}
-                                label="Unité de mesure"
-                                type='text'
-                                name='unite'
-                                value={addData.addProduct.unite}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className='flex'>
-                            <Select
-                                reference={codeCategRef}
-                                label='Categorie'
-                                value={addData.addProduct.codeCategorie}
-                                onChange={(e) => {
-                                    validation();
-                                    setAddData(prevData => {
-                                        return {
-                                            ...prevData,
-                                            addProduct: {
-                                                ...prevData.addProduct,
-                                                codeCategorie: e.target.value
-                                            }
-                                        }
-                                    });
-                                }}
-                                data={categProduits}
-                            />
-                            <Button
-                                icon={<MdAdd />}
-                                style='bg-teal-900 hover:bg-teal-800 text-white p-2 text-2xl font-bold ml-5'
-                                onClick={() => setBoolingState({ ...boolingState, formCategProduct: true })}
-                            />
-                        </div>
-                    </Dialogue>}
+                    <FormAddProduct />
+                }
                 {
                     boolingState.registerSuccess && <SuccessDialg />
                 }
