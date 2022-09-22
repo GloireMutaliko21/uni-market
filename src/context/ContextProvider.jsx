@@ -21,6 +21,20 @@ export const ContextProvider = memo(({ children }) => {
     const [getData, setGetData] = useState(true);
     const [products, setProducts] = useState([]);
     const [categProducts, setCategProducts] = useState([]);
+    const [addData, setAddData] = useState({
+        addProduct: {
+            designation: "",
+            pu: "",
+            qtealert: "",
+            unite: "",
+            codeCategorie: null,
+            refAgence: 1
+        },
+        addCategorie: {
+            designation: "",
+            refAgence: 1
+        }
+    })
 
     const rememberMe = useRef();
     const sidebar = useRef();
@@ -37,6 +51,7 @@ export const ContextProvider = memo(({ children }) => {
                 getData, setGetData,
                 products, setProducts,
                 categProducts, setCategProducts,
+                addData, setAddData,
             }}
         >
             {children}

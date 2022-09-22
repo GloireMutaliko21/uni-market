@@ -6,7 +6,6 @@ import image1 from "../assets/img/image1.jpg";
 import image2 from "../assets/img/image2.jpg";
 import image3 from "../assets/img/image3.jpg";
 import image4 from "../assets/img/image4.jpg";
-import "../styles/welcome.css";
 import Button from './Button';
 import { useStateContext } from "../context/ContextProvider";
 

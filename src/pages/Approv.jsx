@@ -1,8 +1,11 @@
 import React from 'react'
+import FormAdd from '../components/Approvisionnement/FormAdd';
 
 const Approv = () => {
     return (
-        <div>Approv</div>
+        <div>
+            <FormAdd />
+        </div>
     )
 }
 
