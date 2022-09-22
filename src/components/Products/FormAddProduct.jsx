@@ -17,13 +17,15 @@ const FormAddProduct = ({ booleanState, setBooleanState, value, cancel, categVal
     const codeCategRef = useRef();
 
     const {
+        products,
+        setProducts,
         boolingState, setBoolingState,
         categProducts, setCategProducts,
         setGetData, addData, setAddData,
     } = useStateContext();
 
     const postProduct = () => {
-        postData(addData.addProduct, '/produit/add', setBooleanState({
+        postData(addData.addProduct, '/produit/add', setBoolingState({
             ...boolingState, formProduct: false, registerSuccess: true
         }),
             setAddData(

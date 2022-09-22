@@ -6,13 +6,22 @@ import Select from '../Select';
 import { useStateContext } from "../../context/ContextProvider";
 import FormAddProduct from '../Products/FormAddProduct';
 import FormAddCategProduct from '../Products/FormAddCategProduct';
+import SuccessDialg from '../SuccessDialg';
+import { getData } from '../../hooks/useFetch';
 
 const FormAdd = () => {
-    const { boolingState, setBoolingState } = useStateContext();
+    const { boolingState, setBoolingState, products, setProducts, } = useStateContext();
 
     const quantiteRef = useRef();
     const prixUnit = useRef();
     const produitRef = useRef();
+
+    const [data] = getData(
+        products,
+        setProducts,
+        '/produit/find/1'
+    );
+
     return (
         <div>
             <div className='flex mb-3'>
@@ -21,7 +30,7 @@ const FormAdd = () => {
                     label='Produit'
                     value=''
                     onChange={() => { }}
-                    data={[]}
+                    data={products}
                 />
                 <Button
                     label='New'
@@ -40,6 +49,7 @@ const FormAdd = () => {
                 {
                     boolingState.registerSuccess && <SuccessDialg />
                 }
+
                 {boolingState.formCategProduct &&
                     <FormAddCategProduct />
                 }
