@@ -1,8 +1,14 @@
 import React from 'react'
+import Input from '../Input'
 
 const FormAdd = () => {
     return (
-        <div>FormAdd</div>
+        <div>
+            <Input
+                reference=''
+                label=''
+            />
+        </div>
     )
 }
 

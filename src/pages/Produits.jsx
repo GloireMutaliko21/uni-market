@@ -9,6 +9,7 @@ import Button from '../components/Button';
 import Dialogue from '../components/Dialogue';
 import Input from '../components/Input';
 import SuccessDialg from '../components/SuccessDialg';
+import Select from '../components/Select';
 
 const Produits = () => {
     const [addProduct, setAddProduct] = useState({
@@ -181,26 +182,15 @@ const Produits = () => {
                             />
                         </div>
                         <div className='flex'>
-                            <select
-                                ref={codeCategRef}
-                                value={`${addProduct.codeCategorie}`}
+                            <Select
+                                reference={codeCategRef}
+                                value={addProduct.codeCategorie}
                                 onChange={(e) => {
                                     validation();
                                     setAddProduct({ ...addProduct, codeCategorie: e.target.value });
                                 }}
-                                className="w-full text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block"
-                            >
-                                <option value="">Selectionner Catégorie</option>
-                                {categProduits.map((option) =>
-                                    <option
-                                        key={option.code}
-                                        value={`${option.code}`}
-                                        className='capitalize'
-                                    >
-                                        {option.designation}
-                                    </option>
-                                )}
-                            </select>
+                                data={categProduits}
+                            />
                             <Button
                                 icon={<MdAdd />}
                                 style='bg-teal-900 hover:bg-teal-800 text-white p-2 text-2xl font-bold ml-5'
