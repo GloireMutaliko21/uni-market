@@ -19,7 +19,6 @@ const FormAddProduct = () => {
     const designationCategRef = useRef();
 
     const {
-        products, setProducts,
         boolingState, setBoolingState,
         categProducts, setCategProducts,
         setGetData, addData, setAddData,
@@ -60,39 +59,20 @@ const FormAddProduct = () => {
             ? setValidInfos(false) : setValidInfos(true)
     }
 
-    const validationCateg = () => {
-        designationCategRef.current.value.trim().length > 2 ?
-            setValidCategName(false) :
-            setValidCategName(true);
-    };
-
     const handleChange = useMemo(() =>
         (e) => {
-            if (e.target.type === 'text' || e.target.type === 'number') {
-                setAddData(prevData => {
-                    return {
-                        ...prevData,
-                        addProduct: {
-                            ...prevData.addProduct,
-                            [e.target.name]: e.target.value
-                        }
+
+            setAddData(prevData => {
+                return {
+                    ...prevData,
+                    addProduct: {
+                        ...prevData.addProduct,
+                        [e.target.name]: e.target.value
                     }
-                });
-            }
+                }
+            });
             if (e.target.type === 'text') {
                 handleBorderError(e, 3);
-            }
-            if (e.target.name === "designationCateg") {
-                setAddData(prevData => {
-                    return {
-                        ...prevData,
-                        addCategorie: {
-                            ...prevData.addCategorie,
-                            designation: e.target.value
-                        }
-                    }
-                });
-                validationCateg();
             }
             validation();
         }, [{ ...addData }]
