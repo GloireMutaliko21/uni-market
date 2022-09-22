@@ -7,7 +7,7 @@ import Button from '../Button';
 import Dialogue from '../Dialogue';
 import Input from '../Input';
 import Select from '../Select';
-const FormAddProduct = ({ boolingState, setBoolingState, value, cancel }) => {
+const FormAddProduct = ({ boolingState, setBoolingState, value, cancel, categValue }) => {
     const [validInfos, setValidInfos] = useState(true);
 
     const designationRef = useRef();
@@ -17,7 +17,6 @@ const FormAddProduct = ({ boolingState, setBoolingState, value, cancel }) => {
     const codeCategRef = useRef();
 
     const {
-        // boolingState, setBoolingState,
         categProducts, setCategProducts,
         setGetData, addData, setAddData,
     } = useStateContext();
@@ -152,7 +151,7 @@ const FormAddProduct = ({ boolingState, setBoolingState, value, cancel }) => {
                     <Button
                         icon={<MdAdd />}
                         style='bg-teal-900 hover:bg-teal-800 text-white p-2 text-2xl font-bold ml-5'
-                        onClick={() => setBoolingState({ ...boolingState, formCategProduct: true })}
+                        onClick={() => setBoolingState(categValue)}
                     />
                 </div>
             </Dialogue>

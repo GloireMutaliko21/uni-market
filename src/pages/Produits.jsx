@@ -38,6 +38,7 @@ const Produits = () => {
                         setBoolingState={setBoolingState}
                         value={{ ...boolingState, formProduct: true }}
                         cancel={{ ...boolingState, formProduct: false }}
+                        categValue={{ ...boolingState, formCategProduct: true }}
                     />
                 }
                 {

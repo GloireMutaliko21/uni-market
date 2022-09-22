@@ -34,6 +34,7 @@ const FormAdd = () => {
                         setBoolingState={setBoolingState}
                         value={{ ...boolingState, addProductApprov: true }}
                         cancel={{ ...boolingState, addProductApprov: false }}
+                        categValue={{ ...boolingState, formCategProduct: true }}
                     />
                 }
                 {
