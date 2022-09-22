@@ -30,6 +30,10 @@ export const ContextProvider = memo(({ children }) => {
             codeCategorie: null,
             refAgence: 1
         },
+        addCategorie: {
+            designation: "",
+            refAgence: 1
+        }
     })
 
     const rememberMe = useRef();

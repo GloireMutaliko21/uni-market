@@ -12,10 +12,6 @@ import SuccessDialg from '../components/SuccessDialg';
 import Select from '../components/Select';
 
 const Produits = () => {
-    const [addCategorie, setAddCategorie] = useState({
-        designation: "",
-        refAgence: 1
-    })
     const [validInfos, setValidInfos] = useState(true);
     const [validCategName, setValidCategName] = useState(true);
 
@@ -60,11 +56,19 @@ const Produits = () => {
                 handleBorderError(e, 3);
             }
             if (e.target.name === "designationCateg") {
-                setAddCategorie({ ...addCategorie, designation: e.target.value });
+                setAddData(prevData => {
+                    return {
+                        ...prevData,
+                        addCategorie: {
+                            ...prevData.addCategorie,
+                            designation: e.target.value
+                        }
+                    }
+                });
                 validationCateg();
             }
             validation();
-        }, [{ ...addData }, { ...addCategorie }]
+        }, [{ ...addData }]
     )
 
     const postProduct = () => {
@@ -90,13 +94,20 @@ const Produits = () => {
     };
 
     const postCategorie = () => {
-        postData(addCategorie, '/categorie/add', setBoolingState({
+        postData(addData.addCategorie, '/categorie/add', setBoolingState({
             ...boolingState, formCategProduct: false, registerSuccess: true
         }),
-            setAddCategorie({
-                designation: "",
-                refAgence: 1
-            }));
+            setAddData(
+                prevData => {
+                    return {
+                        ...prevData,
+                        addCategorie: {
+                            designation: "",
+                            refAgence: 1
+                        }
+                    }
+                }
+            ));
         setGetData(true);
     };
 
@@ -223,7 +234,7 @@ const Produits = () => {
                             label='Designation'
                             type='text'
                             name='designationCateg'
-                            value={addCategorie.designation}
+                            value={addData.addCategorie.designation}
                             onChange={handleChange}
                         />
                     </Dialogue>
