@@ -12,15 +12,6 @@ import SuccessDialg from '../components/SuccessDialg';
 import Select from '../components/Select';
 
 const Produits = () => {
-    const [addProduct, setAddProduct] = useState({
-        designation: "",
-        pu: "",
-        qtealert: "",
-        unite: "",
-        codeCategorie: null,
-        refAgence: 1
-    });
-
     const [addCategorie, setAddCategorie] = useState({
         designation: "",
         refAgence: 1
@@ -32,7 +23,7 @@ const Produits = () => {
         products, setProducts,
         boolingState, setBoolingState,
         categProducts, setCategProducts,
-        setGetData,
+        setGetData, addData, setAddData,
     } = useStateContext();
 
     const [data] = getData(
@@ -54,43 +45,50 @@ const Produits = () => {
 
     const handleChange = useMemo(() =>
         (e) => {
-            if (e.target.name === "designation") {
-                setAddProduct({ ...addProduct, designation: e.target.value.trim() });
-                handleBorderError(e, 3);
+            if (e.target.type === 'text' || e.target.type === 'number') {
+                setAddData(prevData => {
+                    return {
+                        ...prevData,
+                        addProduct: {
+                            ...prevData.addProduct,
+                            [e.target.name]: e.target.value
+                        }
+                    }
+                });
             }
-            if (e.target.name === "prixUnit") {
-                setAddProduct({ ...addProduct, pu: e.target.value });
-            }
-            if (e.target.name === "stockAlert") {
-                setAddProduct({ ...addProduct, qtealert: e.target.value });
-            }
-            if (e.target.name === "unite") {
-                setAddProduct({ ...addProduct, unite: e.target.value.trim() });
+            if (e.target.type === 'text') {
                 handleBorderError(e, 3);
             }
             if (e.target.name === "designationCateg") {
-                setAddCategorie({ ...addCategorie, designation: e.target.value.trim() });
-                handleBorderError(e, 3);
+                setAddCategorie({ ...addCategorie, designation: e.target.value });
                 validationCateg();
             }
             validation();
-        }, [{ ...addProduct }, { ...addCategorie }]
+        }, [{ ...addData }, { ...addCategorie }]
     )
 
     const postProduct = () => {
-        postData(addProduct, '/produit/add', setBoolingState({
+        postData(addData.addProduct, '/produit/add', setBoolingState({
             ...boolingState, formProduct: false, registerSuccess: true
         }),
-            setAddProduct({
-                designation: "",
-                pu: "",
-                qtealert: "",
-                unite: "",
-                codeCategorie: null,
-                refAgence: 1
-            }));
+            setAddData(
+                prevData => {
+                    return {
+                        ...prevData,
+                        addProduct: {
+                            designation: "",
+                            pu: "",
+                            qtealert: "",
+                            unite: "",
+                            codeCategorie: null,
+                            refAgence: 1
+                        }
+                    }
+                }
+            ));
         setGetData(true);
     };
+
     const postCategorie = () => {
         postData(addCategorie, '/categorie/add', setBoolingState({
             ...boolingState, formCategProduct: false, registerSuccess: true
@@ -151,15 +149,15 @@ const Produits = () => {
                                 label='Designation'
                                 type='text'
                                 name='designation'
-                                value={addProduct.designation}
+                                value={addData.addProduct.designation}
                                 onChange={handleChange}
                             />
                             <Input
                                 reference={prixUnitRef}
                                 label='Prix unitaire'
                                 type='number'
-                                name='prixUnit'
-                                value={addProduct.pu}
+                                name='pu'
+                                value={addData.addProduct.pu}
                                 onChange={handleChange}
                             />
                         </div>
@@ -168,8 +166,8 @@ const Produits = () => {
                                 reference={stockAlertRef}
                                 label="Stock d'alerte"
                                 type='number'
-                                name='stockAlert'
-                                value={addProduct.qtealert}
+                                name='qtealert'
+                                value={addData.addProduct.qtealert}
                                 onChange={handleChange}
                             />
                             <Input
@@ -177,17 +175,25 @@ const Produits = () => {
                                 label="Unité de mesure"
                                 type='text'
                                 name='unite'
-                                value={addProduct.unite}
+                                value={addData.addProduct.unite}
                                 onChange={handleChange}
                             />
                         </div>
                         <div className='flex'>
                             <Select
                                 reference={codeCategRef}
-                                value={addProduct.codeCategorie}
+                                value={addData.addProduct.codeCategorie}
                                 onChange={(e) => {
                                     validation();
-                                    setAddProduct({ ...addProduct, codeCategorie: e.target.value });
+                                    setAddData(prevData => {
+                                        return {
+                                            ...prevData,
+                                            addProduct: {
+                                                ...prevData.addProduct,
+                                                codeCategorie: e.target.value
+                                            }
+                                        }
+                                    });
                                 }}
                                 data={categProduits}
                             />
