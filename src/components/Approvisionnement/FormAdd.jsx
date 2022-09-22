@@ -30,8 +30,8 @@ const FormAdd = () => {
                 />
                 {boolingState.addProductApprov &&
                     <FormAddProduct
-                        boolingState={boolingState.addProductApprov}
-                        setBoolingState={setBoolingState}
+                        booleanState={boolingState.addProductApprov}
+                        setBooleanState={setBoolingState}
                         value={{ ...boolingState, addProductApprov: true }}
                         cancel={{ ...boolingState, addProductApprov: false }}
                         categValue={{ ...boolingState, formCategProduct: true }}

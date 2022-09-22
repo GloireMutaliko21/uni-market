@@ -7,7 +7,7 @@ import Button from '../Button';
 import Dialogue from '../Dialogue';
 import Input from '../Input';
 import Select from '../Select';
-const FormAddProduct = ({ boolingState, setBoolingState, value, cancel, categValue }) => {
+const FormAddProduct = ({ booleanState, setBooleanState, value, cancel, categValue }) => {
     const [validInfos, setValidInfos] = useState(true);
 
     const designationRef = useRef();
@@ -17,12 +17,13 @@ const FormAddProduct = ({ boolingState, setBoolingState, value, cancel, categVal
     const codeCategRef = useRef();
 
     const {
+        boolingState, setBoolingState,
         categProducts, setCategProducts,
         setGetData, addData, setAddData,
     } = useStateContext();
 
     const postProduct = () => {
-        postData(addData.addProduct, '/produit/add', setBoolingState({
+        postData(addData.addProduct, '/produit/add', setBooleanState({
             ...boolingState, formProduct: false, registerSuccess: true
         }),
             setAddData(
@@ -84,8 +85,8 @@ const FormAddProduct = ({ boolingState, setBoolingState, value, cancel, categVal
     return (
         <>
             <Dialogue
-                boolingState={boolingState}
-                setBoolingState={setBoolingState}
+                boolingState={booleanState}
+                setBoolingState={setBooleanState}
                 value={value}
                 label='Enregistrer'
                 handleConfirm={postProduct}
@@ -151,7 +152,7 @@ const FormAddProduct = ({ boolingState, setBoolingState, value, cancel, categVal
                     <Button
                         icon={<MdAdd />}
                         style='bg-teal-900 hover:bg-teal-800 text-white p-2 text-2xl font-bold ml-5'
-                        onClick={() => setBoolingState(categValue)}
+                        onClick={() => setBooleanState(categValue)}
                     />
                 </div>
             </Dialogue>

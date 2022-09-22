@@ -34,8 +34,8 @@ const Produits = () => {
                 />
                 {boolingState.formProduct &&
                     <FormAddProduct
-                        boolingState={boolingState.formProduct}
-                        setBoolingState={setBoolingState}
+                        booleanState={boolingState.formProduct}
+                        setBooleanState={setBoolingState}
                         value={{ ...boolingState, formProduct: true }}
                         cancel={{ ...boolingState, formProduct: false }}
                         categValue={{ ...boolingState, formCategProduct: true }}
