@@ -7,19 +7,17 @@ import Button from '../Button';
 import Dialogue from '../Dialogue';
 import Input from '../Input';
 import Select from '../Select';
-const FormAddProduct = () => {
+const FormAddProduct = ({ boolingState, setBoolingState, value, cancel }) => {
     const [validInfos, setValidInfos] = useState(true);
-    const [validCategName, setValidCategName] = useState(true);
 
     const designationRef = useRef();
     const prixUnitRef = useRef();
     const stockAlertRef = useRef();
     const uniteRef = useRef();
     const codeCategRef = useRef();
-    const designationCategRef = useRef();
 
     const {
-        boolingState, setBoolingState,
+        // boolingState, setBoolingState,
         categProducts, setCategProducts,
         setGetData, addData, setAddData,
     } = useStateContext();
@@ -87,14 +85,14 @@ const FormAddProduct = () => {
     return (
         <>
             <Dialogue
-                boolingState={boolingState.formProduct}
+                boolingState={boolingState}
                 setBoolingState={setBoolingState}
-                value={{ ...boolingState, formProduct: true }}
+                value={value}
                 label='Enregistrer'
                 handleConfirm={postProduct}
                 title='Ajouter Produit'
                 disabled={validInfos}
-                cancel={{ ...boolingState, formProduct: false }}
+                cancel={cancel}
             >
                 <div className='grid md:grid-cols-2 gap-4'>
                     <Input
