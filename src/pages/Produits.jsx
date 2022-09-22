@@ -193,6 +193,7 @@ const Produits = () => {
                         <div className='flex'>
                             <Select
                                 reference={codeCategRef}
+                                label='Categorie'
                                 value={addData.addProduct.codeCategorie}
                                 onChange={(e) => {
                                     validation();
