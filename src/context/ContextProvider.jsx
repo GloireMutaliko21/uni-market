@@ -11,6 +11,7 @@ export const ContextProvider = memo(({ children }) => {
         showAlert: false,
         changePassWord: false,
         formProduct: false,
+        addProductApprov: false,
         formCategProduct: false,
         registerSuccess: false,
     });

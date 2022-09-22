@@ -1,9 +1,15 @@
 import React, { useRef } from 'react'
+
 import Button from '../Button';
 import Input from '../Input'
 import Select from '../Select';
+import { useStateContext } from "../../context/ContextProvider";
+import FormAddProduct from '../Products/FormAddProduct';
+import FormAddCategProduct from '../Products/FormAddCategProduct';
 
 const FormAdd = () => {
+    const { boolingState, setBoolingState } = useStateContext();
+
     const quantiteRef = useRef();
     const prixUnit = useRef();
     const produitRef = useRef();
@@ -20,8 +26,23 @@ const FormAdd = () => {
                 <Button
                     label='New'
                     style='hover:bg-teal-800 text-teal-900 hover:text-white border border-teal-900 px-3 text-md font-medium ml-5'
-                    onClick={() => { }}
+                    onClick={() => setBoolingState({ ...boolingState, addProductApprov: true })}
                 />
+                {boolingState.addProductApprov &&
+                    <FormAddProduct
+                        booleanState={boolingState.addProductApprov}
+                        setBooleanState={setBoolingState}
+                        value={{ ...boolingState, addProductApprov: true }}
+                        cancel={{ ...boolingState, addProductApprov: false }}
+                        categValue={{ ...boolingState, formCategProduct: true }}
+                    />
+                }
+                {
+                    boolingState.registerSuccess && <SuccessDialg />
+                }
+                {boolingState.formCategProduct &&
+                    <FormAddCategProduct />
+                }
             </div>
             <div className='text-blue-gray-600'>
                 <Input

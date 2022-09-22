@@ -33,7 +33,13 @@ const Produits = () => {
                     style='flex justify-center bg-teal-800 hover:bg-teal-700 text-white font-semibold px-3 py-2'
                 />
                 {boolingState.formProduct &&
-                    <FormAddProduct />
+                    <FormAddProduct
+                        booleanState={boolingState.formProduct}
+                        setBooleanState={setBoolingState}
+                        value={{ ...boolingState, formProduct: true }}
+                        cancel={{ ...boolingState, formProduct: false }}
+                        categValue={{ ...boolingState, formCategProduct: true }}
+                    />
                 }
                 {
                     boolingState.registerSuccess && <SuccessDialg />

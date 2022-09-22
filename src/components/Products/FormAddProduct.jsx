@@ -7,16 +7,14 @@ import Button from '../Button';
 import Dialogue from '../Dialogue';
 import Input from '../Input';
 import Select from '../Select';
-const FormAddProduct = () => {
+const FormAddProduct = ({ booleanState, setBooleanState, value, cancel, categValue }) => {
     const [validInfos, setValidInfos] = useState(true);
-    const [validCategName, setValidCategName] = useState(true);
 
     const designationRef = useRef();
     const prixUnitRef = useRef();
     const stockAlertRef = useRef();
     const uniteRef = useRef();
     const codeCategRef = useRef();
-    const designationCategRef = useRef();
 
     const {
         boolingState, setBoolingState,
@@ -25,7 +23,7 @@ const FormAddProduct = () => {
     } = useStateContext();
 
     const postProduct = () => {
-        postData(addData.addProduct, '/produit/add', setBoolingState({
+        postData(addData.addProduct, '/produit/add', setBooleanState({
             ...boolingState, formProduct: false, registerSuccess: true
         }),
             setAddData(
@@ -87,14 +85,14 @@ const FormAddProduct = () => {
     return (
         <>
             <Dialogue
-                boolingState={boolingState.formProduct}
-                setBoolingState={setBoolingState}
-                value={{ ...boolingState, formProduct: true }}
+                boolingState={booleanState}
+                setBoolingState={setBooleanState}
+                value={value}
                 label='Enregistrer'
                 handleConfirm={postProduct}
                 title='Ajouter Produit'
                 disabled={validInfos}
-                cancel={{ ...boolingState, formProduct: false }}
+                cancel={cancel}
             >
                 <div className='grid md:grid-cols-2 gap-4'>
                     <Input
@@ -154,7 +152,7 @@ const FormAddProduct = () => {
                     <Button
                         icon={<MdAdd />}
                         style='bg-teal-900 hover:bg-teal-800 text-white p-2 text-2xl font-bold ml-5'
-                        onClick={() => setBoolingState({ ...boolingState, formCategProduct: true })}
+                        onClick={() => setBooleanState(categValue)}
                     />
                 </div>
             </Dialogue>
