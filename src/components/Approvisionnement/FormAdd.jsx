@@ -6,6 +6,7 @@ import Select from '../Select';
 import { useStateContext } from "../../context/ContextProvider";
 import FormAddProduct from '../Products/FormAddProduct';
 import FormAddCategProduct from '../Products/FormAddCategProduct';
+import SuccessDialg from '../SuccessDialg';
 
 const FormAdd = () => {
     const { boolingState, setBoolingState } = useStateContext();
@@ -40,6 +41,7 @@ const FormAdd = () => {
                 {
                     boolingState.registerSuccess && <SuccessDialg />
                 }
+
                 {boolingState.formCategProduct &&
                     <FormAddCategProduct />
                 }
