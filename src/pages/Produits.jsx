@@ -2,25 +2,21 @@ import React from 'react'
 import { MdAdd } from "react-icons/md";
 
 import { useStateContext } from "../context/ContextProvider";
-import { getData } from "../hooks/useFetch";
 import { productsColumns } from "../data/tablesData";
 import TableData from '../components/TableData';
 import Button from '../components/Button';
 import SuccessDialg from '../components/SuccessDialg';
 import FormAddProduct from '../components/Products/FormAddProduct';
 import FormAddCategProduct from '../components/Products/FormAddCategProduct';
+import { getProduits } from '../constants/api';
 
 const Produits = () => {
     const {
-        products, setProducts,
+        products,
         boolingState, setBoolingState,
     } = useStateContext();
 
-    const [data] = getData(
-        products,
-        setProducts,
-        '/produit/find/1'
-    );
+    getProduits();
 
     return (
         <div className=''>
