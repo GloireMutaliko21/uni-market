@@ -8,22 +8,35 @@ import FormAddProduct from '../Products/FormAddProduct';
 import FormAddCategProduct from '../Products/FormAddCategProduct';
 import SuccessDialg from '../SuccessDialg';
 import { getData } from '../../hooks/useFetch';
+import { getProduits } from '../../constants/api';
 
 const FormAdd = () => {
-    const { boolingState, setBoolingState, products, setProducts, } = useStateContext();
+    const { boolingState, setBoolingState, products } = useStateContext();
 
     const quantiteRef = useRef();
     const prixUnit = useRef();
+    const dateExpRef = useRef();
+    const dateApprovRef = useRef();
     const produitRef = useRef();
 
-    const [data] = getData(
-        products,
-        setProducts,
-        '/produit/find/1'
-    );
+    getProduits();
 
     return (
         <div>
+            <div className='flex mb-3'>
+                <Select
+                    reference={produitRef}
+                    label='Fournisseur'
+                    value=''
+                    onChange={() => { }}
+                    data={[]}
+                />
+                <Button
+                    label='New'
+                    style='hover:bg-teal-900 text-teal-900 hover:text-white border border-teal-900 px-3 text-md font-medium ml-5'
+                    onClick={() => { }}
+                />
+            </div>
             <div className='flex mb-3'>
                 <Select
                     reference={produitRef}
@@ -72,26 +85,20 @@ const FormAdd = () => {
                     onChange={() => { }}
                 />
                 <Input
-                    reference={prixUnit}
-                    label='Date Péremption'
+                    reference={dateApprovRef}
+                    label='Date Achat'
                     type='date'
                     name=''
                     value=''
                     onChange={() => { }}
                 />
-            </div>
-            <div className='flex mb-3'>
-                <Select
-                    reference={produitRef}
-                    label='Fournisseur'
+                <Input
+                    reference={dateExpRef}
+                    label='Date Péremption'
+                    type='date'
+                    name=''
                     value=''
                     onChange={() => { }}
-                    data={[]}
-                />
-                <Button
-                    label='New'
-                    style='hover:bg-teal-900 text-teal-900 hover:text-white border border-teal-900 px-3 text-md font-medium ml-5'
-                    onClick={() => { }}
                 />
             </div>
         </div>
