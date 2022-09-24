@@ -8,7 +8,7 @@ import { useStateContext } from "../../context/ContextProvider";
 const Produits = () => {
     const searchRef = useRef();
 
-    const { products, isFilter, handleChangeIsFilter } = useStateContext();
+    const { products, isFilter, handleChangeIsFilter, panierApprov, setPanierApprov, updatePanierApprov } = useStateContext();
     const productsData = [];
     const recherche = (condition, datas) => {
         if (condition) {
@@ -24,7 +24,15 @@ const Produits = () => {
         recherche(searchData, element);
     });
 
+    const addProduct = (prod) => {
+        if (!updatePanierApprov.find(produit => produit.designation === prod.designation)) {
+            updatePanierApprov.push(prod);
+            setPanierApprov(updatePanierApprov);
+        }
+    };
+
     getProduits();
+
     return (
         <div>
             <input
@@ -38,7 +46,11 @@ const Produits = () => {
             >
             </input>
             {productsData.length > 0 ? productsData.map((prod, index) => (
-                <div key={index} className={`${index % 2 === 0 ? 'bg-teal-200' : 'border border-teal-100 text-teal-300 font-medium'} flex justify-between py-1 px-2 text-titleColor hover:cursor-pointer`}>
+                <div
+                    key={index}
+                    className={`${index % 2 === 0 ? 'bg-teal-200' : 'border border-teal-100 text-teal-300 font-medium'} flex justify-between py-1 px-2 text-titleColor hover:cursor-pointer`}
+                    onClick={() => { addProduct(prod) }}
+                >
                     <p className='uppercase'>{prod.designation}</p>
                     <p>
                         <MdAddCircle className='text-lg ml-5' />

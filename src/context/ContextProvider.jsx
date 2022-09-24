@@ -37,6 +37,9 @@ export const ContextProvider = memo(({ children }) => {
         }
     });
 
+    const [panierApprov, setPanierApprov] = useState([]);
+    const updatePanierApprov = [...panierApprov];
+
     const [isFilter, setIsFilter] = useState('');
 
     const handleChangeIsFilter = (e) => {
@@ -59,6 +62,8 @@ export const ContextProvider = memo(({ children }) => {
                 products, setProducts,
                 categProducts, setCategProducts,
                 addData, setAddData,
+                panierApprov, setPanierApprov,
+                updatePanierApprov,
                 isFilter, handleChangeIsFilter,
             }}
         >

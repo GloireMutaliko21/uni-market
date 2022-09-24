@@ -11,7 +11,9 @@ import { getData } from '../../hooks/useFetch';
 import { getProduits } from '../../constants/api';
 
 const FormAdd = () => {
-    const { boolingState, setBoolingState, products } = useStateContext();
+    const { boolingState, setBoolingState, products, panierApprov } = useStateContext();
+
+
 
     const quantiteRef = useRef();
     const prixUnit = useRef();
@@ -23,6 +25,9 @@ const FormAdd = () => {
 
     return (
         <div>
+            {panierApprov.map((produit, index) => (
+                <p key={index}>{produit.designation}</p>
+            ))}
             {/* <div className='flex mb-3'>
                 <Select
                     reference={produitRef}
