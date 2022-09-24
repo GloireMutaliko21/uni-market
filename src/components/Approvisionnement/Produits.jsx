@@ -34,7 +34,7 @@ const Produits = () => {
     getProduits();
 
     return (
-        <div>
+        <div className=''>
             <input
                 ref={searchRef}
                 className="w-full text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-1 px-4 my-2 block appearance-none"
