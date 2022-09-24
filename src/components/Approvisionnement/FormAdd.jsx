@@ -3,30 +3,18 @@ import { AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 
 import Button from '../Button';
-import Input from '../Input'
-import Select from '../Select';
 import { useStateContext } from "../../context/ContextProvider";
-import FormAddProduct from '../Products/FormAddProduct';
-import FormAddCategProduct from '../Products/FormAddCategProduct';
-import SuccessDialg from '../SuccessDialg';
-import { getData } from '../../hooks/useFetch';
-import { getProduits } from '../../constants/api';
 
 const FormAdd = () => {
-    const { boolingState, setBoolingState, products, panierApprov } = useStateContext();
+    const { panierApprov, updatePanierApprov, setPanierApprov } = useStateContext();
 
-
-
-    const quantiteRef = useRef();
-    const prixUnit = useRef();
-    const dateExpRef = useRef();
-    const dateApprovRef = useRef();
-    const produitRef = useRef();
-
-    getProduits();
+    const deleteProduct = (index) => {
+        updatePanierApprov.splice(index, 1);
+        setPanierApprov(updatePanierApprov);
+    }
 
     return (
-        <div className=''>
+        <div className='text-xs mt-2'>
             {panierApprov.map((produit, index) => (
                 <div key={index} className={`${index % 2 === 0 ? 'bg-white' : 'bg-blue-gray-50'} flex justify-between items-center p-2 border-b border-teal-900`}>
                     <div>
@@ -55,96 +43,23 @@ const FormAdd = () => {
                             <p className='text-center uppercase'>1.0</p>
                         </div>
                     </div>
-                    <div>
-                        <Button
-                            icon={<AiFillEdit />}
-                            label='Edit'
-                        />
-                        <Button
-                            icon={<MdDelete />}
-                            label='Delete'
-                        />
+                    <div className='text-sm'>
+                        <div className='text-green-900 shadow-xl'>
+                            <Button
+                                icon={<AiFillEdit className='' />}
+                                label='Edit'
+                            />
+                        </div>
+                        <div className='text-orange-700 '>
+                            <Button
+                                icon={<MdDelete />}
+                                label='Delete'
+                                onClick={() => deleteProduct(index)}
+                            />
+                        </div>
                     </div>
                 </div>
             ))}
-            {/* <div className='flex mb-3'>
-                <Select
-                    reference={produitRef}
-                    label='Fournisseur'
-                    value=''
-                    onChange={() => { }}
-                    data={[]}
-                />
-                <Button
-                    label='New'
-                    style='hover:bg-teal-900 text-teal-900 hover:text-white border border-teal-900 px-3 text-md font-medium ml-5'
-                    onClick={() => { }}
-                />
-            </div>
-            <div className='flex mb-3'>
-                <Select
-                    reference={produitRef}
-                    label='Produit'
-                    value=''
-                    onChange={() => { }}
-                    data={products}
-                />
-                <Button
-                    label='New'
-                    style='hover:bg-teal-800 text-teal-900 hover:text-white border border-teal-900 px-3 text-md font-medium ml-5'
-                    onClick={() => setBoolingState({ ...boolingState, addProductApprov: true })}
-                />
-                {boolingState.addProductApprov &&
-                    <FormAddProduct
-                        booleanState={boolingState.addProductApprov}
-                        setBooleanState={setBoolingState}
-                        value={{ ...boolingState, addProductApprov: true }}
-                        cancel={{ ...boolingState, addProductApprov: false }}
-                        categValue={{ ...boolingState, formCategProduct: true }}
-                    />
-                }
-                {
-                    boolingState.registerSuccess && <SuccessDialg />
-                }
-
-                {boolingState.formCategProduct &&
-                    <FormAddCategProduct />
-                }
-            </div>
-            <div className='text-blue-gray-600'>
-                <Input
-                    reference={quantiteRef}
-                    label='Quantité'
-                    type='number'
-                    name=''
-                    value=''
-                    onChange={() => { }}
-                />
-                <Input
-                    reference={prixUnit}
-                    label='Prix Unitaire'
-                    type='number'
-                    name=''
-                    value=''
-                    onChange={() => { }}
-                />
-                <Input
-                    reference={dateApprovRef}
-                    label='Date Achat'
-                    type='date'
-                    name=''
-                    value=''
-                    onChange={() => { }}
-                />
-                <Input
-                    reference={dateExpRef}
-                    label='Date Péremption'
-                    type='date'
-                    name=''
-                    value=''
-                    onChange={() => { }}
-                />
-            </div> */}
         </div>
     )
 }

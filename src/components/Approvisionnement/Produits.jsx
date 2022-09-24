@@ -8,7 +8,7 @@ import { useStateContext } from "../../context/ContextProvider";
 const Produits = () => {
     const searchRef = useRef();
 
-    const { products, isFilter, handleChangeIsFilter, panierApprov, setPanierApprov, updatePanierApprov } = useStateContext();
+    const { products, isFilter, handleChangeIsFilter, setPanierApprov, updatePanierApprov } = useStateContext();
     const productsData = [];
     const recherche = (condition, datas) => {
         if (condition) {
