@@ -4,9 +4,11 @@ import Button from '../Button';
 
 import Input from '../Input'
 import Select from '../Select';
+import ApprovBonCmd from './ApprovBonCmd';
 
 const ParamsBonCommande = () => {
     const [openParamsBon, setOpenParamsBon] = useState(false);
+    const [formApprovBon, setFormApprovBon] = useState(false)
 
     const handleOpen = () => {
         setOpenParamsBon(prev => !prev);
@@ -18,7 +20,7 @@ const ParamsBonCommande = () => {
 
     return (
         <div>
-            <Accordion
+            {/* <Accordion
                 open={openParamsBon}
                 animate={{
                     mount: { scale: 1 },
@@ -60,13 +62,19 @@ const ParamsBonCommande = () => {
                                 <Button
                                     label='Continuer'
                                     style='bg-teal-900 hover:bg-teal-800 text-white font-semibold p-2'
-                                    onClick={() => { }}
+                                    onClick={() => setFormApprovBon(true)}
                                 />
                             </div>
+                            {
+                                formApprovBon && <ApprovBonCmd
+                                    open={formApprovBon}
+                                    handleOpen={() => setFormApprovBon(false)}
+                                />
+                            }
                         </div>
                     </div>
                 </AccordionBody>
-            </Accordion>
+            </Accordion> */}
         </div>
     )
 }

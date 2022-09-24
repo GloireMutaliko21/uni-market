@@ -23,7 +23,7 @@ const FormAdd = () => {
 
     return (
         <div>
-            <div className='flex mb-3'>
+            {/* <div className='flex mb-3'>
                 <Select
                     reference={produitRef}
                     label='Fournisseur'
@@ -100,7 +100,7 @@ const FormAdd = () => {
                     value=''
                     onChange={() => { }}
                 />
-            </div>
+            </div> */}
         </div>
     )
 }
