@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 
@@ -7,6 +7,7 @@ import { useStateContext } from "../../context/ContextProvider";
 
 const FormAdd = () => {
     const { panierApprov, updatePanierApprov, setPanierApprov } = useStateContext();
+    const [disabledField, setDisabledField] = useState();
 
     const deleteProduct = (index) => {
         updatePanierApprov.splice(index, 1);
