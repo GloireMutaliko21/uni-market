@@ -35,7 +35,13 @@ export const ContextProvider = memo(({ children }) => {
             designation: "",
             refAgence: 1
         }
-    })
+    });
+
+    const [isFilter, setIsFilter] = useState('');
+
+    const handleChangeIsFilter = (e) => {
+        setIsFilter(e.target.value)
+    }
 
     const rememberMe = useRef();
     const sidebar = useRef();
@@ -53,6 +59,7 @@ export const ContextProvider = memo(({ children }) => {
                 products, setProducts,
                 categProducts, setCategProducts,
                 addData, setAddData,
+                isFilter, handleChangeIsFilter,
             }}
         >
             {children}
