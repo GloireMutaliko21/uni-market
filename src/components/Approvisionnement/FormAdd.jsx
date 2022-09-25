@@ -4,10 +4,12 @@ import { MdDelete } from "react-icons/md";
 
 import Button from '../Button';
 import { useStateContext } from "../../context/ContextProvider";
+import UpdateData from './UpdateData';
 
 const FormAdd = () => {
     const { panierApprov, updatePanierApprov, setPanierApprov } = useStateContext();
-    const [disabledField, setDisabledField] = useState();
+    const [isFormUpdate, setIsFormUpdate] = useState(false);
+    const [productIndex, setProductIndex] = useState();
 
     const deleteProduct = (index) => {
         updatePanierApprov.splice(index, 1);
@@ -29,19 +31,19 @@ const FormAdd = () => {
                         </div>
                         <div>
                             <p className='text-blue-gray-600'>QTE</p>
-                            <p className='text-center uppercase'>1.0</p>
+                            <p className='text-center uppercase'>{produit.qte}</p>
                         </div>
                         <div>
                             <p className='text-blue-gray-600'>P.U</p>
-                            <p className='text-center uppercase'>1.0</p>
+                            <p className='text-center uppercase'>{produit.pu}</p>
                         </div>
                         <div>
                             <p className='text-blue-gray-600'>LOT</p>
-                            <p className='text-center uppercase'>1.0</p>
+                            <p className='text-center uppercase'>{produit.lo}</p>
                         </div>
                         <div>
                             <p className='text-blue-gray-600'>DATE EXP.</p>
-                            <p className='text-center uppercase'>1.0</p>
+                            <p className='text-center uppercase'>{produit.dateExpiration}</p>
                         </div>
                     </div>
                     <div className='text-sm'>
@@ -49,6 +51,7 @@ const FormAdd = () => {
                             <Button
                                 icon={<AiFillEdit className='' />}
                                 label='Edit'
+                                onClick={() => { setIsFormUpdate(true); setProductIndex(index) }}
                             />
                         </div>
                         <div className='text-orange-700 '>
@@ -58,6 +61,9 @@ const FormAdd = () => {
                                 onClick={() => deleteProduct(index)}
                             />
                         </div>
+                    </div>
+                    <div>
+                        {isFormUpdate && index === productIndex && <UpdateData />}
                     </div>
                 </div>
             ))}

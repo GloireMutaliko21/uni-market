@@ -1,6 +1,5 @@
 import React from 'react'
 import FormAdd from '../components/Approvisionnement/FormAdd';
-import ParamsBonCommande from '../components/Approvisionnement/ParamsBonCommande';
 import Produits from '../components/Approvisionnement/Produits';
 
 const Approv = () => {

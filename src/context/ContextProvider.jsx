@@ -38,10 +38,10 @@ export const ContextProvider = memo(({ children }) => {
         addApprov: {
             codeProduit: "",
             designation: "",
-            pu: "",
-            qte: "",
-            lo: "",
-            dateExpiration: ""
+            pu: "1.0",
+            qte: "1.0",
+            lo: "000",
+            dateExpiration: "---"
         }
     });
 
