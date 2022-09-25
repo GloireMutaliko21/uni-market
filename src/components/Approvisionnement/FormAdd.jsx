@@ -21,7 +21,7 @@ const FormAdd = () => {
         postData({
             codeAgence: 1,
             nomFournisseur: "ORDINAIRE",
-            detail: panierApprov
+            detail: JSON.stringify(panierApprov)
         }, '/approvisionnement/add', null,
             setAddData(
                 prevData => {
