@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 
@@ -68,10 +68,18 @@ const FormAdd = () => {
                         {isFormUpdate && index === productIndex &&
                             <UpdateData
                                 onClose={() => setIsFormUpdate(false)}
+                                index={index}
                             />}
                     </div>
                 </div>
             ))}
+            <div className='flex justify-end my-5'>
+                <Button
+                    label='Terminer'
+                    style='bg-teal-900 hover:bg-teal-800 text-white font-semibold p-3'
+
+                />
+            </div>
         </div>
     )
 }
