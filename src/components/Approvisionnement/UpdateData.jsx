@@ -38,7 +38,8 @@ const UpdateData = ({ onClose }) => {
             />
             <div className='flex justify-around w-96'>
                 <Button
-                    icon={<BsCheckCircleFill className=' text-teal-900 p-1 text-3xl' />}
+                    label='Valider'
+                    style='text-green-800 hover:underline'
                 />
                 <Button
                     icon={<TiDeleteOutline className='text-2xl text-red-700' />}
