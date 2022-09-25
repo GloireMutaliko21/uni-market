@@ -35,7 +35,16 @@ export const ContextProvider = memo(({ children }) => {
             designation: "",
             refAgence: 1
         }
-    })
+    });
+
+    const [panierApprov, setPanierApprov] = useState([]);
+    const updatePanierApprov = [...panierApprov];
+
+    const [isFilter, setIsFilter] = useState('');
+
+    const handleChangeIsFilter = (e) => {
+        setIsFilter(e.target.value)
+    }
 
     const rememberMe = useRef();
     const sidebar = useRef();
@@ -53,6 +62,9 @@ export const ContextProvider = memo(({ children }) => {
                 products, setProducts,
                 categProducts, setCategProducts,
                 addData, setAddData,
+                panierApprov, setPanierApprov,
+                updatePanierApprov,
+                isFilter, handleChangeIsFilter,
             }}
         >
             {children}

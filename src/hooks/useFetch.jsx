@@ -27,7 +27,7 @@ export function getData(data, setData, url) {
                     localStorage.removeItem('isLogged');
                 }
             } catch (error) {
-                setLoginStatus(false);
+                setBoolingState({ ...boolingState, loginStatus: false });
                 localStorage.removeItem('isLogged');
             }
         })();
