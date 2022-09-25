@@ -5,9 +5,10 @@ import { MdDelete } from "react-icons/md";
 import Button from '../Button';
 import { useStateContext } from "../../context/ContextProvider";
 import UpdateData from './UpdateData';
+import { postData } from '../../hooks/useFetch';
 
 const FormAdd = () => {
-    const { panierApprov, updatePanierApprov, setPanierApprov } = useStateContext();
+    const { panierApprov, updatePanierApprov, setPanierApprov, setAddData, setGetData } = useStateContext();
     const [isFormUpdate, setIsFormUpdate] = useState(false);
     const [productIndex, setProductIndex] = useState();
 
@@ -15,6 +16,30 @@ const FormAdd = () => {
         updatePanierApprov.splice(index, 1);
         setPanierApprov(updatePanierApprov);
     }
+
+    const postApprov = () => {
+        postData({
+            codeAgence: 1,
+            nomFournisseur: "ORDINAIRE",
+            detail: panierApprov
+        }, '/approvisionnement/add', null,
+            setAddData(
+                prevData => {
+                    return {
+                        ...prevData,
+                        addApprov: {
+                            designation: "",
+                            pu: "",
+                            qte: "",
+                            lo: "",
+                            dateExpiration: "---",
+                        }
+                    }
+                }
+            ));
+        setGetData(true);
+        console.log(panierApprov);
+    };
 
     return (
         <div className='text-xs mt-2'>
@@ -77,7 +102,7 @@ const FormAdd = () => {
                 <Button
                     label='Terminer'
                     style='bg-teal-900 hover:bg-teal-800 text-white font-semibold p-3'
-
+                    onClick={postApprov}
                 />
             </div>
         </div>
