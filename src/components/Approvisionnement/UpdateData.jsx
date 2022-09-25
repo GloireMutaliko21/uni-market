@@ -1,24 +1,50 @@
 import React from 'react'
-import Input from '../Input'
+import { TiDeleteOutline } from "react-icons/ti";
+import { BsCheckCircleFill } from "react-icons/bs";
 
-const UpdateData = () => {
-    const Input = ({ type, onChange, value }) => {
+import Button from '../Button'
+
+const UpdateData = ({ onClose }) => {
+    const Input = ({ type, onChange, value, placehoder }) => {
         return (
             <input
                 type={type}
                 onChange={onChange}
                 value={value}
-                className='w-12'
+                placeholder={placehoder}
+                className="w-full text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-1 px-2 mr-2 block appearance-none"
             >
             </input>
         )
     }
 
     return (
-        <div className='flex justify-between'>
-            <Input />
-            <Input />
-            <Input />
+        <div className='flex justify-between items-center'>
+            <Input
+                placehoder='Quantité'
+                type='number'
+            />
+            <Input
+                placehoder='Prix Unitaire'
+                type='number'
+            />
+            <Input
+                placehoder='N° du lot'
+                type='text'
+            />
+            <Input
+                placehoder='Date Exp.'
+                type='date'
+            />
+            <div className='flex justify-around w-96'>
+                <Button
+                    icon={<BsCheckCircleFill className=' text-teal-900 p-1 text-3xl' />}
+                />
+                <Button
+                    icon={<TiDeleteOutline className='text-2xl text-red-700' />}
+                    onClick={onClose}
+                />
+            </div>
         </div>
     )
 }
