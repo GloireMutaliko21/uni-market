@@ -36,7 +36,6 @@ export const ContextProvider = memo(({ children }) => {
             refAgence: 1
         },
         addApprov: {
-            codeProduit: "",
             designation: "",
             pu: "1.0",
             qte: "1.0",

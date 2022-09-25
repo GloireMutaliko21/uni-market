@@ -25,8 +25,8 @@ const Produits = () => {
     });
 
     const addProduct = (prod) => {
-        if (!updatePanierApprov.find(produit => produit.codeProduit === prod.code)) {
-            updatePanierApprov.push({ ...addData.addApprov, codeProduit: prod.code, designation: prod.designation });
+        if (!updatePanierApprov.find(produit => produit.designation === prod.designation)) {
+            updatePanierApprov.push({ ...addData.addApprov, designation: prod.designation });
             setPanierApprov(updatePanierApprov);
         }
     };
