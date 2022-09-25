@@ -8,7 +8,7 @@ import { useStateContext } from "../../context/ContextProvider";
 const Produits = () => {
     const searchRef = useRef();
 
-    const { products, isFilter, handleChangeIsFilter, setPanierApprov, updatePanierApprov } = useStateContext();
+    const { products, isFilter, handleChangeIsFilter, panierApprov, setPanierApprov, updatePanierApprov, addData } = useStateContext();
     const productsData = [];
     const recherche = (condition, datas) => {
         if (condition) {
@@ -25,8 +25,8 @@ const Produits = () => {
     });
 
     const addProduct = (prod) => {
-        if (!updatePanierApprov.find(produit => produit.designation === prod.designation)) {
-            updatePanierApprov.push(prod);
+        if (!updatePanierApprov.find(produit => produit.codeProduit === prod.code)) {
+            updatePanierApprov.push({ ...addData.addApprov, codeProduit: prod.code, designation: prod.designation });
             setPanierApprov(updatePanierApprov);
         }
     };
@@ -49,7 +49,7 @@ const Produits = () => {
                 <div
                     key={index}
                     className={`${index % 2 === 0 ? 'bg-teal-200' : 'border border-teal-100 text-teal-300 font-medium'} flex justify-between py-1 px-2 text-titleColor hover:cursor-pointer`}
-                    onClick={() => { addProduct(prod) }}
+                    onClick={() => { addProduct(prod); console.log(panierApprov) }}
                 >
                     <p className='uppercase'>{prod.designation}</p>
                     <p>
