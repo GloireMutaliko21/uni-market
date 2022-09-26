@@ -99,11 +99,11 @@ const FormAdd = () => {
                 </div>
             ))}
             <div className='flex justify-end my-5'>
-                <Button
+                {panierApprov.length > 0 && <Button
                     label='Terminer'
                     style='bg-teal-900 hover:bg-teal-800 text-white font-semibold p-3'
                     onClick={postApprov}
-                />
+                />}
             </div>
         </div>
     )

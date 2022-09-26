@@ -37,10 +37,10 @@ export const ContextProvider = memo(({ children }) => {
         },
         addApprov: {
             designation: "",
-            pu: "1.0",
-            qte: "1.0",
+            pu: "1",
+            qte: "1",
             lo: "000",
-            dateExpiration: "---"
+            dateExpiration: new Date().toISOString().slice(0, 10)
         }
     });
 
