@@ -135,30 +135,34 @@ const FormAdd = () => {
                                             onChange={(e) => handleChange(e, index)}
                                         />
                                     </div>
-                                    <div className='bg-green-700 text-white py-1 px-2 rounded-full'>
-                                        <Button
-                                            label='Valider'
-                                            onClick={() => {
-                                                // upDateApprovProduct(index, { ...panierApprov[index], ...newData });
-                                                setIsFormUpdate(false);
-                                                setProductIndex();
-                                            }}
-                                        />
-                                    </div>
+
                                 </div>
                             }
                         </div>
                         <div className='text-sm'>
-                            <div className='text-green-900 shadow-xl'>
-                                <Button
-                                    icon={<AiFillEdit className='' />}
-                                    label='Edit'
-                                    onClick={() => {
-                                        setIsFormUpdate(true);
-                                        setProductIndex(index);
-                                    }}
-                                />
-                            </div>
+                            {index !== productIndex &&
+                                <div className='text-green-900 shadow-xl'>
+                                    <Button
+                                        icon={<AiFillEdit className='' />}
+                                        label='Edit'
+                                        onClick={() => {
+                                            setIsFormUpdate(true);
+                                            setProductIndex(index);
+                                        }}
+                                    />
+                                </div>
+                            }
+                            {isFormUpdate && index === productIndex &&
+                                <div className='bg-green-700 text-white py-1 px-2 rounded-full'>
+                                    <Button
+                                        label='Valider'
+                                        onClick={() => {
+                                            setIsFormUpdate(false);
+                                            setProductIndex();
+                                        }}
+                                    />
+                                </div>
+                            }
                             <div className='text-orange-700 '>
                                 <Button
                                     icon={<MdDelete />}
