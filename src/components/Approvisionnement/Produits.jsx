@@ -1,12 +1,14 @@
-import React, { useRef } from 'react'
-import { MdAddCircle, MdOutlineWarning } from "react-icons/md";
+import React, { useRef, useState } from 'react'
+import { MdAddCircle } from "react-icons/md";
 import { FcHighPriority } from "react-icons/fc";
 
 import { getProduits } from '../../constants/api'
 import { useStateContext } from "../../context/ContextProvider";
+import { Alert } from '@material-tailwind/react';
 
 const Produits = () => {
     const searchRef = useRef();
+    const [productAdded, setProductAdded] = useState(false)
 
     const { products, isFilter, handleChangeIsFilter, panierApprov, setPanierApprov, updatePanierApprov, addData } = useStateContext();
     const productsData = [];
@@ -28,6 +30,11 @@ const Produits = () => {
         if (!updatePanierApprov.find(produit => produit.designation === prod.designation)) {
             updatePanierApprov.push({ ...addData.addApprov, designation: prod.designation });
             setPanierApprov(updatePanierApprov);
+        } else {
+            setProductAdded(true);
+            setTimeout(() => {
+                setProductAdded(false);
+            }, 2000);
         }
     };
 
@@ -57,6 +64,16 @@ const Produits = () => {
                     </p>
                 </div>
             )) : <div className='text-teal-600 font-light flex items-center justify-center'><FcHighPriority className='mr-4 text-lg' />Aucun produit</div>}
+            <Alert
+                show={productAdded}
+                animate={{
+                    mount: { scale: 1, y: 0 },
+                    unmount: { scale: 0, y: 25 },
+                }}
+                className='bg-gray-50 w-max text-red-700 top-12 fixed'
+            >
+                Produit déjà ajouté
+            </Alert>
         </div>
     )
 }
