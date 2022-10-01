@@ -77,6 +77,7 @@ const FormAddCategProduct = () => {
                     reference={designationCategRef}
                     label='Designation'
                     type='text'
+                    style='w-full'
                     name='designationCateg'
                     value={addData.addCategorie.designation}
                     onChange={handleChange}
