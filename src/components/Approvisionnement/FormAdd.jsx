@@ -4,7 +4,6 @@ import { MdDelete } from "react-icons/md";
 
 import Button from '../Button';
 import { useStateContext } from "../../context/ContextProvider";
-import UpdateData from './UpdateData';
 import { postData } from '../../hooks/useFetch';
 import Input from '../Input';
 
@@ -13,33 +12,15 @@ const FormAdd = () => {
     const [isFormUpdate, setIsFormUpdate] = useState(false);
     const [productIndex, setProductIndex] = useState();
 
-    const [newData, setNewData] = useState({
-        qte: "",
-        pu: "",
-        lo: "",
-        dateExpiration: ""
-    });
-
     const handleChange = useMemo(() =>
         (e, index) => {
-
-            setNewData(prevData => {
-                return {
-                    ...prevData,
-                    [e.target.name]: e.target.value
-                }
-            });
             upDateApprovProduct(index, { ...panierApprov[index], [e.target.name]: e.target.value });
-            // console.log(newData);
-        }, [{ ...newData }]
+        }, [{ ...panierApprov }]
     );
 
     const upDateApprovProduct = (index, value) => {
         updatePanierApprov.splice(index, 1, value);
         setPanierApprov(updatePanierApprov);
-        setNewData({
-            qte: "", pu: "", lo: "", dateExpiration: ""
-        })
     };
 
     const deleteProduct = (index) => {
@@ -81,7 +62,7 @@ const FormAdd = () => {
                             <p className='px-2 mt-1 bg-teal-900 text-white text-center'>{index + 1}</p>
                         </div>
                         <div className='flex justify-between w-3/5'>
-                            <div>
+                            <div className='min-w-max'>
                                 <p className='text-blue-gray-600'>DESIGNATION</p>
                                 <p className='text-center uppercase'>{produit.designation}</p>
 
@@ -89,21 +70,21 @@ const FormAdd = () => {
                             {
                                 index !== productIndex &&
                                 <div className='ml-10 flex gap-2'>
-                                    <div>
+                                    <div className='w-20 text-center'>
                                         <p className='text-blue-gray-600'>QTE</p>
-                                        <p className='text-center uppercase w-20'>{produit.qte}</p>
+                                        <p className='uppercase'>{produit.qte}</p>
                                     </div>
-                                    <div>
+                                    <div className='w-20 text-center'>
                                         <p className='text-blue-gray-600'>P.U</p>
-                                        <p className='text-center uppercase w-20'>{produit.pu}</p>
+                                        <p className='uppercase'>{produit.pu}</p>
                                     </div>
-                                    <div>
+                                    <div className='w-20 text-center'>
                                         <p className='text-blue-gray-600'>LOT</p>
-                                        <p className='text-center uppercase w-20'>{produit.lo}</p>
+                                        <p className='uppercase'>{produit.lo}</p>
                                     </div>
-                                    <div>
+                                    <div className='w-20 text-center'>
                                         <p className='text-blue-gray-600'>DATE EXP.</p>
-                                        <p className='text-center uppercase w-20'>{produit.dateExpiration}</p>
+                                        <p className='uppercase'>{produit.dateExpiration}</p>
                                     </div>
 
                                 </div>
@@ -187,13 +168,6 @@ const FormAdd = () => {
                             </div>
                         </div>
                     </div>
-                    {/* <div className='flex justify-around'>
-                        {isFormUpdate && index === productIndex &&
-                            <UpdateData
-                                onClose={() => setIsFormUpdate(false)}
-                                index={index}
-                            />}
-                    </div> */}
                 </div>
             ))}
             <div className='flex justify-end my-5'>
