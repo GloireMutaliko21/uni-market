@@ -40,10 +40,10 @@ const FormAdd = () => {
                         ...prevData,
                         addApprov: {
                             designation: "",
-                            pu: "",
-                            qte: "",
-                            lo: "",
-                            dateExpiration: "---",
+                            pu: "1",
+                            qte: "1",
+                            lo: "000",
+                            dateExpiration: new Date().toISOString().slice(0, 10),
                         }
                     }
                 }

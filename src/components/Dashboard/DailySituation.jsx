@@ -39,7 +39,7 @@ const DailySituation = () => {
                     />
                 )}
             </div>
-            <div className=' flex justify-end my-5'>
+            <div className=' flex justify-end'>
                 <CalendarComponent id='calendar' />
             </div>
         </div>
