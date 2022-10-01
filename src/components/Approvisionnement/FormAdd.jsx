@@ -105,7 +105,7 @@ const FormAdd = () => {
                                 </div>
                             }
                             {isFormUpdate && index === productIndex &&
-                                <div className='ml-10 flex gap-2'>
+                                <div className='ml-10 flex items-center gap-2'>
                                     <div>
                                         <p className='text-blue-gray-600'>QTE</p>
                                         <Input
@@ -150,6 +150,17 @@ const FormAdd = () => {
                                             onChange={handleChange}
                                         />
                                     </div>
+                                    <div className='bg-green-700 text-white py-1 px-2 rounded-full'>
+                                        <Button
+                                            label='Valider'
+                                            onClick={() => {
+                                                upDateApprovProduct(index, { ...panierApprov[index], ...newData });
+                                                setIsFormUpdate(false);
+                                                setProductIndex()
+                                                console.log(panierApprov)
+                                            }}
+                                        />
+                                    </div>
                                 </div>
                             }
                         </div>
@@ -161,8 +172,6 @@ const FormAdd = () => {
                                     onClick={() => {
                                         setIsFormUpdate(true);
                                         setProductIndex(index);
-                                        upDateApprovProduct(index, { ...panierApprov[index], ...newData });
-                                        console.log(panierApprov)
                                     }}
                                 />
                             </div>
