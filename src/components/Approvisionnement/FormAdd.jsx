@@ -8,7 +8,7 @@ import { postData } from '../../hooks/useFetch';
 import Input from '../Input';
 
 const FormAdd = () => {
-    const { panierApprov, updatePanierApprov, setPanierApprov, setAddData, setGetData } = useStateContext();
+    const { panierApprov, updatePanierApprov, setPanierApprov, setAddData, setGetData, boolingState, setBoolingState } = useStateContext();
     const [isFormUpdate, setIsFormUpdate] = useState(false);
     const [productIndex, setProductIndex] = useState();
 
@@ -33,7 +33,9 @@ const FormAdd = () => {
             codeAgence: 1,
             nomFournisseur: "ORDINAIRE",
             detail: JSON.stringify(panierApprov)
-        }, '/approvisionnement/add', null,
+        }, '/approvisionnement/add', setBoolingState, {
+            ...boolingState, registerSuccess: true
+        },
             setAddData(
                 prevData => {
                     return {
@@ -49,7 +51,7 @@ const FormAdd = () => {
                 }
             ));
         setGetData(true);
-        console.log(panierApprov);
+        // console.log(panierApprov);
     };
 
     return (

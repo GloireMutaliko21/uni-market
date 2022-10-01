@@ -25,9 +25,9 @@ const FormAddProduct = ({ booleanState, setBooleanState, value, cancel, categVal
     } = useStateContext();
 
     const postProduct = () => {
-        postData(addData.addProduct, '/produit/add', setBoolingState({
+        postData(addData.addProduct, '/produit/add', setBoolingState, {
             ...boolingState, formProduct: false, registerSuccess: true
-        }),
+        },
             setAddData(
                 prevData => {
                     return {
