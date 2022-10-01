@@ -21,7 +21,7 @@ const FormAdd = () => {
     });
 
     const handleChange = useMemo(() =>
-        (e) => {
+        (e, index) => {
 
             setNewData(prevData => {
                 return {
@@ -29,13 +29,17 @@ const FormAdd = () => {
                     [e.target.name]: e.target.value
                 }
             });
-            console.log(newData);
+            upDateApprovProduct(index, { ...panierApprov[index], [e.target.name]: e.target.value });
+            // console.log(newData);
         }, [{ ...newData }]
     );
 
     const upDateApprovProduct = (index, value) => {
         updatePanierApprov.splice(index, 1, value);
         setPanierApprov(updatePanierApprov);
+        setNewData({
+            qte: "", pu: "", lo: "", dateExpiration: ""
+        })
     };
 
     const deleteProduct = (index) => {
@@ -113,8 +117,8 @@ const FormAdd = () => {
                                             type='number'
                                             name='qte'
                                             style='w-20 px-1 py-0'
-                                            value={newData.qte}
-                                            onChange={handleChange}
+                                            value={produit.qte}
+                                            onChange={(e) => handleChange(e, index)}
                                         />
                                     </div>
                                     <div>
@@ -124,8 +128,8 @@ const FormAdd = () => {
                                             type='number'
                                             name='pu'
                                             style='w-20 px-1 py-0'
-                                            value={newData.pu}
-                                            onChange={handleChange}
+                                            value={produit.pu}
+                                            onChange={(e) => handleChange(e, index)}
                                         />
                                     </div>
                                     <div>
@@ -135,8 +139,8 @@ const FormAdd = () => {
                                             type='number'
                                             name='lo'
                                             style='w-20 px-1 py-0 mt-0 mb-0'
-                                            value={newData.lo}
-                                            onChange={handleChange}
+                                            value={produit.lo}
+                                            onChange={(e) => handleChange(e, index)}
                                         />
                                     </div>
                                     <div>
@@ -146,18 +150,17 @@ const FormAdd = () => {
                                             type='date'
                                             name='dateExpiration'
                                             style='w-full px-1 py-0'
-                                            value={newData.dateExpiration}
-                                            onChange={handleChange}
+                                            value={produit.dateExpiration}
+                                            onChange={(e) => handleChange(e, index)}
                                         />
                                     </div>
                                     <div className='bg-green-700 text-white py-1 px-2 rounded-full'>
                                         <Button
                                             label='Valider'
                                             onClick={() => {
-                                                upDateApprovProduct(index, { ...panierApprov[index], ...newData });
+                                                // upDateApprovProduct(index, { ...panierApprov[index], ...newData });
                                                 setIsFormUpdate(false);
-                                                setProductIndex()
-                                                console.log(panierApprov)
+                                                setProductIndex();
                                             }}
                                         />
                                     </div>
