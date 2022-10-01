@@ -3,6 +3,7 @@ import { TiDeleteOutline } from "react-icons/ti";
 
 import Button from '../Button'
 import { useStateContext } from "../../context/ContextProvider";
+import Input from '../Input';
 
 const UpdateData = ({ onClose, index }) => {
     const { updatePanierApprov, addData, setPanierApprov, panierApprov } = useStateContext();
@@ -13,19 +14,19 @@ const UpdateData = ({ onClose, index }) => {
         dateExpiration: ""
     });
 
-    const Input = ({ type, onChange, value, placehoder, name }) => {
-        return (
-            <input
-                type={type}
-                onChange={onChange}
-                value={value}
-                placeholder={placehoder}
-                className="w-full text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-1 px-2 mr-2 block appearance-none"
-                name={name}
-            >
-            </input>
-        )
-    };
+    // const Input = ({ type, onChange, value, placehoder, name }) => {
+    //     return (
+    //         <input
+    //             type={type}
+    //             onChange={onChange}
+    //             value={value}
+    //             placeholder={placehoder}
+    //             className="w-full text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-1 px-2 mr-2 block appearance-none"
+    //             name={name}
+    //         >
+    //         </input>
+    //     )
+    // };
 
     const handleChange = useMemo(() =>
         (e) => {
@@ -48,9 +49,10 @@ const UpdateData = ({ onClose, index }) => {
     return (
         <div className='flex justify-between items-center'>
             <Input
-                placehoder='Quantité'
+                placeholder='Quantité'
                 type='number'
                 name='qte'
+                style='w-full px-1 py-0'
                 value={newData.qte}
                 onChange={handleChange}
             />
@@ -58,6 +60,7 @@ const UpdateData = ({ onClose, index }) => {
                 placehoder='Prix Unitaire'
                 type='number'
                 name='pu'
+                style='w-full'
                 value={newData.pu}
                 onChange={handleChange}
             />
@@ -65,6 +68,7 @@ const UpdateData = ({ onClose, index }) => {
                 placehoder='N° du lot'
                 type='text'
                 name='lo'
+                style='w-full'
                 value={newData.lo}
                 onChange={handleChange}
             />

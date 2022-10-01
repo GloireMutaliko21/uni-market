@@ -119,6 +119,7 @@ const Login = () => {
                                     type='email'
                                     value=''
                                     onChange={() => { }}
+                                    style='w-full'
                                 />
                             </div>
                         </Dialogue>}

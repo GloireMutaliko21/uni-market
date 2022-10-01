@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 
@@ -6,16 +6,42 @@ import Button from '../Button';
 import { useStateContext } from "../../context/ContextProvider";
 import UpdateData from './UpdateData';
 import { postData } from '../../hooks/useFetch';
+import Input from '../Input';
 
 const FormAdd = () => {
     const { panierApprov, updatePanierApprov, setPanierApprov, setAddData, setGetData } = useStateContext();
     const [isFormUpdate, setIsFormUpdate] = useState(false);
     const [productIndex, setProductIndex] = useState();
 
+    const [newData, setNewData] = useState({
+        qte: "",
+        pu: "",
+        lo: "",
+        dateExpiration: ""
+    });
+
+    const handleChange = useMemo(() =>
+        (e) => {
+
+            setNewData(prevData => {
+                return {
+                    ...prevData,
+                    [e.target.name]: e.target.value
+                }
+            });
+            console.log(newData);
+        }, [{ ...newData }]
+    );
+
+    const upDateApprovProduct = (index, value) => {
+        updatePanierApprov.splice(index, 1, value);
+        setPanierApprov(updatePanierApprov);
+    };
+
     const deleteProduct = (index) => {
         updatePanierApprov.splice(index, 1);
         setPanierApprov(updatePanierApprov);
-    }
+    };
 
     const postApprov = () => {
         postData({
@@ -54,30 +80,90 @@ const FormAdd = () => {
                             <div>
                                 <p className='text-blue-gray-600'>DESIGNATION</p>
                                 <p className='text-center uppercase'>{produit.designation}</p>
+
                             </div>
-                            <div>
-                                <p className='text-blue-gray-600'>QTE</p>
-                                <p className='text-center uppercase'>{produit.qte}</p>
-                            </div>
-                            <div>
-                                <p className='text-blue-gray-600'>P.U</p>
-                                <p className='text-center uppercase'>{produit.pu}</p>
-                            </div>
-                            <div>
-                                <p className='text-blue-gray-600'>LOT</p>
-                                <p className='text-center uppercase'>{produit.lo}</p>
-                            </div>
-                            <div>
-                                <p className='text-blue-gray-600'>DATE EXP.</p>
-                                <p className='text-center uppercase'>{produit.dateExpiration}</p>
-                            </div>
+                            {
+                                index !== productIndex &&
+                                <div className='ml-10 flex gap-2'>
+                                    <div>
+                                        <p className='text-blue-gray-600'>QTE</p>
+                                        <p className='text-center uppercase w-20'>{produit.qte}</p>
+                                    </div>
+                                    <div>
+                                        <p className='text-blue-gray-600'>P.U</p>
+                                        <p className='text-center uppercase w-20'>{produit.pu}</p>
+                                    </div>
+                                    <div>
+                                        <p className='text-blue-gray-600'>LOT</p>
+                                        <p className='text-center uppercase w-20'>{produit.lo}</p>
+                                    </div>
+                                    <div>
+                                        <p className='text-blue-gray-600'>DATE EXP.</p>
+                                        <p className='text-center uppercase w-20'>{produit.dateExpiration}</p>
+                                    </div>
+
+                                </div>
+                            }
+                            {isFormUpdate && index === productIndex &&
+                                <div className='ml-10 flex gap-2'>
+                                    <div>
+                                        <p className='text-blue-gray-600'>QTE</p>
+                                        <Input
+                                            placeholder='Quantité'
+                                            type='number'
+                                            name='qte'
+                                            style='w-20 px-1 py-0'
+                                            value={newData.qte}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                    <div>
+                                        <p className='text-blue-gray-600'>P.U</p>
+                                        <Input
+                                            placeholder='Prix Unit'
+                                            type='number'
+                                            name='pu'
+                                            style='w-20 px-1 py-0'
+                                            value={newData.pu}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                    <div>
+                                        <p className='text-blue-gray-600'>LOT</p>
+                                        <Input
+                                            placeholder='N° du lot'
+                                            type='number'
+                                            name='lo'
+                                            style='w-20 px-1 py-0 mt-0 mb-0'
+                                            value={newData.lo}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                    <div>
+                                        <p className='text-blue-gray-600'>DATE EXP.</p>
+                                        <Input
+                                            placeholder='Date Exp'
+                                            type='date'
+                                            name='dateExpiration'
+                                            style='w-full px-1 py-0'
+                                            value={newData.dateExpiration}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                </div>
+                            }
                         </div>
                         <div className='text-sm'>
                             <div className='text-green-900 shadow-xl'>
                                 <Button
                                     icon={<AiFillEdit className='' />}
                                     label='Edit'
-                                    onClick={() => { setIsFormUpdate(true); setProductIndex(index) }}
+                                    onClick={() => {
+                                        setIsFormUpdate(true);
+                                        setProductIndex(index);
+                                        upDateApprovProduct(index, { ...panierApprov[index], ...newData });
+                                        console.log(panierApprov)
+                                    }}
                                 />
                             </div>
                             <div className='text-orange-700 '>
@@ -89,21 +175,23 @@ const FormAdd = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='flex justify-around'>
+                    {/* <div className='flex justify-around'>
                         {isFormUpdate && index === productIndex &&
                             <UpdateData
                                 onClose={() => setIsFormUpdate(false)}
                                 index={index}
                             />}
-                    </div>
+                    </div> */}
                 </div>
             ))}
             <div className='flex justify-end my-5'>
-                {panierApprov.length > 0 && <Button
-                    label='Terminer'
-                    style='bg-teal-900 hover:bg-teal-800 text-white font-semibold p-3'
-                    onClick={postApprov}
-                />}
+                {panierApprov.length > 0 &&
+                    <Button
+                        label='Terminer'
+                        style='bg-teal-900 hover:bg-teal-800 text-white font-semibold p-3'
+                        onClick={postApprov}
+                    />
+                }
             </div>
         </div>
     )
