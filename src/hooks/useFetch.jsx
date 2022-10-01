@@ -19,7 +19,6 @@ export function getData(data, setData, url) {
                 const response = await fetch(`${endPoint}${url}`, dataParams, { signal });
                 const responseData = await response.json();
                 if (response.status === 200) {
-                    console.log(responseData);
                     setData(responseData.data);
                     setGetData(false);
                 } if (response.status === 403) {
@@ -39,7 +38,7 @@ export function getData(data, setData, url) {
     return [data];
 }
 
-export async function postData(body, url, setBoolingState, resetData) {
+export async function postData(body, url, setBoolingState, boolingState, resetData) {
     const dataParams = {
         method: "POST",
         headers: {
@@ -51,11 +50,9 @@ export async function postData(body, url, setBoolingState, resetData) {
 
     try {
         const response = await fetch(`${endPoint}${url}`, dataParams);
-        const responseData = await response.json();
         if (response.status === 200) {
-            setBoolingState({});
+            setBoolingState(boolingState);
             resetData({});
-            console.log(responseData.data);
         }
 
     } catch (error) {

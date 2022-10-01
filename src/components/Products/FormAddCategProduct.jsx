@@ -17,9 +17,9 @@ const FormAddCategProduct = () => {
     } = useStateContext();
 
     const postCategorie = () => {
-        postData(addData.addCategorie, '/categorie/add', setBoolingState({
+        postData(addData.addCategorie, '/categorie/add', setBoolingState, {
             ...boolingState, formCategProduct: false, registerSuccess: true
-        }),
+        },
             setAddData(
                 prevData => {
                     return {

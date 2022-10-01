@@ -8,7 +8,7 @@ import { postData } from '../../hooks/useFetch';
 import Input from '../Input';
 
 const FormAdd = () => {
-    const { panierApprov, updatePanierApprov, setPanierApprov, setAddData, setGetData } = useStateContext();
+    const { panierApprov, updatePanierApprov, setPanierApprov, setAddData, setGetData, boolingState, setBoolingState } = useStateContext();
     const [isFormUpdate, setIsFormUpdate] = useState(false);
     const [productIndex, setProductIndex] = useState();
 
@@ -33,23 +33,25 @@ const FormAdd = () => {
             codeAgence: 1,
             nomFournisseur: "ORDINAIRE",
             detail: JSON.stringify(panierApprov)
-        }, '/approvisionnement/add', null,
+        }, '/approvisionnement/add', setBoolingState, {
+            ...boolingState, registerSuccess: true
+        },
             setAddData(
                 prevData => {
                     return {
                         ...prevData,
                         addApprov: {
                             designation: "",
-                            pu: "",
-                            qte: "",
-                            lo: "",
-                            dateExpiration: "---",
+                            pu: "1",
+                            qte: "1",
+                            lo: "000",
+                            dateExpiration: new Date().toISOString().slice(0, 10),
                         }
                     }
                 }
             ));
         setGetData(true);
-        console.log(panierApprov);
+        // console.log(panierApprov);
     };
 
     return (
@@ -135,30 +137,34 @@ const FormAdd = () => {
                                             onChange={(e) => handleChange(e, index)}
                                         />
                                     </div>
-                                    <div className='bg-green-700 text-white py-1 px-2 rounded-full'>
-                                        <Button
-                                            label='Valider'
-                                            onClick={() => {
-                                                // upDateApprovProduct(index, { ...panierApprov[index], ...newData });
-                                                setIsFormUpdate(false);
-                                                setProductIndex();
-                                            }}
-                                        />
-                                    </div>
+
                                 </div>
                             }
                         </div>
                         <div className='text-sm'>
-                            <div className='text-green-900 shadow-xl'>
-                                <Button
-                                    icon={<AiFillEdit className='' />}
-                                    label='Edit'
-                                    onClick={() => {
-                                        setIsFormUpdate(true);
-                                        setProductIndex(index);
-                                    }}
-                                />
-                            </div>
+                            {index !== productIndex &&
+                                <div className='text-green-900 shadow-xl'>
+                                    <Button
+                                        icon={<AiFillEdit className='' />}
+                                        label='Edit'
+                                        onClick={() => {
+                                            setIsFormUpdate(true);
+                                            setProductIndex(index);
+                                        }}
+                                    />
+                                </div>
+                            }
+                            {isFormUpdate && index === productIndex &&
+                                <div className='bg-green-700 text-white py-1 px-2 rounded-full'>
+                                    <Button
+                                        label='Valider'
+                                        onClick={() => {
+                                            setIsFormUpdate(false);
+                                            setProductIndex();
+                                        }}
+                                    />
+                                </div>
+                            }
                             <div className='text-orange-700 '>
                                 <Button
                                     icon={<MdDelete />}
