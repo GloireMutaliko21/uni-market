@@ -60,10 +60,6 @@ const FormAdd = () => {
             {panierApprov.map((produit, index) => (
                 <div key={index} className={`${index % 2 === 0 ? 'bg-white' : ''} p-2 border-b border-teal-900 mb-5`}>
                     <div className='flex justify-between items-center gap-6'>
-                        {/* <div>
-                            <p className='px-2 text-blue-gray-600'>N°</p>
-                            <p className='px-2 mt-1 bg-teal-900 text-white text-center rounded'>{index + 1}</p>
-                        </div> */}
                         <div className='flex justify-between w-3/5'>
                             <div className='min-w-max flex gap-5 items-center'>
                                 <div className='flex items-center'>
@@ -80,19 +76,15 @@ const FormAdd = () => {
                                         <div className='flex gap-2 text-sm text-gray-600'>
 
                                             <div className='text-center'>
-                                                {/* <p className='text-blue-gray-600'>QTE</p> */}
                                                 <p className='text-xs'>Qte: <span className='border px-2 rounded-md text-sm'>{produit.qte}</span></p>
                                             </div>
                                             <div className='text-center'>
-                                                {/* <p className='text-blue-gray-600'>P.U</p> */}
                                                 <p className='text-xs'>P.U: <span className='border px-2 rounded-md text-sm'>{produit.pu}</span></p>
                                             </div>
                                             <div className='text-center'>
-                                                {/* <p className='text-blue-gray-600'>LOT</p> */}
                                                 <p className='text-xs'>Lot: <span className='border px-2 rounded-md text-sm'>{produit.lo}</span></p>
                                             </div>
                                             <div className='text-center'>
-                                                {/* <p className='text-blue-gray-600'>DATE EXP.</p> */}
                                                 <p className='text-xs'>Exp: <span className='border px-2 rounded-md text-sm'>{produit.dateExpiration}</span></p>
                                             </div>
 
@@ -149,56 +141,6 @@ const FormAdd = () => {
                                     }
                                 </div>
                             </div>
-
-                            {/* {isFormUpdate && index === productIndex &&
-                                <div className='ml-10 flex items-center gap-2'>
-                                    <div>
-                                        <p className='text-blue-gray-600'>QTE</p>
-                                        <Input
-                                            placeholder='Quantité'
-                                            type='number'
-                                            name='qte'
-                                            style='w-20 px-1 py-0'
-                                            value={produit.qte}
-                                            onChange={(e) => handleChange(e, index)}
-                                        />
-                                    </div>
-                                    <div>
-                                        <p className='text-blue-gray-600'>P.U</p>
-                                        <Input
-                                            placeholder='Prix Unit'
-                                            type='number'
-                                            name='pu'
-                                            style='w-20 px-1 py-0'
-                                            value={produit.pu}
-                                            onChange={(e) => handleChange(e, index)}
-                                        />
-                                    </div>
-                                    <div>
-                                        <p className='text-blue-gray-600'>LOT</p>
-                                        <Input
-                                            placeholder='N° du lot'
-                                            type='number'
-                                            name='lo'
-                                            style='w-20 px-1 py-0 mt-0 mb-0'
-                                            value={produit.lo}
-                                            onChange={(e) => handleChange(e, index)}
-                                        />
-                                    </div>
-                                    <div>
-                                        <p className='text-blue-gray-600'>DATE EXP.</p>
-                                        <Input
-                                            placeholder='Date Exp'
-                                            type='date'
-                                            name='dateExpiration'
-                                            style='w-full px-1 py-0'
-                                            value={produit.dateExpiration}
-                                            onChange={(e) => handleChange(e, index)}
-                                        />
-                                    </div>
-
-                                </div>
-                            } */}
                         </div>
                         <div className='flex flex-col justify-between h-20'>
                             <div className='text-end'>
