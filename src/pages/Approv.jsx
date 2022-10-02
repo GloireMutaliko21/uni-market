@@ -9,7 +9,7 @@ const Approv = () => {
     return (
         <div className='px-2'>
             <h2 className='text-3xl font-black mx-10'>Approvisionnement</h2>
-            <div className='w-full grid md:grid-cols-[3fr_1fr] gap-3'>
+            <div className='w-full grid md:grid-cols-[3fr_1fr] gap-24'>
                 <FormAdd />
                 <Produits />
             </div>
