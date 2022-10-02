@@ -68,8 +68,8 @@ const FormAdd = () => {
                                     <div className='flex justify-between items-center'>
                                         <p className='text-base text-gray-700'>{produit.designation}</p>
                                         <div className='flex gap-2'>
-                                            <p className='text-white bg-red-400 rounded-full px-2 text-[10px] font-bold'>En commande</p>
-                                            <span className='text-deep-orange-600 font-bold border-b border-deep-orange-600'>240</span>
+                                            <p className='text-deep-orange-600 font-bold border-b border-deep-orange-600 text-[10px]'>Total: </p>
+                                            <span className='text-white bg-red-400 rounded-full px-2  font-bold'>{parseFloat(produit.qte) * parseFloat(produit.pu)}</span>
                                         </div>
                                     </div>
                                     <div className='flex gap-2 text-green-600'>
