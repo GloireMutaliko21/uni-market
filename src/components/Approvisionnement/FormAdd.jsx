@@ -52,14 +52,13 @@ const FormAdd = () => {
                 }
             ));
         setGetData(true);
-        // console.log(panierApprov);
     };
 
     return (
-        <div className='text-xs mt-10'>
+        <div className='text-xs mt-10 ml-10'>
             {panierApprov.map((produit, index) => (
                 <div key={index} className={`${index % 2 === 0 ? 'bg-white' : ''} p-2 border-b border-teal-900`}>
-                    <div className='flex justify-between items-center gap-6'>
+                    <div className='flex justify-between items-center'>
                         <div className='flex justify-between w-3/5'>
                             <div className='min-w-max flex gap-5 items-center'>
                                 <div className='flex items-center'>
@@ -67,10 +66,10 @@ const FormAdd = () => {
                                 </div>
                                 <div className='flex flex-col gap-2'>
                                     <div className='flex justify-between items-center'>
-                                        <p className='text-lg text-gray-700'>{produit.designation}</p>
+                                        <p className='text-base text-gray-700'>{produit.designation}</p>
                                         <div className='flex gap-2'>
-                                            <p className='text-gray-100 bg-amber-800 rounded-full px-2 text-[8px]'>En commande</p>
-                                            <span className='text-green-600'>240</span>
+                                            <p className='text-white bg-red-400 rounded-full px-2 text-[10px] font-bold'>En commande</p>
+                                            <span className='text-deep-orange-600 font-bold border-b border-deep-orange-600'>240</span>
                                         </div>
                                     </div>
                                     <div className='flex gap-2 text-green-600'>
