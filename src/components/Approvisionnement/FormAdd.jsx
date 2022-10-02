@@ -172,7 +172,7 @@ const FormAdd = () => {
                                         />
                                     </div>
                                 }
-                                <div className='text-red-500 text-lg bg-gray-400 py-1 px-2 rounded shadow-lg shadow-gray-500'>
+                                <div className='text-red-500 text-lg bg-gray-300 py-1 px-2 rounded shadow-lg shadow-gray-500'>
                                     <Button
                                         icon={<MdDeleteOutline className='text-xl' />}
                                         onClick={() => deleteProduct(index)}
