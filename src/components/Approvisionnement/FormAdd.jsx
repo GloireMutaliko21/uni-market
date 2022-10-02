@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react'
-import { AiFillEdit, AiOutlineCheck, AiOutlineCheckCircle } from "react-icons/ai";
-import { MdDeleteOutline } from "react-icons/md";
+import { AiOutlineCheck } from "react-icons/ai";
+import { MdDeleteOutline, MdModeEdit } from "react-icons/md";
 
 import Button from '../Button';
 import { useStateContext } from "../../context/ContextProvider";
@@ -58,7 +58,7 @@ const FormAdd = () => {
     return (
         <div className='text-xs mt-10'>
             {panierApprov.map((produit, index) => (
-                <div key={index} className={`${index % 2 === 0 ? 'bg-white' : ''} p-2 border-b border-teal-900 mb-5`}>
+                <div key={index} className={`${index % 2 === 0 ? 'bg-white' : ''} p-2 border-b border-teal-900`}>
                     <div className='flex justify-between items-center gap-6'>
                         <div className='flex justify-between w-3/5'>
                             <div className='min-w-max flex gap-5 items-center'>
@@ -66,92 +66,95 @@ const FormAdd = () => {
                                     <img src={image2} alt={produit.designation} className='h-16 w-16 rounded-md border border-gray-500 object-cover' />
                                 </div>
                                 <div className='flex flex-col gap-2'>
-                                    <p className='text-lg text-gray-700'>{produit.designation}</p>
-                                    <div className='flex gap-2 text-green-600'>
-                                        <p className='border-r pr-3 mr-2 border-gray-500'>240</p>
-                                        <p className='text-gray-100 bg-amber-800 rounded-full px-2 text-[8px]'>En commande</p>
+                                    <div className='flex justify-between items-center'>
+                                        <p className='text-lg text-gray-700'>{produit.designation}</p>
+                                        <div className='flex gap-2'>
+                                            <p className='text-gray-100 bg-amber-800 rounded-full px-2 text-[8px]'>En commande</p>
+                                            <span className='text-green-600'>240</span>
+                                        </div>
                                     </div>
-                                    {
-                                        index !== productIndex &&
-                                        <div className='flex gap-2 text-sm text-gray-600'>
+                                    <div className='flex gap-2 text-green-600'>
+                                        {
+                                            index !== productIndex &&
+                                            <div className='flex gap-2 text-sm text-gray-600'>
 
-                                            <div className='text-center'>
-                                                <p className='text-xs'>Qte: <span className='border px-2 rounded-md text-sm'>{produit.qte}</span></p>
-                                            </div>
-                                            <div className='text-center'>
-                                                <p className='text-xs'>P.U: <span className='border px-2 rounded-md text-sm'>{produit.pu}</span></p>
-                                            </div>
-                                            <div className='text-center'>
-                                                <p className='text-xs'>Lot: <span className='border px-2 rounded-md text-sm'>{produit.lo}</span></p>
-                                            </div>
-                                            <div className='text-center'>
-                                                <p className='text-xs'>Exp: <span className='border px-2 rounded-md text-sm'>{produit.dateExpiration}</span></p>
-                                            </div>
+                                                <div className='text-center'>
+                                                    <p className='text-xs'>Qte: <span className='border px-2 rounded-md text-sm'>{produit.qte}</span></p>
+                                                </div>
+                                                <div className='text-center'>
+                                                    <p className='text-xs'>P.U: <span className='border px-2 rounded-md text-sm'>{produit.pu}</span></p>
+                                                </div>
+                                                <div className='text-center'>
+                                                    <p className='text-xs'>Lot: <span className='border px-2 rounded-md text-sm'>{produit.lo}</span></p>
+                                                </div>
+                                                <div className='text-center'>
+                                                    <p className='text-xs'>Exp: <span className='border px-2 rounded-md text-sm'>{produit.dateExpiration}</span></p>
+                                                </div>
 
-                                        </div>
-                                    }
-                                    {isFormUpdate && index === productIndex &&
-                                        <div className='flex items-center gap-2'>
-                                            <div>
-                                                <p className='text-blue-gray-600'>QTE</p>
-                                                <Input
-                                                    placeholder='Quantité'
-                                                    type='number'
-                                                    name='qte'
-                                                    style='w-20 px-1 py-0'
-                                                    value={produit.qte}
-                                                    onChange={(e) => handleChange(e, index)}
-                                                />
                                             </div>
-                                            <div>
-                                                <p className='text-blue-gray-600'>P.U</p>
-                                                <Input
-                                                    placeholder='Prix Unit'
-                                                    type='number'
-                                                    name='pu'
-                                                    style='w-20 px-1 py-0'
-                                                    value={produit.pu}
-                                                    onChange={(e) => handleChange(e, index)}
-                                                />
-                                            </div>
-                                            <div>
-                                                <p className='text-blue-gray-600'>LOT</p>
-                                                <Input
-                                                    placeholder='N° du lot'
-                                                    type='number'
-                                                    name='lo'
-                                                    style='w-20 px-1 py-0 mt-0 mb-0'
-                                                    value={produit.lo}
-                                                    onChange={(e) => handleChange(e, index)}
-                                                />
-                                            </div>
-                                            <div>
-                                                <p className='text-blue-gray-600'>DATE EXP.</p>
-                                                <Input
-                                                    placeholder='Date Exp'
-                                                    type='date'
-                                                    name='dateExpiration'
-                                                    style='w-full px-1 py-0'
-                                                    value={produit.dateExpiration}
-                                                    onChange={(e) => handleChange(e, index)}
-                                                />
-                                            </div>
+                                        }
+                                        {isFormUpdate && index === productIndex &&
+                                            <div className='flex items-center gap-2'>
+                                                <div>
+                                                    <p className='text-blue-gray-600'>QTE</p>
+                                                    <Input
+                                                        placeholder='Quantité'
+                                                        type='number'
+                                                        name='qte'
+                                                        style='w-20 px-1 py-0'
+                                                        value={produit.qte}
+                                                        onChange={(e) => handleChange(e, index)}
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <p className='text-blue-gray-600'>P.U</p>
+                                                    <Input
+                                                        placeholder='Prix Unit'
+                                                        type='number'
+                                                        name='pu'
+                                                        style='w-20 px-1 py-0'
+                                                        value={produit.pu}
+                                                        onChange={(e) => handleChange(e, index)}
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <p className='text-blue-gray-600'>LOT</p>
+                                                    <Input
+                                                        placeholder='N° du lot'
+                                                        type='number'
+                                                        name='lo'
+                                                        style='w-20 px-1 py-0 mt-0 mb-0'
+                                                        value={produit.lo}
+                                                        onChange={(e) => handleChange(e, index)}
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <p className='text-blue-gray-600'>DATE EXP.</p>
+                                                    <Input
+                                                        placeholder='Date Exp'
+                                                        type='date'
+                                                        name='dateExpiration'
+                                                        style='w-full px-1 py-0'
+                                                        value={produit.dateExpiration}
+                                                        onChange={(e) => handleChange(e, index)}
+                                                    />
+                                                </div>
 
-                                        </div>
-                                    }
+                                            </div>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className='flex flex-col justify-between h-20'>
-                            <div className='text-end'>
-                                <p className='text-sm text-green-800'>Tot: <span className='font-semibold'>{parseFloat(produit.qte) * parseFloat(produit.pu)}</span></p>
-                            </div>
-                            <div className='flex gap-5 text-sm'>
+                        <div className='flex flex-col justify-between'>
+                            {/* <div className='text-end'> */}
+                            {/* <p className='text-sm text-green-800'>Tot: <span className='font-bold text-base'>{parseFloat(produit.qte) * parseFloat(produit.pu)}</span></p> */}
+                            {/* </div> */}
+                            <div className='flex flex-col text-sm gap-2'>
                                 {index !== productIndex &&
-                                    <div className='text-white py-1 px-2 rounded-full bg-green-800 '>
+                                    <div className='text-white text-lg bg-teal-800 py-1 px-2 rounded shadow-lg shadow-gray-500'>
                                         <Button
-                                            icon={<AiFillEdit className='mr-2' />}
-                                            label='Edit'
+                                            icon={<MdModeEdit className='' />}
                                             onClick={() => {
                                                 setIsFormUpdate(true);
                                                 setProductIndex(index);
@@ -160,10 +163,9 @@ const FormAdd = () => {
                                     </div>
                                 }
                                 {isFormUpdate && index === productIndex &&
-                                    <div className='bg-green-800 text-white py-1 px-2 rounded-full'>
+                                    <div className='text-white text-lg bg-green-900 py-1 px-2 rounded shadow-lg shadow-green-200'>
                                         <Button
-                                            icon={<AiOutlineCheck className='mr-2' />}
-                                            label='Valider'
+                                            icon={<AiOutlineCheck className='' />}
                                             onClick={() => {
                                                 setIsFormUpdate(false);
                                                 setProductIndex();
@@ -171,10 +173,9 @@ const FormAdd = () => {
                                         />
                                     </div>
                                 }
-                                <div className='text-white py-1 px-2 rounded-full bg-red-400'>
+                                <div className='text-red-500 text-lg bg-gray-400 py-1 px-2 rounded shadow-lg shadow-gray-500'>
                                     <Button
-                                        icon={<MdDeleteOutline className='text-xl mr-2' />}
-                                        label='Delete'
+                                        icon={<MdDeleteOutline className='text-xl' />}
                                         onClick={() => deleteProduct(index)}
                                     />
                                 </div>
@@ -183,8 +184,9 @@ const FormAdd = () => {
                     </div>
                 </div>
             ))}
-            <div className='flex justify-end'>
-                {panierApprov.length > 0 &&
+            <div className='flex justify-end mt-5'>
+                {
+                    panierApprov.length > 0 &&
                     <Button
                         label='Terminer'
                         style='bg-teal-900 hover:bg-teal-800 text-white font-semibold p-3'

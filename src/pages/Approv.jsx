@@ -9,12 +9,9 @@ const Approv = () => {
     return (
         <div className='px-2'>
             <h2 className='text-3xl font-black mx-10'>Approvisionnement</h2>
-            <div className='flex gap-16'>
+            <div className='w-full grid md:grid-cols-[3fr_1fr] gap-24'>
                 <FormAdd />
-                <div className='w-60'>
-
-                    <Produits />
-                </div>
+                <Produits />
             </div>
             {
                 boolingState.registerSuccess && <SuccessDialg />
