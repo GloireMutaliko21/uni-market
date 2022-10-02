@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { MdAddCircle } from "react-icons/md";
+import { BsCart3 } from "react-icons/bs";
 import { FcHighPriority } from "react-icons/fc";
 
 import { getProduits } from '../../constants/api'
@@ -55,13 +55,13 @@ const Produits = () => {
             {productsData.length > 0 ? productsData.map((prod, index) => (
                 <div
                     key={index}
-                    className={`${index % 2 === 0 ? 'bg-teal-200' : 'border border-teal-100 text-teal-300 font-medium'} flex justify-between py-1 px-2 text-titleColor hover:cursor-pointer`}
+                    className={`border-x border-t border-teal-100 font-medium flex justify-between py-1 px-2 text-teal-800 hover:cursor-pointer`}
                     onClick={() => { addProduct(prod) }}
                 >
-                    <p className='uppercase'>{prod.designation}</p>
-                    <p>
-                        <MdAddCircle className='text-lg ml-5' />
-                    </p>
+                    <p className='capitalise font-light'>{prod.designation}</p>
+                    {/* <p>
+                        <BsCart3 className='text-green-800 text-lg ml-5' />
+                    </p> */}
                 </div>
             )) : <div className='text-teal-600 font-light flex items-center justify-center'><FcHighPriority className='mr-4 text-lg' />Aucun produit</div>}
             <Alert
