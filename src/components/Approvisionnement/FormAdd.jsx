@@ -92,7 +92,8 @@ const FormAdd = () => {
 
                                             </div>
                                         }
-                                        {isFormUpdate && index === productIndex &&
+                                        {
+                                            isFormUpdate && index === productIndex &&
                                             <div className='flex items-center gap-2'>
                                                 <div>
                                                     <p className='text-blue-gray-600'>QTE</p>
@@ -138,7 +139,6 @@ const FormAdd = () => {
                                                         onChange={(e) => handleChange(e, index)}
                                                     />
                                                 </div>
-
                                             </div>
                                         }
                                     </div>
