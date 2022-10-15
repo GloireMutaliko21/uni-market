@@ -92,7 +92,8 @@ const FormAdd = () => {
 
                                             </div>
                                         }
-                                        {isFormUpdate && index === productIndex &&
+                                        {
+                                            isFormUpdate && index === productIndex &&
                                             <div className='flex items-center gap-2'>
                                                 <div>
                                                     <p className='text-blue-gray-600'>QTE</p>
@@ -138,7 +139,6 @@ const FormAdd = () => {
                                                         onChange={(e) => handleChange(e, index)}
                                                     />
                                                 </div>
-
                                             </div>
                                         }
                                     </div>
@@ -146,9 +146,6 @@ const FormAdd = () => {
                             </div>
                         </div>
                         <div className='flex flex-col justify-between'>
-                            {/* <div className='text-end'> */}
-                            {/* <p className='text-sm text-green-800'>Tot: <span className='font-bold text-base'>{parseFloat(produit.qte) * parseFloat(produit.pu)}</span></p> */}
-                            {/* </div> */}
                             <div className='flex flex-col text-sm gap-2'>
                                 {index !== productIndex &&
                                     <div className='text-white text-lg bg-teal-800 py-1 px-2 rounded shadow-lg shadow-gray-500'>

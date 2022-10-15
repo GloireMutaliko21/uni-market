@@ -59,9 +59,6 @@ const Produits = () => {
                     onClick={() => { addProduct(prod) }}
                 >
                     <p className='capitalise font-light flex items-center'><FaRegHandPointRight className='mr-2 text-teal-200' />{prod.designation}</p>
-                    {/* <p>
-                        <BsCart3 className='text-green-800 text-lg ml-5' />
-                    </p> */}
                 </div>
             )) : <div className='text-teal-600 font-light flex items-center justify-center'><FcHighPriority className='mr-4 text-lg' />Aucun produit</div>}
             <Alert
