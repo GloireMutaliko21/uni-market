@@ -21,7 +21,8 @@ export function getData(data, setData, url) {
                 if (response.status === 200) {
                     setData(responseData.data);
                     setGetData(false);
-                } if (response.status === 403) {
+                }
+                if (response.status === 403) {
                     setBoolingState({ ...boolingState, loginStatus: false });
                     localStorage.removeItem('isLogged');
                 }

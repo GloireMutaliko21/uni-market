@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
 import { FaRegHandPointRight } from "react-icons/fa";
 import { FcHighPriority } from "react-icons/fc";
+import { Alert } from '@material-tailwind/react';
 
 import { getProduits } from '../../constants/api'
 import { useStateContext } from "../../context/ContextProvider";
-import { Alert } from '@material-tailwind/react';
 
 const Produits = () => {
     const searchRef = useRef();
